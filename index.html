@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="style.css">
+  <title>MINES</title>
+</head>
+
+<body>
+<input type="hidden" id="language" value="english" />
+
+<a href="javascript:history.back()" class="BackArrow">
+  <svg id="backArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="60" height="60">
+    <defs>
+      <linearGradient id="arrow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#00ffe1">
+          <animate attributeName="offset" values="0;1;0" dur="2s" repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stop-color="#ffffff">
+          <animate attributeName="offset" values="1;0;1" dur="2s" repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <path d="M 30 10 L 15 25 L 30 40" fill="none" stroke="url(#arrow-gradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+<div class="item-traps select-index-box">
+  <img src="bomb.png" alt="💣">
+  <a id="select-index">3</a>
+</div>
+
+<div class="header">
+  <img class="img-footer" src="footer.webp" alt="footer">
+</div>
+
+<div class="container">
+  <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
+    <img src="crack2.svg" alt="crack" style="width: 100px; height: 200px;">
+  </div>
+  <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
+    <img src="crack2_cleaned.svg" alt="crack" style="width: 120px; height: 180px;">
+  </div>
+  <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
+    <img src="crack2.svg" alt="crack" style="width: 100px; height: 200px;">
+  </div>
+  <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
+    <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="2" fill="#0168CF" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="25" cy="15" r="1.5" fill="#108de7" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="35" cy="25" r="2.5" fill="#0855c4" opacity="0.7">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="15" cy="30" r="1" fill="#62a5d5" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.8;0.5" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="40" cy="35" r="2" fill="#0168CF" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+  <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
+    <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="2" fill="#0168CF" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="25" cy="15" r="1.5" fill="#108de7" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="35" cy="25" r="2.5" fill="#0855c4" opacity="0.7">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="15" cy="30" r="1" fill="#62a5d5" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.8;0.5" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="40" cy="35" r="2" fill="#0168CF" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
+  <div class="text-top">
+    <h1 class="text-title">MINES</h1>
+    <p class="name-bot">@minesbot9876_bot</p>
+  </div>
+
+  <div style="justify-content: center; display: flex; vertical-align: middle;">
+    <div class="game-screen">
+      <div class="screen-active" id="main-screen">
+        <img draggable="false" id="screenStart" class="screenStart" src="Mines.png" alt="start">
+        <img draggable="false" src="loading.gif" alt="loading" id="loading" class="loading deactive">
+        <canvas class="img-signal deactive" id="canvas"></canvas>
+      </div>
+
+      <div class="screen-active" id="traps-screen" style="display: none">
+        <div class="traps-screen">
+          <div class="item-traps" onclick="handleClick(this)">
+            <img src="bomb.png" alt="💣">
+            <a>1</a>
+          </div>
+          <div class="item-traps" onclick="handleClick(this)">
+            <img src="bomb.png" alt="💣">
+            <a>3</a>
+          </div>
+          <div class="item-traps" onclick="handleClick(this)">
+            <img src="bomb.png" alt="💣">
+            <a>5</a>
+          </div>
+          <div class="item-traps" onclick="handleClick(this)">
+            <img src="bomb.png" alt="💣">
+            <a>7</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crack crack4" style="rotate: 40deg;">
+    <img src="crack2_cleaned.svg" alt="crack" style="width: 100px; height: 200px;">
+  </div>
+  <div class="crack" style="left: 76vw; bottom: 30vh; rotate: 327deg; scale: 1.5;">
+    <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="2" fill="#0168CF" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="25" cy="15" r="1.5" fill="#108de7" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="35" cy="25" r="2.5" fill="#0855c4" opacity="0.7">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="15" cy="30" r="1" fill="#62a5d5" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.8;0.5" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="40" cy="35" r="2" fill="#0168CF" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
+  <div class="game-button">
+    <a id="percent-chance" style="font-size: 3vh; display: none"></a>
+    <button id="get-signal" class="get-signal"></button>
+    <div style="display: flex; gap: 2vw;">
+      <a href="#" class="game-here" target="_blank" rel="noopener noreferrer" id="game-here"></a>
+      <a onclick="activeTrapsScreen()" id="chose-traps" class="chose-traps"></a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <img class="img-footer" src="footer.webp" alt="footer">
+</div>
+
+<script src="canvas-mines.js"></script>
+<script src="script.js"></script>
+
+<script>
+  // Получаем язык из скрытого поля
+  const userLanguage = document.getElementById("language").value;
+
+  // Тексты для каждого языка
+  const texts = {
+    english: {
+      getSignal: "Get Signal",
+      gameHere: "Game Here",
+      chooseTraps: "Choose Traps",
+      chance: "CHANCE: 90.12%"
+    },
+    russian: {
+      getSignal: "Сигнал",
+      gameHere: "Игра",
+      chooseTraps: "Мины",
+      chance: "ШАНС: 90.12%"
+    }
+  };
+
+  // Функция для установки текста на основе языка
+  function setLanguage(userLanguage) {
+    const langTexts =
+            userLanguage === 'russian' || userLanguage === 'uzbek' || userLanguage === 'azerbaijani'
+                    ? texts.russian
+                    : texts.english;
+    document.getElementById("get-signal").textContent = langTexts.getSignal;
+    document.getElementById("game-here").textContent = langTexts.gameHere;
+    document.getElementById("chose-traps").textContent = langTexts.chooseTraps;
+    document.getElementById("percent-chance").textContent = langTexts.chance;
+  }
+
+  // Устанавливаем текст при загрузке страницы
+  setLanguage(userLanguage);
+</script>
+</body>
+</html>
