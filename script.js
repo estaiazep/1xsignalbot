@@ -45,3 +45,18 @@ function activeTrapsScreen() {
         trapsScreen.style.display= "";
     }
 }
+function submitID() {
+  const id = document.getElementById('user-id').value.trim();
+  const errorMsg = document.getElementById('error-msg');
+
+  if (!/^12\d{7,}$/.test(id)) {
+    errorMsg.textContent = "Некорректный ID. Убедитесь, что он начинается с '12' и содержит минимум 9 цифр.";
+    return;
+  }
+
+  localStorage.setItem("user_1xbet_id", id); // если нужно сохранить
+  errorMsg.textContent = "";
+
+  document.getElementById('start-screen').style.display = "none";
+  document.querySelector('.container').style.display = "flex";
+}
