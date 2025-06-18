@@ -45,22 +45,4 @@ function activeTrapsScreen() {
         trapsScreen.style.display= "";
     }
 }
-
-function handleStart() {
-  const id = document.getElementById("user-id").value.trim();
-  const spinner = document.getElementById("loading-spinner");
-  const statusText = document.getElementById("status-text");
-
-  if (!id.startsWith("12") || id.length < 5) {
-    alert("❌ Введите корректный ID, начинающийся на 12");
-    return;
-  }
-
-  spinner.style.display = "block";
-  statusText.style.display = "block";
-
-  setTimeout(() => {
-    document.getElementById("start-screen").style.display = "none";
-    document.querySelector(".container").style.display = "flex";
-  }, 2000);
-}
+<script>
