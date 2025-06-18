@@ -41,15 +41,16 @@
   <img class="img-footer" src="footer.webp" alt="footer">
 </div>
 
-  
-<div id="id-screen">
-  <h2>Введите ID аккаунта 1xBet</h2>
-  <input type="text" id="user-id" placeholder="Например: 12345678" />
-  <button onclick="checkUserId()">Продолжить</button>
+<link rel="stylesheet" href="style.css"> <!-- обязательно! -->
 
-  <!-- Спиннер -->
+<div id="start-screen" class="start-screen">
+  <h2>Введите ID аккаунта 1xBet</h2>
+  <input type="text" id="user-id" placeholder="Например: 12345678">
+  <button onclick="submitID()">Продолжить</button>
   <div id="loader" class="spinner" style="display: none;"></div>
+  <div id="error-msg" style="color: red;"></div>
 </div>
+
 
 <div class="container">
   <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
