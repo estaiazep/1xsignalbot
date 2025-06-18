@@ -22,9 +22,9 @@ window.addEventListener('load', resizeCanvas);
 
 // Загрузка изображений
 const rectangleImg = new Image();
-rectangleImg.src = "../static/mines/resource/RectangleMines.svg";
+rectangleImg.src = "RectangleMines.svg";
 const starImg = new Image();
-starImg.src = "../static/mines/resource/StarMines.svg";
+starImg.src = "StarMines.svg";
 
 // Кастомизируемые переменные
 let gridSize = 5;           // Размер сетки (количество прямоугольников в ряду/столбце)
