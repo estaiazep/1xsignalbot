@@ -41,13 +41,15 @@
   <img class="img-footer" src="footer.webp" alt="footer">
 </div>
 
-<link rel="stylesheet" href="style.css"> <!-- обязательно! -->
-
-<div id="start-screen" class="start-screen">
-  <input type="text" id="user-id" placeholder="Введите ID 1xBet">
+<div class="start-screen" id="start-screen">
+  <input id="user-id" placeholder="Введите ID 1xBet" />
   <button onclick="handleStart()">Продолжить</button>
-  <div id="loading-spinner" class="spinner" style="display: none;"></div>
+  <div class="spinner" id="loading-spinner" style="display: none;"></div>
   <div id="status-text" style="display: none;">Загрузка...</div>
+</div>
+
+<div class="container">
+  <!-- Весь остальной сайт тут -->
 </div>
 
 <div class="container">
