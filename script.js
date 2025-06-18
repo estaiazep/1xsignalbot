@@ -45,7 +45,6 @@ function activeTrapsScreen() {
         trapsScreen.style.display= "";
     }
 }
-<script>
 
 function handleStart() {
   const id = document.getElementById("user-id").value.trim();
