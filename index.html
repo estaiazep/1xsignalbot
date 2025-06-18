@@ -42,12 +42,13 @@
 </div>
 
   
-<div id="start-screen" class="start-screen">
+<div id="id-screen">
+  <h2>Введите ID аккаунта 1xBet</h2>
+  <input type="text" id="user-id" placeholder="Например: 12345678" />
+  <button onclick="checkUserId()">Продолжить</button>
+
+  <!-- Спиннер -->
   <div id="loader" class="spinner" style="display: none;"></div>
-  <p>Введите ID вашего аккаунта 1xBet</p>
-  <input type="number" id="user-id" placeholder="Например, 123456789">
-  <div id="error-msg" style="color: red; font-size: 14px;"></div>
-  <button onclick="submitID()">Продолжить</button>
 </div>
 
 <div class="container">
