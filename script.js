@@ -44,6 +44,8 @@ function activeTrapsScreen() {
         mainScreen.style.display = "none";
         trapsScreen.style.display= "";
     }
+}
+<script>
 
 function handleStart() {
   const id = document.getElementById("user-id").value.trim();
@@ -63,4 +65,3 @@ function handleStart() {
     document.querySelector(".container").style.display = "flex";
   }, 2000);
 }
-<script>
