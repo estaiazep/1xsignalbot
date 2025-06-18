@@ -68,5 +68,3 @@ function checkUserId() {
 
   }, 2500);
 }
-
-}
