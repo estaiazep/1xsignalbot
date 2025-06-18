@@ -410,7 +410,7 @@ html, body{
     opacity: 1;
     transform: translateX(0) scale(1);
   }
-}
+
 .start-screen {
   position: absolute;
   z-index: 999;
@@ -432,6 +432,10 @@ html, body{
   text-align: center;
   border-radius: 8px;
   border: none;
+  outline: none;
+  background-color: #12192d;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2);
 }
 
 .start-screen button {
@@ -442,11 +446,14 @@ html, body{
   border-radius: 8px;
   color: white;
   cursor: pointer;
+  box-shadow: 0 0 20px #108de7;
+  transition: 0.3s;
 }
 
-.container {
-  display: none; /* изначально скрыта */
+.start-screen button:hover {
+  transform: scale(1.05);
 }
+
 .spinner {
   border: 6px solid rgba(255, 255, 255, 0.2);
   border-top: 6px solid #00ffe1;
@@ -454,11 +461,25 @@ html, body{
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
-  margin: 20px auto;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.status-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #00ffe1;
+  text-align: center;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
 
