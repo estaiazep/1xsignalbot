@@ -45,26 +45,23 @@ function activeTrapsScreen() {
         trapsScreen.style.display= "";
     }
 }
-function checkUserId() {
-  const userId = document.getElementById("user-id").value.trim();
-  const loader = document.getElementById("loader");
+<script>
+function handleStart() {
+  const id = document.getElementById("user-id").value.trim();
+  const spinner = document.getElementById("loading-spinner");
+  const statusText = document.getElementById("status-text");
 
-  // Проверка: ID должен начинаться с "12" и быть не короче 6 цифр
-  if (!/^12\d{4,}$/.test(userId)) {
-    alert("Введите корректный ID 1xBet (начинается с 12)");
+  if (!id.startsWith("12") || id.length < 5) {
+    alert("❌ Введите корректный ID, начинающийся на 12");
     return;
   }
 
-  // Показываем загрузку
-  loader.style.display = "block";
+  spinner.style.display = "block";
+  statusText.style.display = "block";
 
-  // Подделка задержки (например, 2.5 сек)
   setTimeout(() => {
-    loader.style.display = "none";
-    
-    // Скрываем форму и показываем основной экран
-    document.getElementById("id-screen").style.display = "none";
-    document.querySelector(".container").style.display = "flex"; // или другой основной блок
-
-  }, 2500);
+    document.getElementById("start-screen").style.display = "none";
+    document.querySelector(".container").style.display = "flex";
+  }, 2000);
 }
+
