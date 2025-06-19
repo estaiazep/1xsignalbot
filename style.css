@@ -42,8 +42,8 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-bottom: 25vh;
+  align-items: flex-start;
+  padding-top: 35vh;
   flex-direction: column;
   z-index: 10;
   background-color: 0;
@@ -57,7 +57,7 @@ body {
   gap: 40px;
   z-index: 15;
   width: 100%;
-  padding: 10vh 20px 0 20px;
+  padding: 0 20px;
 }
 
 .verification-form {
