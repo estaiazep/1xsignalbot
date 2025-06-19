@@ -141,6 +141,32 @@ body {
   border: 1px solid rgba(255, 71, 87, 0.3);
 }
 
+.back-to-lang-btn, .back-to-verify-btn {
+  font-family: 'HalvarBreit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.back-to-lang-btn:hover, .back-to-verify-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.back-to-verify-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+}
+
 /* Main Game Container - Balanced Layout */
 #main-game {
   position: fixed;
