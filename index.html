@@ -14,34 +14,9 @@
 
 <body>
 <input type="hidden" id="language" value="english" />
-<a href="javascript:history.back()" class="BackArrow">
-  <svg id="backArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="60" height="60">
-    <defs>
-      <linearGradient id="arrow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#00ffe1">
-          <animate attributeName="offset" values="0;1;0" dur="2s" repeatCount="indefinite" />
-        </stop>
-        <stop offset="100%" stop-color="#ffffff">
-          <animate attributeName="offset" values="1;0;1" dur="2s" repeatCount="indefinite" />
-        </stop>
-      </linearGradient>
-    </defs>
-    <path d="M 30 10 L 15 25 L 30 40" fill="none" stroke="url(#arrow-gradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
 
-
-</a>
-
-<div class="item-traps select-index-box">
-  <img src="bomb.png" alt="">
-  <a id="select-index">3</a>
-</div>
-
-<div class="header">
-  <img class="img-footer" src="footer.webp" alt="footer">
-</div>
-
-<div class="game-container">
+<!-- ID Verification Screen -->
+<div id="verification-screen" class="verification-container">
   <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
     <img src="crack1.svg" alt="crack">
   </div>
@@ -58,61 +33,129 @@
     <img src="particles.svg" alt="crack">
   </div>
 
-  <div class="text-top">
-    <h1 class="text-title">MINES</h1>
-    <p class="name-bot">BOT MADE ONLY FOR 1XBET</p>
+  <div class="header">
+    <img class="img-footer" src="footer.webp" alt="footer">
   </div>
 
-  <div style="justify-content: center; display: flex; vertical-align: middle;">
-    <div class="game-screen">
-      <div class="screen-active" id="main-screen">
-        <img draggable="false" id="screenStart" class="screenStart" src="Mines.png" alt="start">
-        <img draggable="false" src="loading.gif" alt="loading" id="loading" class="loading deactive">
-        <canvas class="img-signal deactive" id="canvas"></canvas>
-      </div>
+  <div class="verification-content">
+    <div class="text-top">
+      <h1 class="text-title" id="verification-title">ACCOUNT VERIFICATION</h1>
+      <p class="text-subtitle" id="verification-subtitle">Enter your account ID to continue</p>
+    </div>
 
-      <div class="screen-active" id="traps-screen" style="display: none">
-        <div class="traps-screen">
-          <div class="item-traps" onclick="handleClick(this)">
-            <img src="bomb.png">
-            <a>1</a>
-          </div>
-          <div class="item-traps" onclick="handleClick(this)">
-            <img src="bomb.png">
-            <a>3</a>
-          </div>
-          <div class="item-traps" onclick="handleClick(this)">
-            <img src="bomb.png">
-            <a>5</a>
-          </div>
-          <div class="item-traps" onclick="handleClick(this)">
-            <img src="bomb.png">
-            <a>7</a>
+    <div class="verification-form">
+      <input type="text" id="account-id" class="account-input" placeholder="Enter account ID (129xxxxxxx)" maxlength="10">
+      <div id="error-message" class="error-message" style="display: none;"></div>
+      <button id="verify-button" class="verify-button">Verify Account</button>
+      <img id="verification-loading" src="loading.gif" alt="loading" class="verification-loading" style="display: none;">
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="img-footer" src="footer.webp" alt="footer">
+  </div>
+</div>
+
+<!-- Main Game Screen (hidden initially) -->
+<div id="main-game" style="display: none;">
+  <a href="javascript:history.back()" class="BackArrow">
+    <svg id="backArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="60" height="60">
+      <defs>
+        <linearGradient id="arrow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00ffe1">
+            <animate attributeName="offset" values="0;1;0" dur="2s" repeatCount="indefinite" />
+          </stop>
+          <stop offset="100%" stop-color="#ffffff">
+            <animate attributeName="offset" values="1;0;1" dur="2s" repeatCount="indefinite" />
+          </stop>
+        </linearGradient>
+      </defs>
+      <path d="M 30 10 L 15 25 L 30 40" fill="none" stroke="url(#arrow-gradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <div class="item-traps select-index-box">
+    <img src="bomb.png" alt="">
+    <a id="select-index">3</a>
+  </div>
+
+  <div class="header">
+    <img class="img-footer" src="footer.webp" alt="footer">
+  </div>
+
+  <div class="game-container">
+    <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
+      <img src="crack1.svg" alt="crack">
+    </div>
+    <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
+      <img src="crack1.svg" alt="crack">
+    </div>
+    <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
+      <img src="crack1.svg" alt="crack">
+    </div>
+    <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
+      <img src="particles.svg" alt="crack">
+    </div>
+    <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
+      <img src="particles.svg" alt="crack">
+    </div>
+
+    <div class="text-top">
+      <h1 class="text-title">MINES</h1>
+      <p class="name-bot">BOT MADE ONLY FOR 1XBET</p>
+    </div>
+
+    <div style="justify-content: center; display: flex; vertical-align: middle;">
+      <div class="game-screen">
+        <div class="screen-active" id="main-screen">
+          <img draggable="false" id="screenStart" class="screenStart" src="Mines.png" alt="start">
+          <img draggable="false" src="loading.gif" alt="loading" id="loading" class="loading deactive">
+          <canvas class="img-signal deactive" id="canvas"></canvas>
+        </div>
+
+        <div class="screen-active" id="traps-screen" style="display: none">
+          <div class="traps-screen">
+            <div class="item-traps" onclick="handleClick(this)">
+              <img src="bomb.png">
+              <a>1</a>
+            </div>
+            <div class="item-traps" onclick="handleClick(this)">
+              <img src="bomb.png">
+              <a>3</a>
+            </div>
+            <div class="item-traps" onclick="handleClick(this)">
+              <img src="bomb.png">
+              <a>5</a>
+            </div>
+            <div class="item-traps" onclick="handleClick(this)">
+              <img src="bomb.png">
+              <a>7</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="crack crack4" style="rotate: 40deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack" style="left: 76vw; bottom: 30vh; rotate: 327deg; scale: 1.5;">
-    <img src="particles.svg" alt="crack">
-  </div>
+    <div class="crack crack4" style="rotate: 40deg;">
+      <img src="crack1.svg" alt="crack">
+    </div>
+    <div class="crack" style="left: 76vw; bottom: 30vh; rotate: 327deg; scale: 1.5;">
+      <img src="particles.svg" alt="crack">
+    </div>
 
-  <div class="game-button">
-    <a id="percent-chance" style="font-size: 3vh; display: none"></a>
-    <button id="get-signal" class="get-signal"></button>
-    <div style="display: flex; gap: 2vw;">
-      <a href="https://1wzyuh.com/casino/play/1play_1play_mines" class="game-here" target="_blank" rel="noopener noreferrer" id="game-here"></a>
-      <a onclick="activeTrapsScreen()" id="chose-traps" class="chose-traps"></a>
+    <div class="game-button">
+      <a id="percent-chance" style="font-size: 3vh; display: none"></a>
+      <button id="get-signal" class="get-signal"></button>
+      <div style="display: flex; gap: 2vw;">
+        <a href="https://1wzyuh.com/casino/play/1play_1play_mines" class="game-here" target="_blank" rel="noopener noreferrer" id="game-here"></a>
+        <a onclick="activeTrapsScreen()" id="chose-traps" class="chose-traps"></a>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="footer">
-  <img class="img-footer" src="footer.webp" alt="footer">
+  <div class="footer">
+    <img class="img-footer" src="footer.webp" alt="footer">
+  </div>
 </div>
 
 <script src="script.js"></script>
@@ -133,13 +176,25 @@
       getSignal: "Get Signal",
       gameHere: "Game Here",
       chooseTraps: "Choose Traps",
-      chance: "CHANCE: 90.12%"
+      chance: "CHANCE: 90.12%",
+      verificationTitle: "ACCOUNT VERIFICATION",
+      verificationSubtitle: "Enter your account ID to continue",
+      verifyButton: "Verify Account",
+      verifying: "Verifying...",
+      errorMessage: "Invalid ID. Must start with 129 and be 10 digits long",
+      placeholder: "Enter account ID (129xxxxxxx)"
     },
     russian: {
       getSignal: "Сигнал",
       gameHere: "Игра",
       chooseTraps: "Мины",
-      chance: "ШАНС: 90.12%"
+      chance: "ШАНС: 90.12%",
+      verificationTitle: "ПРОВЕРКА АККАУНТА",
+      verificationSubtitle: "Введите ID аккаунта для продолжения",
+      verifyButton: "Проверить аккаунт",
+      verifying: "Проверка...",
+      errorMessage: "Неверный ID. Должен начинаться с 129 и содержать 10 цифр",
+      placeholder: "Введите ID аккаунта (129xxxxxxx)"
     }
   };
 
@@ -149,11 +204,78 @@
             userLanguage === 'russian' || userLanguage === 'uzbek' || userLanguage === 'azerbaijani'
                     ? texts.russian
                     : texts.english;
+    
+    // Основная игра
     document.getElementById("get-signal").textContent = langTexts.getSignal;
     document.getElementById("game-here").textContent = langTexts.gameHere;
     document.getElementById("chose-traps").textContent = langTexts.chooseTraps;
     document.getElementById("percent-chance").textContent = langTexts.chance;
+    
+    // Верификация
+    document.getElementById("verification-title").textContent = langTexts.verificationTitle;
+    document.getElementById("verification-subtitle").textContent = langTexts.verificationSubtitle;
+    document.getElementById("verify-button").textContent = langTexts.verifyButton;
+    document.getElementById("account-id").placeholder = langTexts.placeholder;
   }
+
+  // ID Verification Logic
+  function validateAccountId(id) {
+    // Проверяем что ID начинается с 129 и содержит ровно 10 цифр
+    const regex = /^129\d{7}$/;
+    return regex.test(id);
+  }
+
+  function showError(message) {
+    const errorElement = document.getElementById("error-message");
+    errorElement.textContent = message;
+    errorElement.style.display = "block";
+  }
+
+  function hideError() {
+    document.getElementById("error-message").style.display = "none";
+  }
+
+  function verifyAccount() {
+    const accountId = document.getElementById("account-id").value;
+    const verifyButton = document.getElementById("verify-button");
+    const loadingElement = document.getElementById("verification-loading");
+    const langTexts = userLanguage === 'russian' || userLanguage === 'uzbek' || userLanguage === 'azerbaijani'
+            ? texts.russian
+            : texts.english;
+
+    hideError();
+
+    if (!validateAccountId(accountId)) {
+      showError(langTexts.errorMessage);
+      return;
+    }
+
+    // Показываем загрузку
+    verifyButton.style.display = "none";
+    loadingElement.style.display = "block";
+
+    // Симулируем проверку (2 секунды)
+    setTimeout(() => {
+      // Скрываем экран верификации и показываем игру
+      document.getElementById("verification-screen").style.display = "none";
+      document.getElementById("main-game").style.display = "block";
+    }, 2000);
+  }
+
+  // Устанавливаем обработчики событий
+  document.getElementById("verify-button").onclick = verifyAccount;
+  
+  // Обработчик Enter в поле ввода
+  document.getElementById("account-id").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      verifyAccount();
+    }
+  });
+
+  // Очистка ошибки при вводе
+  document.getElementById("account-id").addEventListener("input", function() {
+    hideError();
+  });
 
   // Устанавливаем текст при загрузке страницы
   setLanguage(userLanguage);
