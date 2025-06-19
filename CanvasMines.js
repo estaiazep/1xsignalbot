@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 // Функция для установки фиксированного размера канваса
 function resizeCanvas() {
-    const size = 271; // Фиксированный размер 272 на 272 пикселя
+    const size = 224; // Уменьшено с 271 до 224 пикселя
     canvas.width = size;
     canvas.height = size;
 
@@ -30,12 +30,12 @@ starImg.src = "StarMines.svg";
 let gridSize = 5;           // Размер сетки (количество прямоугольников в ряду/столбце)
 let rectSize = 100;         // Размер одного прямоугольника (пересчитывается динамически)
 let spacing = 10;           // Отступы между квадратами (пересчитываются динамически)
-let pieceCount = 50;        // Количество частиц, создаваемых при клике
-let pieceMinSize = 5;       // Минимальный размер частицы
-let pieceMaxSize = 15;      // Максимальный размер частицы
+let pieceCount = 40;        // Уменьшено количество частиц с 50 до 40
+let pieceMinSize = 4;       // Уменьшен минимальный размер частицы
+let pieceMaxSize = 12;      // Уменьшен максимальный размер частицы
 let pieceSpeedFactor = 0.05; // Фактор скорости разлета частиц
 let pieceColor = '#0168CF'; // Цвет прямоугольников и частиц
-let starSize = 50;          // Размер звезды
+let starSize = 40;          // Уменьшен размер звезды с 50 до 40
 
 const rectangles = [];
 const pieces = [];
@@ -89,7 +89,7 @@ function drawStars() {
 function createPieces(rect) {
     for (let i = 0; i < pieceCount; i++) {
         const angle = Math.random() * 2 * Math.PI; // Случайный угол
-        const distance = Math.random() * 150 + 50; // Дистанция разлета
+        const distance = Math.random() * 120 + 40; // Уменьшена дистанция разлета
 
         pieces.push({
             x: rect.x + rect.size / 2,
