@@ -46,4 +46,4 @@ function activeTrapsScreen() {
     }
 }
 
-<script>
+</script>
