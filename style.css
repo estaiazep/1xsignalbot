@@ -57,7 +57,7 @@ body {
   gap: 40px;
   z-index: 15;
   width: 100%;
-  padding: 0 20px;
+  padding: 10vh 20px 0 20px;
 }
 
 .verification-form {
