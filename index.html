@@ -15,8 +15,42 @@
 <body>
 <input type="hidden" id="language" value="english" />
 
+<!-- Language Selection Screen -->
+<div id="language-screen" class="verification-container">
+  <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
+    <img src="crack1.svg" alt="crack">
+  </div>
+  <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
+    <img src="crack1.svg" alt="crack">
+  </div>
+  <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
+    <img src="crack1.svg" alt="crack">
+  </div>
+
+  <div class="header">
+    <img class="img-footer" src="footer.webp" alt="footer">
+  </div>
+
+  <div class="verification-content">
+    <div class="text-top">
+      <h1 class="text-title">MINES</h1>
+      <p class="text-subtitle">Select Language / Выберите язык / Chọn ngôn ngữ</p>
+    </div>
+
+    <div class="verification-form">
+      <button class="verify-button" onclick="selectLanguage('russian')">🇷🇺 Русский</button>
+      <button class="verify-button" onclick="selectLanguage('english')">🇺🇸 English</button>
+      <button class="verify-button" onclick="selectLanguage('vietnamese')">🇻🇳 Tiếng Việt</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="img-footer" src="footer.webp" alt="footer">
+  </div>
+</div>
+
 <!-- ID Verification Screen -->
-<div id="verification-screen" class="verification-container">
+<div id="verification-screen" class="verification-container" style="display: none;">
   <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
     <img src="crack1.svg" alt="crack">
   </div>
@@ -49,6 +83,8 @@
       <button id="verify-button" class="verify-button">Verify Account</button>
       <img id="verification-loading" src="loading.gif" alt="loading" class="verification-loading" style="display: none;">
     </div>
+    
+    <button class="back-to-lang-btn" onclick="showLanguageScreen()">← Сменить язык</button>
   </div>
 
   <div class="footer">
@@ -58,7 +94,7 @@
 
 <!-- Main Game Screen (hidden initially) -->
 <div id="main-game" style="display: none;">
-  <a href="javascript:history.back()" class="BackArrow">
+  <a href="javascript:showVerificationScreen()" class="BackArrow">
     <svg id="backArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="60" height="60">
       <defs>
         <linearGradient id="arrow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -168,7 +204,7 @@
   window.Telegram.WebApp.disableVerticalSwipes();
 
   // Получаем язык из скрытого поля
-  const userLanguage = document.getElementById("language").value;
+  let userLanguage = document.getElementById("language").value;
 
   // Тексты для каждого языка
   const texts = {
@@ -182,7 +218,8 @@
       verifyButton: "Verify Account",
       verifying: "Verifying...",
       errorMessage: "Invalid ID. Must start with 129 and be 10 digits long",
-      placeholder: "Enter account ID (129xxxxxxx)"
+      placeholder: "Enter account ID (129xxxxxxx)",
+      backToLang: "← Change Language"
     },
     russian: {
       getSignal: "Сигнал",
@@ -194,16 +231,56 @@
       verifyButton: "Проверить аккаунт",
       verifying: "Проверка...",
       errorMessage: "Неверный ID. Должен начинаться с 129 и содержать 10 цифр",
-      placeholder: "Введите ID аккаунта (129xxxxxxx)"
+      placeholder: "Введите ID аккаунта (129xxxxxxx)",
+      backToLang: "← Сменить язык"
+    },
+    vietnamese: {
+      getSignal: "Nhận Tín Hiệu",
+      gameHere: "Chơi Game",
+      chooseTraps: "Chọn Mìn",
+      chance: "CƠ HỘI: 90.12%",
+      verificationTitle: "XÁC MINH TÀI KHOẢN",
+      verificationSubtitle: "Nhập ID tài khoản để tiếp tục",
+      verifyButton: "Xác Minh Tài Khoản",
+      verifying: "Đang xác minh...",
+      errorMessage: "ID không hợp lệ. Phải bắt đầu bằng 129 và có 10 chữ số",
+      placeholder: "Nhập ID tài khoản (129xxxxxxx)",
+      backToLang: "← Đổi Ngôn Ngữ"
     }
   };
 
+  // Функция для выбора языка
+  function selectLanguage(language) {
+    userLanguage = language;
+    document.getElementById("language").value = language;
+    localStorage.setItem('selectedLanguage', language);
+    setLanguage(language);
+    showVerificationScreen();
+  }
+
+  // Функция для показа экрана выбора языка
+  function showLanguageScreen() {
+    document.getElementById("language-screen").style.display = "block";
+    document.getElementById("verification-screen").style.display = "none";
+    document.getElementById("main-game").style.display = "none";
+  }
+
+  // Функция для показа экрана верификации
+  function showVerificationScreen() {
+    document.getElementById("language-screen").style.display = "none";
+    document.getElementById("verification-screen").style.display = "block";
+    document.getElementById("main-game").style.display = "none";
+    
+    // Очистка полей
+    document.getElementById("account-id").value = "";
+    hideError();
+    document.getElementById("verify-button").style.display = "block";
+    document.getElementById("verification-loading").style.display = "none";
+  }
+
   // Функция для установки текста на основе языка
-  function setLanguage(userLanguage) {
-    const langTexts =
-            userLanguage === 'russian' || userLanguage === 'uzbek' || userLanguage === 'azerbaijani'
-                    ? texts.russian
-                    : texts.english;
+  function setLanguage(language) {
+    const langTexts = texts[language] || texts.english;
     
     // Основная игра
     document.getElementById("get-signal").textContent = langTexts.getSignal;
@@ -216,11 +293,16 @@
     document.getElementById("verification-subtitle").textContent = langTexts.verificationSubtitle;
     document.getElementById("verify-button").textContent = langTexts.verifyButton;
     document.getElementById("account-id").placeholder = langTexts.placeholder;
+    
+    // Кнопка возврата к языкам
+    const backBtn = document.querySelector('.back-to-lang-btn');
+    if (backBtn) {
+      backBtn.textContent = langTexts.backToLang;
+    }
   }
 
   // ID Verification Logic
   function validateAccountId(id) {
-    // Проверяем что ID начинается с 129 и содержит ровно 10 цифр
     const regex = /^129\d{7}$/;
     return regex.test(id);
   }
@@ -239,9 +321,7 @@
     const accountId = document.getElementById("account-id").value;
     const verifyButton = document.getElementById("verify-button");
     const loadingElement = document.getElementById("verification-loading");
-    const langTexts = userLanguage === 'russian' || userLanguage === 'uzbek' || userLanguage === 'azerbaijani'
-            ? texts.russian
-            : texts.english;
+    const langTexts = texts[userLanguage] || texts.english;
 
     hideError();
 
@@ -277,8 +357,18 @@
     hideError();
   });
 
-  // Устанавливаем текст при загрузке страницы
-  setLanguage(userLanguage);
+  // Проверяем сохраненный язык при загрузке
+  window.addEventListener('load', function() {
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage && texts[savedLanguage]) {
+      userLanguage = savedLanguage;
+      document.getElementById("language").value = savedLanguage;
+      setLanguage(savedLanguage);
+      showVerificationScreen();
+    } else {
+      showLanguageScreen();
+    }
+  });
   
 </script>
 </body>
