@@ -141,54 +141,37 @@ body {
   border: 1px solid rgba(255, 71, 87, 0.3);
 }
 
-/* Кнопка возврата к выбору языка - ИСПРАВЛЕННОЕ РАСПОЛОЖЕНИЕ */
+/* ТОЛЬКО кнопка возврата к выбору языка - БЕЗ ВЛИЯНИЯ НА ОСТАЛЬНЫЕ ЭЛЕМЕНТЫ */
 .back-to-lang-btn {
-  font-family: 'HalvarBreit', sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  border: 2px solid rgba(255, 255, 255, 0.3) !important;
-  padding: 12px 24px !important;
-  border-radius: 25px !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  margin: 25px auto 0 auto !important;
-  text-decoration: none !important;
-  display: block !important;
-  text-align: center !important;
-  width: 180px !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  font-family: 'HalvarBreit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 25px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 180px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .back-to-lang-btn:hover {
-  background: rgba(255, 255, 255, 0.25) !important;
-  color: #ffffff !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-  border-color: rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .back-to-lang-btn:active {
-  transform: translateY(0px) scale(0.98) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Адаптивность для кнопки возврата */
-@media screen and (max-width: 400px) {
-  .back-to-lang-btn {
-    font-size: 14px !important;
-    padding: 10px 20px !important;
-    width: 160px !important;
-  }
-}
-
-@media screen and (max-height: 600px) {
-  .back-to-lang-btn {
-    margin: 20px auto 0 auto !important;
-    font-size: 14px !important;
-    padding: 10px 20px !important;
-  }
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .back-to-verify-btn {
@@ -450,9 +433,9 @@ a {
     padding-top: 10px;
   }
   .back-to-lang-btn {
-    font-size: 14px !important;
-    padding: 10px 20px !important;
-    min-width: 160px !important;
+    font-size: 14px;
+    padding: 10px 20px;
+    min-width: 160px;
   }
 }
 
@@ -533,9 +516,9 @@ a {
     padding: 8px 5px 15px 5px;
   }
   .back-to-lang-btn {
-    margin-top: 20px !important;
-    font-size: 14px !important;
-    padding: 10px 20px !important;
+    margin-top: 20px;
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }
 
@@ -565,6 +548,23 @@ a {
   }
   .game-container {
     padding-top: 8px;
+  }
+}
+
+/* Адаптивность для кнопки возврата */
+@media screen and (max-width: 400px) {
+  .back-to-lang-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+    min-width: 160px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .back-to-lang-btn {
+    margin-top: 20px;
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }
 
