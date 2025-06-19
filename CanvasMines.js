@@ -3,18 +3,18 @@ const ctx = canvas.getContext('2d');
 
 // Функция для установки фиксированного размера канваса
 function resizeCanvas() {
-    const size = 210; // Размер канваса
+    const size = 271; // Фиксированный размер 272 на 272 пикселя
     canvas.width = size;
     canvas.height = size;
 
-    const totalSpacing = size * 0.06; // Отступы
-    const availableSize = size - totalSpacing;
+    const totalSpacing = size * 0.05; // 5% от общего размера на отступы
+    const availableSize = size - totalSpacing; // Размер доступного пространства для квадратов
 
-    rectSize = availableSize / gridSize;
-    spacing = totalSpacing / (gridSize - 1);
+    rectSize = availableSize / gridSize; // Размер каждого прямоугольника
+    spacing = totalSpacing / (gridSize - 1); // Отступ между квадратами
 
-    createGrid();
-    drawGrid();
+    createGrid(); // Пересоздаем сетку после изменения размера
+    drawGrid(); // Перерисовываем сетку
 }
 
 // Вызов resizeCanvas при загрузке страницы
@@ -27,34 +27,30 @@ const starImg = new Image();
 starImg.src = "StarMines.svg";
 
 // Кастомизируемые переменные
-let gridSize = 5;
-let rectSize = 100;
-let spacing = 8;
-let pieceCount = 30;
-let pieceMinSize = 3;
-let pieceMaxSize = 8;
-let pieceSpeedFactor = 0.04;
-let pieceColor = '#0168CF';
-let starSize = 32;
+let gridSize = 5;           // Размер сетки (количество прямоугольников в ряду/столбце)
+let rectSize = 100;         // Размер одного прямоугольника (пересчитывается динамически)
+let spacing = 10;           // Отступы между квадратами (пересчитываются динамически)
+let pieceCount = 50;        // Количество частиц, создаваемых при клике
+let pieceMinSize = 5;       // Минимальный размер частицы
+let pieceMaxSize = 15;      // Максимальный размер частицы
+let pieceSpeedFactor = 0.05; // Фактор скорости разлета частиц
+let pieceColor = '#0168CF'; // Цвет прямоугольников и частиц
+let starSize = 50;          // Размер звезды
 
 const rectangles = [];
 const pieces = [];
-const stars = [];
+const stars = []; // Массив для хранения звёзд
 
 // Функция для создания начальной сетки
 function createGrid() {
-    rectangles.length = 0;
-
-    // Увеличиваем отступ сверху для сдвига вниз
-    const offsetX = 8;
-    const offsetY = 15; // Увеличено с 8 до 15 - сдвигает сетку ниже
+    rectangles.length = 0; // Очистка массива перед пересозданием
 
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
             rectangles.push({
-                x: j * (rectSize + spacing) + offsetX,
-                y: i * (rectSize + spacing) + offsetY, // ← ЭТО сдвигает сетку ниже
-                size: rectSize,
+                x: j * (rectSize + spacing), // Позиция по X с учетом отступов
+                y: i * (rectSize + spacing), // Позиция по Y с учетом отступов
+                size: rectSize,              // Размер прямоугольника
                 color: pieceColor,
                 index: i * gridSize + j,
             });
@@ -64,44 +60,44 @@ function createGrid() {
 
 // Функция для рисования изображения прямоугольника
 function drawRectangleImage(x, y, size) {
-    ctx.drawImage(rectangleImg, x, y, size, size);
+    ctx.drawImage(rectangleImg, x, y, size, size); // Рисуем изображение
 }
 
 // Функция для рисования сетки
 function drawGrid() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#090E1D";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Очищаем канвас перед перерисовкой
+    ctx.fillStyle = "#090E1D"; // Цвет фона
+    ctx.fillRect(0, 0, canvas.width, canvas.height); // Заполнение фона
     rectangles.forEach(rect => {
-        drawRectangleImage(rect.x, rect.y, rect.size);
+        drawRectangleImage(rect.x, rect.y, rect.size); // Рисуем прямоугольник изображением
     });
 }
 
 // Функция для рисования звезды с использованием изображения
 function drawStarImage(x, y, size) {
-    ctx.drawImage(starImg, x - size / 2, y - size / 2, size, size);
+    ctx.drawImage(starImg, x - size / 2, y - size / 2, size, size); // Центрируем изображение звезды
 }
 
 // Функция для рисования звёзд
 function drawStars() {
     stars.forEach(star => {
-        drawStarImage(star.x, star.y, starSize);
+        drawStarImage(star.x, star.y, starSize); // Рисуем звезду из изображения
     });
 }
 
 // Функция для создания частиц
 function createPieces(rect) {
     for (let i = 0; i < pieceCount; i++) {
-        const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 80 + 25;
+        const angle = Math.random() * 2 * Math.PI; // Случайный угол
+        const distance = Math.random() * 150 + 50; // Дистанция разлета
 
         pieces.push({
             x: rect.x + rect.size / 2,
             y: rect.y + rect.size / 2,
-            vx: Math.cos(angle) * distance,
-            vy: Math.sin(angle) * distance,
-            size: pieceMinSize + Math.random() * (pieceMaxSize - pieceMinSize),
-            color: rect.color,
+            vx: Math.cos(angle) * distance, // Скорость по оси X
+            vy: Math.sin(angle) * distance, // Скорость по оси Y
+            size: pieceMinSize + Math.random() * (pieceMaxSize - pieceMinSize), // Размер частички
+            color: rect.color, // Цвет частички такой же, как у квадрата
             opacity: 1,
         });
     }
@@ -109,98 +105,83 @@ function createPieces(rect) {
 
 // Функция для анимации частиц
 function animatePieces() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawGrid();
-    drawStars();
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Очистка канваса
+    drawGrid(); // Перерисовка сетки
+    drawStars(); // Рисуем звезды
 
+    // Перемещение и отрисовка частиц
     pieces.forEach((piece, index) => {
-        piece.x += piece.vx * pieceSpeedFactor;
-        piece.y += piece.vy * pieceSpeedFactor;
-        piece.opacity -= 0.015;
+        piece.x += piece.vx * pieceSpeedFactor; // Уменьшаем скорость по оси X
+        piece.y += piece.vy * pieceSpeedFactor; // Уменьшаем скорость по оси Y
+        piece.opacity -= 0.02; // Уменьшаем прозрачность
 
         ctx.fillStyle = `rgba(${parseInt(piece.color.slice(1, 3), 16)}, ${parseInt(piece.color.slice(3, 5), 16)}, ${parseInt(piece.color.slice(5, 7), 16)}, ${piece.opacity})`;
-        ctx.fillRect(piece.x, piece.y, piece.size, piece.size);
+        ctx.fillRect(piece.x, piece.y, piece.size, piece.size); // Рисуем квадратные частицы
 
-        if (piece.opacity <= 0 || piece.y > canvas.height || piece.x < 0 || piece.x > canvas.width) {
+        // Удаляем частицы, когда они становятся невидимыми или выходят за границы канваса
+        if (piece.opacity <= 0 || piece.y > canvas.height) {
             pieces.splice(index, 1);
         }
     });
 
-    requestAnimationFrame(animatePieces);
+    requestAnimationFrame(animatePieces); // Запуск следующего кадра
 }
 
 // Запуск начальной отрисовки и анимации
 createGrid();
-starImg.onload = animatePieces;
+starImg.onload = animatePieces; // Запускаем анимацию только после загрузки изображения звезды
 
 // Функция для удаления случайных квадратов
 function removeRandomRectangles(count) {
+    // Сбрасываем состояние
     rectangles.length = 0;
     pieces.length = 0;
     stars.length = 0;
 
-    createGrid();
+    createGrid(); // Создаем новую сетку
     let removed = 0;
 
     function removeNextRectangle() {
         if (removed < count && rectangles.length > 0) {
-            const randomIndex = Math.floor(Math.random() * rectangles.length);
+            const randomIndex = Math.floor(Math.random() * rectangles.length); // Случайный индекс
             if (rectangles[randomIndex]) {
                 stars.push({
-                    x: rectangles[randomIndex].x + rectangles[randomIndex].size / 2,
-                    y: rectangles[randomIndex].y + rectangles[randomIndex].size / 2,
+                    x: rectangles[randomIndex].x + rectangles[randomIndex].size / 2, // Центр квадрата
+                    y: rectangles[randomIndex].y + rectangles[randomIndex].size / 2, // Центр квадрата
                 });
-                createPieces(rectangles[randomIndex]);
-                rectangles.splice(randomIndex, 1);
+                createPieces(rectangles[randomIndex]); // Создаём частицы для выбранного квадрата
+                rectangles.splice(randomIndex, 1); // Удаляем случайный прямоугольник
             }
             removed++;
 
-            setTimeout(removeNextRectangle, 500);
+            // Удаляем следующий квадрат через 600 мс
+            setTimeout(removeNextRectangle, 600);
         }
     }
 
-    removeNextRectangle();
+    removeNextRectangle(); // Начать удаление квадратов
 }
 
 // Функция для обработки сценариев удаления
 function handleScenario(input) {
     switch (input) {
         case 1:
-            removeRandomRectangles(getRandomIndex());
+            removeRandomRectangles(getRandomIndex()); // Уничтожить 10 квадратов
             break;
         case 3:
-            removeRandomRectangles(getRandomIndex());
+            removeRandomRectangles(getRandomIndex()); // Уничтожить 5 квадратов
             break;
         case 5:
-            removeRandomRectangles(getRandomIndex());
+            removeRandomRectangles(getRandomIndex()); // Уничтожить 4 квадрата
             break;
         case 7:
-            removeRandomRectangles(getRandomIndex());
+            removeRandomRectangles(getRandomIndex()); // Уничтожить 3 квадрата
             break;
         default:
-            console.log('Нет сценария для этого значения');
+            console.log('Нет сценария для этого значения'); // Обработка неизвестных значений
             break;
     }
 }
-
 function getRandomIndex() {
-    return parseInt((Math.random() * (10-3)+3).toFixed(0));
+    return ((Math.random() * (10-3)+3).toFixed(0));
 }
-
-// Функция для центрирования канваса
-function centerCanvas() {
-    if (canvas) {
-        canvas.style.display = 'block';
-        canvas.style.margin = '0 auto';
-        // Добавляем небольшой отступ сверху для канваса
-        canvas.style.marginTop = '5px'; // ← ЭТО тоже сдвигает канвас ниже
-    }
-}
-
-// Вызываем центрирование после инициализации
-window.addEventListener('load', function() {
-    setTimeout(() => {
-        centerCanvas();
-        resizeCanvas();
-    }, 100);
-});
