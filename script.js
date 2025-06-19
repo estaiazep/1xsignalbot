@@ -45,3 +45,47 @@ function activeTrapsScreen() {
         trapsScreen.style.display= "";
     }
 }
+let signalCount = 0;
+let isBlocked = false;
+const MAX_FREE_SIGNALS = 2;
+const SECRET_WORD = "abrakadabra"; // Замени на своё
+
+document.getElementById("get-signal").addEventListener("click", () => {
+  if (isBlocked) {
+    showSignalError("❌ Лимит сигналов. Введите код доступа.");
+    return;
+  }
+
+  signalCount++;
+  if (signalCount > MAX_FREE_SIGNALS) {
+    isBlocked = true;
+    showSignalError("⚠️ Превышен лимит. Введите код доступа.");
+  } else {
+    getSignal(); // вызывается твоя логика сигнала
+  }
+});
+
+function showSignalError(message) {
+  const errorEl = document.getElementById("signal-error");
+  errorEl.textContent = message;
+  errorEl.style.display = "block";
+  errorEl.classList.remove("shake");
+  void errorEl.offsetWidth;
+  errorEl.classList.add("shake");
+
+  setTimeout(() => {
+    errorEl.style.display = "none";
+  }, 4000);
+}
+
+function unlockAccess() {
+  const code = document.getElementById("unlock-code").value.trim().toLowerCase();
+  if (code === SECRET_WORD) {
+    isBlocked = false;
+    signalCount = 0;
+    showSignalError("✅ Доступ восстановлен!");
+  } else {
+    showSignalError("❌ Неверный код доступа.");
+  }
+}
+
