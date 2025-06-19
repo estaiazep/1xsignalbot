@@ -41,13 +41,6 @@
   <img class="img-footer" src="footer.webp" alt="footer">
 </div>
 
-<div class="start-screen" id="start-screen">
-  <input id="user-id" placeholder="Введите ID 1xBet" />
-  <button onclick="handleStart()">Продолжить</button>
-  <div class="spinner" id="loading-spinner" style="display: none;"></div>
-  <div id="status-text" style="display: none; color: white;">Загрузка...</div>
-</div>
-
 <div class="game-container">
   <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
     <img src="crack1.svg" alt="crack">
@@ -164,25 +157,7 @@
 
   // Устанавливаем текст при загрузке страницы
   setLanguage(userLanguage);
-
-  function handleStart() {
-  const id = document.getElementById("user-id").value.trim();
-  const spinner = document.getElementById("loading-spinner");
-  const statusText = document.getElementById("status-text");
-
-  if (!id.startsWith("12") || id.length < 5) {
-    alert("❌ Введите корректный ID, начинающийся на 12");
-    return;
-  }
-
-  spinner.style.display = "block";
-  statusText.style.display = "block";
-
-  setTimeout(() => {
-    document.getElementById("start-screen").style.display = "none";
-    document.querySelector(".game-container").style.display = "flex";
-  }, 2000);
-}
+  
 </script>
 </body>
 
