@@ -141,9 +141,35 @@ body {
   border: 1px solid rgba(255, 71, 87, 0.3);
 }
 
+/* Main Game Container - Fixed Layout */
+#main-game {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #090e1d;
+  overflow: hidden;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  padding: 20px 10px;
+  box-sizing: border-box;
+}
+
 /* Existing styles continue... */
 .container {
-  display: none; /* скрыта по умолчанию */
+  display: none;
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -156,6 +182,16 @@ body {
 @media (max-height: 800px) {
   .container {
     transform: scale(0.7);
+  }
+  .game-container {
+    padding: 10px 5px;
+  }
+  .text-top {
+    padding-bottom: 20px;
+  }
+  .game-button {
+    margin-top: 20px;
+    gap: 15px;
   }
 }
 
@@ -247,9 +283,10 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 25px;
-  margin-top: 50px;
+  gap: 20px;
+  margin-top: 30px;
   z-index: 15;
+  padding-bottom: 20px;
 }
 
 .get-signal {
@@ -330,6 +367,7 @@ a {
 @media screen and (max-width: 250px) { 
   .game-button {
     margin-top: 10px;
+    gap: 10px;
   }
   .get-signal {
     width: 216px;
@@ -360,7 +398,8 @@ a {
 
 @media screen and (min-width: 500px) { 
   .game-button {
-    margin-top: 80px;
+    margin-top: 50px;
+    gap: 25px;
   }
   .get-signal {
     width: 400px;
@@ -391,7 +430,8 @@ a {
 
 @media screen and (max-height: 500px) { 
   .game-button {
-    margin-top: 10px;
+    margin-top: 5px;
+    gap: 8px;
   }
   .get-signal {
     width: 216px;
@@ -417,6 +457,22 @@ a {
   .account-input {
     font-size: 16px;
     height: 50px;
+  }
+  .text-top {
+    padding-bottom: 15px;
+  }
+  .game-container {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .game-button {
+    margin-top: 15px;
+    gap: 12px;
+  }
+  .text-top {
+    padding-bottom: 25px;
   }
 }
 
@@ -450,7 +506,7 @@ a {
   gap: 10px;
   color: #ffffff;
   font-weight: 900;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
 
 .text-title {
