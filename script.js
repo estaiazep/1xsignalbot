@@ -45,4 +45,5 @@ function activeTrapsScreen() {
         trapsScreen.style.display= "";
     }
 }
+
 <script>
