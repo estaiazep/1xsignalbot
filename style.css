@@ -1,16 +1,17 @@
 @font-face {
-  font-family: 'HalvarBreit';
-  src: url('HalvarBreit-RG.woff2') format('woff2');
+  font-family: "HalvarBreit";
+  src: url("HalvarBreit-RG.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-html, body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
   margin: 0px;
   padding: 0px;
   width: 100%;
@@ -20,7 +21,7 @@ html, body{
 }
 
 body {
-  font-family: 'HalvarBreit', sans-serif;
+  font-family: "HalvarBreit", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +33,7 @@ body {
   position: fixed;
 }
 
-/* Verification Screen Styles */
+/* ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ ЭКРАНОВ ВЫБОРА ЯЗЫКА И ВЕРИФИКАЦИИ */
 .verification-container {
   position: fixed;
   top: 0;
@@ -54,8 +55,8 @@ body {
   justify-content: center;
   gap: 40px;
   z-index: 15;
-  max-width: 400px;
-  width: 90%;
+  width: 100%;
+  padding: 0 20px;
 }
 
 .verification-form {
@@ -67,13 +68,12 @@ body {
 }
 
 .account-input {
-  font-family: 'HalvarBreit', sans-serif;
+  font-family: "HalvarBreit", sans-serif;
   font-size: 18px;
   font-weight: 600;
   text-align: center;
   padding: 15px 20px;
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   height: 60px;
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -93,14 +93,13 @@ body {
 }
 
 .verify-button {
-  font-family: 'HalvarBreit', sans-serif;
+  font-family: "HalvarBreit", sans-serif;
   font-size: 20px;
   font-weight: 900;
   text-align: center;
   border: none;
   color: #ffffff;
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   height: 60px;
   background: linear-gradient(93.73deg, #108de7, #0855c4);
   cursor: pointer;
@@ -139,11 +138,12 @@ body {
   background: rgba(255, 71, 87, 0.1);
   border-radius: 8px;
   border: 1px solid rgba(255, 71, 87, 0.3);
+  width: 300px;
 }
 
-/* ТОЛЬКО кнопка возврата к выбору языка - БЕЗ ВЛИЯНИЯ НА ОСТАЛЬНЫЕ ЭЛЕМЕНТЫ */
+/* КНОПКА ВОЗВРАТА К ВЫБОРУ ЯЗЫКА - ЦЕНТРИРОВАННАЯ */
 .back-to-lang-btn {
-  font-family: 'HalvarBreit', sans-serif;
+  font-family: "HalvarBreit", sans-serif;
   font-size: 16px;
   font-weight: 600;
   background: rgba(255, 255, 255, 0.15);
@@ -157,7 +157,7 @@ body {
   text-decoration: none;
   display: inline-block;
   text-align: center;
-  min-width: 180px;
+  width: 200px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -240,11 +240,21 @@ a {
 }
 
 @keyframes tilt-shaking {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg); }
-  50% { transform: rotate(0deg); }
-  75% { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .background {
@@ -269,7 +279,7 @@ a {
   background-repeat: no-repeat;
   background-size: auto;
   border-radius: 20px;
-  box-shadow: 0 -2px 20px rgba(42,49,69,.4), 0 4px 54px rgba(42,49,69,.2);
+  box-shadow: 0 -2px 20px rgba(42, 49, 69, 0.4), 0 4px 54px rgba(42, 49, 69, 0.2);
   overflow: hidden;
   padding: 8px;
   margin-top: 25px;
@@ -324,7 +334,7 @@ a {
 }
 
 .get-signal {
-  font-family: 'HalvarBreit', sans-serif;
+  font-family: "HalvarBreit", sans-serif;
   font-size: 28px;
   font-weight: 900;
   text-align: center;
@@ -345,8 +355,8 @@ a {
   padding-top: 10px;
   width: 120px;
   height: 36px;
-  background-color: #B34F01;
-  box-shadow: 0px 0px 20px #B34F01;
+  background-color: #b34f01;
+  box-shadow: 0px 0px 20px #b34f01;
   border-radius: 8px;
   transition: 0.2s ease-in;
 }
@@ -379,8 +389,8 @@ a {
   padding-top: 10px;
   width: 140px;
   height: 36px;
-  background-color: #B34F01;
-  box-shadow: 0px 0px 20px #B34F01;
+  background-color: #b34f01;
+  box-shadow: 0px 0px 20px #b34f01;
   border-radius: 8px;
   transition: 0.2s ease-in;
 }
@@ -398,7 +408,62 @@ a {
   font-size: 3.5vh;
 }
 
-@media screen and (max-width: 250px) { 
+/* АДАПТИВНЫЕ СТИЛИ ДЛЯ ЭКРАНОВ ВЕРИФИКАЦИИ */
+@media screen and (max-width: 350px) {
+  .verify-button,
+  .account-input,
+  .error-message {
+    width: 280px;
+  }
+  .back-to-lang-btn {
+    width: 180px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  .verification-content {
+    padding: 0 15px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .verify-button,
+  .account-input,
+  .error-message {
+    width: 250px;
+  }
+  .back-to-lang-btn {
+    width: 160px;
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .verification-content {
+    gap: 25px;
+  }
+  .back-to-lang-btn {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .verification-content {
+    gap: 20px;
+  }
+  .verify-button,
+  .account-input {
+    height: 50px;
+    font-size: 16px;
+  }
+  .back-to-lang-btn {
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 250px) {
   .game-button {
     margin-top: 15px;
     gap: 12px;
@@ -432,14 +497,9 @@ a {
   .game-container {
     padding-top: 10px;
   }
-  .back-to-lang-btn {
-    font-size: 14px;
-    padding: 10px 20px;
-    min-width: 160px;
-  }
 }
 
-@media screen and (min-width: 500px) { 
+@media screen and (min-width: 500px) {
   .game-button {
     margin-top: 35px;
     gap: 22px;
@@ -473,9 +533,23 @@ a {
   .game-container {
     padding-top: 30px;
   }
+
+  /* Увеличиваем элементы верификации на больших экранах */
+  .verify-button,
+  .account-input,
+  .error-message {
+    width: 350px;
+    height: 70px;
+    font-size: 22px;
+  }
+  .back-to-lang-btn {
+    width: 250px;
+    font-size: 18px;
+    padding: 15px 30px;
+  }
 }
 
-@media screen and (max-height: 500px) { 
+@media screen and (max-height: 500px) {
   .game-button {
     margin-top: 8px;
     gap: 6px;
@@ -515,11 +589,6 @@ a {
   #main-game {
     padding: 8px 5px 15px 5px;
   }
-  .back-to-lang-btn {
-    margin-top: 20px;
-    font-size: 14px;
-    padding: 10px 20px;
-  }
 }
 
 @media screen and (max-height: 700px) {
@@ -551,23 +620,6 @@ a {
   }
 }
 
-/* Адаптивность для кнопки возврата */
-@media screen and (max-width: 400px) {
-  .back-to-lang-btn {
-    font-size: 14px;
-    padding: 10px 20px;
-    min-width: 160px;
-  }
-}
-
-@media screen and (max-height: 600px) {
-  .back-to-lang-btn {
-    margin-top: 20px;
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-}
-
 .get-signal:hover {
   box-shadow: 0px 0px 20px #0061e8;
 }
@@ -577,12 +629,12 @@ a {
 }
 
 .game-here:hover {
-  box-shadow: 0px 0px 0px #B34F01;
+  box-shadow: 0px 0px 0px #b34f01;
   transition: 0.2s ease-in;
 }
 
 .chose-traps:hover {
-  box-shadow: 0px 0px 0px #B34F01;
+  box-shadow: 0px 0px 0px #b34f01;
   transition: 0.2s ease-in;
 }
 
@@ -626,7 +678,8 @@ a {
 }
 
 @media (width < 250px) {
-  .text-subtitle, .name-bot {
+  .text-subtitle,
+  .name-bot {
     font-size: 8px;
   }
   .text-title {
@@ -639,7 +692,8 @@ a {
 }
 
 @media (width > 250px) {
-  .text-subtitle, .name-bot {
+  .text-subtitle,
+  .name-bot {
     font-size: 12px;
   }
   .text-title {
@@ -652,7 +706,8 @@ a {
 }
 
 @media (width > 500px) {
-  .text-subtitle, .name-bot {
+  .text-subtitle,
+  .name-bot {
     font-size: 22px;
   }
   .text-title {
