@@ -31,6 +31,117 @@ html, body{
     background-color: #090e1d;
     position: fixed;
   }
+
+/* Verification Screen Styles */
+.verification-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+  background-color: #090e1d;
+}
+
+.verification-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  z-index: 15;
+  max-width: 400px;
+  width: 90%;
+}
+
+.verification-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.account-input {
+  font-family: 'HalvarBreit', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px 20px;
+  width: 100%;
+  max-width: 300px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.account-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.account-input:focus {
+  border-color: #108de7;
+  box-shadow: 0 0 20px rgba(16, 141, 231, 0.3);
+}
+
+.verify-button {
+  font-family: 'HalvarBreit', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  border: none;
+  color: #ffffff;
+  width: 100%;
+  max-width: 300px;
+  height: 60px;
+  background: linear-gradient(93.73deg, #108de7, #0855c4);
+  cursor: pointer;
+  box-shadow: 0px 0px 20px #62a5d5;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.verify-button:hover {
+  box-shadow: 0px 0px 30px #62a5d5;
+  transform: translateY(-2px);
+}
+
+.verify-button:active {
+  transform: scale(0.95);
+}
+
+.verify-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.verification-loading {
+  width: 60px;
+  height: 60px;
+  display: none;
+}
+
+.error-message {
+  color: #ff4757;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: -10px;
+  padding: 10px;
+  background: rgba(255, 71, 87, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+/* Existing styles continue... */
   
   .container {
   display: none; /* скрыта по умолчанию */
@@ -237,6 +348,14 @@ html, body{
       height: 20px;
       padding-top: 4px;
     }
+    .verify-button {
+      font-size: 16px;
+      height: 50px;
+    }
+    .account-input {
+      font-size: 16px;
+      height: 50px;
+    }
   }
   @media screen and (min-width: 500px ) { 
     .game-button {
@@ -258,6 +377,14 @@ html, body{
       width: 280px;
       height: 51px;
       padding-top: 10px;
+    }
+    .verify-button {
+      font-size: 24px;
+      height: 70px;
+    }
+    .account-input {
+      font-size: 20px;
+      height: 70px;
     }
   }
 
@@ -281,6 +408,14 @@ html, body{
       width: 120px;
       height: 20px;
       padding-top: 4px;
+    }
+    .verify-button {
+      font-size: 16px;
+      height: 50px;
+    }
+    .account-input {
+      font-size: 16px;
+      height: 50px;
     }
   }
   
@@ -411,3 +546,4 @@ html, body{
     opacity: 1;
     transform: translateX(0) scale(1);
   }
+}
