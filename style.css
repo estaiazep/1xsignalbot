@@ -43,7 +43,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 40vh;
+  padding-top: 32vh;
   flex-direction: column;
   z-index: 10;
   background-color: 0;
