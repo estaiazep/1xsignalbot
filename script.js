@@ -50,20 +50,20 @@ let isBlocked = false;
 const MAX_FREE_SIGNALS = 2;
 const SECRET_WORD = "abrakadabra"; // Замени на своё
 
-document.getElementById("get-signal").addEventListener("click", () => {
-  if (isBlocked) {
-    showSignalError("❌ Лимит сигналов. Введите код доступа.");
-    return;
-  }
-
-  signalCount++;
-  if (signalCount > MAX_FREE_SIGNALS) {
-    isBlocked = true;
-    showSignalError("⚠️ Превышен лимит. Введите код доступа.");
-  } else {
-    getSignal(); // вызывается твоя логика сигнала
-  }
-});
+document.getElementById("get-signal").addEventListener("click", () => {␊
+  if (isBlocked) {␊
+    showSignalError("❌ На вашем аккаунте недостаточно средств. Пополните и введите секретное слово.");
+    return;␊
+  }␊
+␊
+  signalCount++;␊
+  if (signalCount > MAX_FREE_SIGNALS) {␊
+    isBlocked = true;␊
+    showSignalError("⚠️ На вашем аккаунте недостаточно средств. Пополните и введите секретное слово.");
+  } else {␊
+    getSignal(); // вызывается твоя логика сигнала␊
+  }␊
+});␊
 
 function showSignalError(message) {
   const errorEl = document.getElementById("signal-error");
