@@ -13,7 +13,16 @@ if (buttonGetSignal) {
 }
 
 function getSignal() {
-  if (!signal || !screenStart || !loadingSignal || !buttonGetSignal || !percentChance || !selectIndex) {
+  if (
+    !signal ||
+    !screenStart ||
+    !loadingSignal ||
+    !buttonGetSignal ||
+    !percentChance ||
+    !selectIndex ||
+    !mainScreen ||
+    !trapsScreen
+  ) {
     return
   }
 
@@ -22,25 +31,29 @@ function getSignal() {
   loadingSignal.classList.remove("deactive")
   buttonGetSignal.disabled = true
 
-  if (mainScreen) mainScreen.style.display = ""
-  if (trapsScreen) trapsScreen.style.display = "none"
+  mainScreen.style.display = ""
+  trapsScreen.style.display = "none"
 
   percentChance.textContent = "CHANCE: " + getRandomNumber() + "%"
   percentChance.style.display = ""
 
   setTimeout(() => {
+    if (!loadingSignal || !signal || !buttonGetSignal || !selectIndex) return
     loadingSignal.classList.add("deactive")
     signal.classList.remove("deactive")
     buttonGetSignal.disabled = false
-    handleScenario(Number(selectIndex.textContent))
+
+    // Вызываем handleScenario из CanvasMines.js
+    if (window.handleScenario) {
+      window.handleScenario(Number(selectIndex.textContent))
+    }
   }, 3000)
 }
 
 function handleClick(element) {
+  if (!selectIndex) return
   const value = element.querySelector("a").innerText
-  if (selectIndex) {
-    selectIndex.textContent = value
-  }
+  selectIndex.textContent = value
   getSignal()
 }
 
@@ -58,9 +71,4 @@ function activeTrapsScreen() {
     mainScreen.style.display = "none"
     trapsScreen.style.display = ""
   }
-}
-
-function handleScenario(trapCount) {
-  // Ваша логика обработки сценария
-  console.log("Handling scenario with", trapCount, "traps")
 }
