@@ -18,17 +18,17 @@
 <!-- Language Selection Screen -->
 <div id="language-screen" class="verification-container">
   <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
-    <img src="crack1.svg" alt="crack">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
   </div>
   <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
-    <img src="crack1.svg" alt="crack">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
   </div>
   <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
-    <img src="crack1.svg" alt="crack">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
   </div>
 
   <div class="header">
-    <img class="img-footer" src="footer.webp" alt="footer">
+    <img class="img-footer" src="/placeholder.svg?height=200&width=400&text=footer" alt="footer">
   </div>
 
   <div class="verification-content">
@@ -45,30 +45,30 @@
   </div>
 
   <div class="footer">
-    <img class="img-footer" src="footer.webp" alt="footer">
+    <img class="img-footer" src="/placeholder.svg?height=200&width=400&text=footer" alt="footer">
   </div>
 </div>
 
 <!-- ID Verification Screen -->
 <div id="verification-screen" class="verification-container" style="display: none;">
   <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
-    <img src="crack1.svg" alt="crack">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
   </div>
   <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
-    <img src="crack1.svg" alt="crack">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
   </div>
   <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
-    <img src="crack1.svg" alt="crack">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
   </div>
   <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
-    <img src="particles.svg" alt="crack">
+    <img src="/placeholder.svg?height=80&width=80&text=particles" alt="crack">
   </div>
   <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
-    <img src="particles.svg" alt="crack">
+    <img src="/placeholder.svg?height=80&width=80&text=particles" alt="crack">
   </div>
 
   <div class="header">
-    <img class="img-footer" src="footer.webp" alt="footer">
+    <img class="img-footer" src="/placeholder.svg?height=200&width=400&text=footer" alt="footer">
   </div>
 
   <div class="verification-content">
@@ -81,14 +81,74 @@
       <input type="text" id="account-id" class="account-input" placeholder="Enter account ID (129xxxxxxx)" maxlength="10">
       <div id="error-message" class="error-message" style="display: none;"></div>
       <button id="verify-button" class="verify-button">Verify Account</button>
-      <img id="verification-loading" src="loading.gif" alt="loading" class="verification-loading" style="display: none;">
+      <img id="verification-loading" src="/placeholder.svg?height=60&width=60&text=loading" alt="loading" class="verification-loading" style="display: none;">
     </div>
     
     <button class="back-to-lang-btn" onclick="showLanguageScreen()">← Сменить язык</button>
   </div>
 
   <div class="footer">
-    <img class="img-footer" src="footer.webp" alt="footer">
+    <img class="img-footer" src="/placeholder.svg?height=200&width=400&text=footer" alt="footer">
+  </div>
+</div>
+
+<!-- Loading Steps Screen -->
+<div id="loading-steps-screen" class="verification-container" style="display: none;">
+  <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
+  </div>
+  <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
+  </div>
+  <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
+    <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
+  </div>
+  <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
+    <img src="/placeholder.svg?height=80&width=80&text=particles" alt="crack">
+  </div>
+  <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
+    <img src="/placeholder.svg?height=80&width=80&text=particles" alt="crack">
+  </div>
+
+  <div class="header">
+    <img class="img-footer" src="/placeholder.svg?height=200&width=400&text=footer" alt="footer">
+  </div>
+
+  <div class="verification-content">
+    <div class="text-top">
+      <h1 class="text-title" id="loading-title">CONNECTING...</h1>
+      <p class="text-subtitle" id="loading-subtitle">Please wait while we set up your account</p>
+    </div>
+
+    <div class="loading-steps">
+      <div class="loading-step" id="step-1">
+        <div class="step-icon">
+          <div class="loading-spinner"></div>
+          <div class="checkmark" style="display: none;">✓</div>
+        </div>
+        <div class="step-text" id="step-1-text">ID Verification</div>
+      </div>
+      
+      <div class="loading-step" id="step-2">
+        <div class="step-icon">
+          <div class="loading-spinner"></div>
+          <div class="checkmark" style="display: none;">✓</div>
+        </div>
+        <div class="step-text" id="step-2-text">Connecting to Database</div>
+      </div>
+      
+      <div class="loading-step" id="step-3">
+        <div class="step-icon">
+          <div class="loading-spinner"></div>
+          <div class="checkmark" style="display: none;">✓</div>
+        </div>
+        <div class="step-text" id="step-3-text">Access to Private Signals</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="img-footer" src="/placeholder.svg?height=200&width=400&text=footer" alt="footer">
   </div>
 </div>
 
@@ -111,29 +171,29 @@
   </a>
 
   <div class="item-traps select-index-box">
-    <img src="bomb.png" alt="">
+    <img src="/placeholder.svg?height=40&width=40&text=bomb" alt="">
     <a id="select-index">3</a>
   </div>
 
   <div class="header">
-    <img class="img-footer" src="footer.webp" alt="footer">
+    <img class="img-footer" src="/placeholder.svg?height=200&width=400&text=footer" alt="footer">
   </div>
 
   <div class="game-container">
     <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
-      <img src="crack1.svg" alt="crack">
+      <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
     </div>
     <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
-      <img src="crack1.svg" alt="crack">
+      <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
     </div>
     <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
-      <img src="crack1.svg" alt="crack">
+      <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
     </div>
     <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
-      <img src="particles.svg" alt="crack">
+      <img src="/placeholder.svg?height=80&width=80&text=particles" alt="crack">
     </div>
     <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
-      <img src="particles.svg" alt="crack">
+      <img src="/placeholder.svg?height=80&width=80&text=particles" alt="crack">
     </div>
 
     <div class="text-top">
@@ -144,27 +204,27 @@
     <div style="justify-content: center; display: flex; vertical-align: middle;">
       <div class="game-screen">
         <div class="screen-active" id="main-screen">
-          <img draggable="false" id="screenStart" class="screenStart" src="Mines.png" alt="start">
-          <img draggable="false" src="loading.gif" alt="loading" id="loading" class="loading deactive">
+          <img draggable="false" id="screenStart" class="screenStart" src="/placeholder.svg?height=120&width=120&text=Mines" alt="start">
+          <img draggable="false" src="/placeholder.svg?height=80&width=80&text=loading" alt="loading" id="loading" class="loading deactive">
           <canvas class="img-signal deactive" id="canvas"></canvas>
         </div>
 
         <div class="screen-active" id="traps-screen" style="display: none">
           <div class="traps-screen">
             <div class="item-traps" onclick="handleClick(this)">
-              <img src="bomb.png">
+              <img src="/placeholder.svg?height=40&width=40&text=bomb">
               <a>1</a>
             </div>
             <div class="item-traps" onclick="handleClick(this)">
-              <img src="bomb.png">
+              <img src="/placeholder.svg?height=40&width=40&text=bomb">
               <a>3</a>
             </div>
             <div class="item-traps" onclick="handleClick(this)">
-              <img src="bomb.png">
+              <img src="/placeholder.svg?height=40&width=40&text=bomb">
               <a>5</a>
             </div>
             <div class="item-traps" onclick="handleClick(this)">
-              <img src="bomb.png">
+              <img src="/placeholder.svg?height=40&width=40&text=bomb">
               <a>7</a>
             </div>
           </div>
@@ -173,16 +233,16 @@
     </div>
 
     <div class="crack crack4" style="rotate: 40deg;">
-      <img src="crack1.svg" alt="crack">
+      <img src="/placeholder.svg?height=100&width=200&text=crack" alt="crack">
     </div>
     <div class="crack" style="left: 76vw; bottom: 30vh; rotate: 327deg; scale: 1.5;">
-      <img src="particles.svg" alt="crack">
+      <img src="/placeholder.svg?height=80&width=80&text=particles" alt="crack">
     </div>
 
     <div class="game-button">
-  <a id="percent-chance" style="font-size: 3vh; display: none"></a>
-  <button id="get-signal" class="get-signal"></button>
-  <div id="signal-error" class="signal-error" style="display:none;"></div>
+      <a id="percent-chance" style="font-size: 3vh; display: none"></a>
+      <button id="get-signal" class="get-signal"></button>
+      <div id="signal-error" class="signal-error" style="display:none;"></div>
       <div style="display: flex; gap: 2vw;">
         <a href="https://1wzyuh.com/casino/play/1play_1play_mines" class="game-here" target="_blank" rel="noopener noreferrer" id="game-here"></a>
         <a onclick="activeTrapsScreen()" id="chose-traps" class="chose-traps"></a>
@@ -191,19 +251,14 @@
   </div>
 
   <div class="footer">
-    <img class="img-footer" src="footer.webp" alt="footer">
+    <img class="img-footer" src="/placeholder.svg?height=200&width=400&text=footer" alt="footer">
   </div>
 </div>
 
 <script src="script.js"></script>
 <script src="CanvasMines.js"></script>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <script>
-  Telegram.WebApp.expand();
-  window.Telegram.WebApp.allow_vertical_swipe = false;
-  window.Telegram.WebApp.disableVerticalSwipes();
-
   // Получаем язык из скрытого поля
   let userLanguage = document.getElementById("language").value;
 
@@ -220,7 +275,12 @@
       verifying: "Verifying...",
       errorMessage: "Invalid ID. Must start with 129 and be 10 digits long",
       placeholder: "Enter account ID (129xxxxxxx)",
-      backToLang: "← Change Language"
+      backToLang: "← Change Language",
+      loadingTitle: "CONNECTING...",
+      loadingSubtitle: "Please wait while we set up your account",
+      step1: "ID Verification",
+      step2: "Connecting to Database", 
+      step3: "Access to Private Signals"
     },
     russian: {
       getSignal: "Сигнал",
@@ -233,7 +293,12 @@
       verifying: "Проверка...",
       errorMessage: "Неверный ID. Должен начинаться с 129 и содержать 10 цифр",
       placeholder: "Введите ID аккаунта (129xxxxxxx)",
-      backToLang: "← Сменить язык"
+      backToLang: "← Сменить язык",
+      loadingTitle: "ПОДКЛЮЧЕНИЕ...",
+      loadingSubtitle: "Пожалуйста, подождите, пока мы настроим ваш аккаунт",
+      step1: "Проверка ID",
+      step2: "Подключение к базе данных",
+      step3: "Доступ к приватным сигналам"
     },
     vietnamese: {
       getSignal: "Nhận Tín Hiệu",
@@ -246,7 +311,12 @@
       verifying: "Đang xác minh...",
       errorMessage: "ID không hợp lệ. Phải bắt đầu bằng 129 và có 10 chữ số",
       placeholder: "Nhập ID tài khoản (129xxxxxxx)",
-      backToLang: "← Đổi Ngôn Ngữ"
+      backToLang: "← Đổi Ngôn Ngữ",
+      loadingTitle: "ĐANG KẾT NỐI...",
+      loadingSubtitle: "Vui lòng đợi trong khi chúng tôi thiết lập tài khoản của bạn",
+      step1: "Xác Minh ID",
+      step2: "Kết Nối Cơ Sở Dữ Liệu",
+      step3: "Truy Cập Tín Hiệu Riêng Tư"
     }
   };
 
@@ -263,6 +333,7 @@
   function showLanguageScreen() {
     document.getElementById("language-screen").style.display = "block";
     document.getElementById("verification-screen").style.display = "none";
+    document.getElementById("loading-steps-screen").style.display = "none";
     document.getElementById("main-game").style.display = "none";
   }
 
@@ -270,6 +341,7 @@
   function showVerificationScreen() {
     document.getElementById("language-screen").style.display = "none";
     document.getElementById("verification-screen").style.display = "block";
+    document.getElementById("loading-steps-screen").style.display = "none";
     document.getElementById("main-game").style.display = "none";
     
     // Очистка полей
@@ -277,6 +349,88 @@
     hideError();
     document.getElementById("verify-button").style.display = "block";
     document.getElementById("verification-loading").style.display = "none";
+  }
+
+  // Функция для показа экрана загрузки шагов
+  function showLoadingStepsScreen() {
+    document.getElementById("language-screen").style.display = "none";
+    document.getElementById("verification-screen").style.display = "none";
+    document.getElementById("loading-steps-screen").style.display = "block";
+    document.getElementById("main-game").style.display = "none";
+    
+    // Сброс всех шагов
+    resetLoadingSteps();
+    
+    // Запуск последовательности загрузки
+    startLoadingSequence();
+  }
+
+  // Функция для сброса шагов загрузки
+  function resetLoadingSteps() {
+    for (let i = 1; i <= 3; i++) {
+      const step = document.getElementById(`step-${i}`);
+      const spinner = step.querySelector('.loading-spinner');
+      const checkmark = step.querySelector('.checkmark');
+      
+      step.classList.remove('completed', 'active');
+      spinner.style.display = 'block';
+      checkmark.style.display = 'none';
+    }
+  }
+
+  // Функция для запуска последовательности загрузки
+  function startLoadingSequence() {
+    const steps = [1, 2, 3];
+    let currentStep = 0;
+
+    function processNextStep() {
+      if (currentStep < steps.length) {
+        const stepNumber = steps[currentStep];
+        const step = document.getElementById(`step-${stepNumber}`);
+        
+        // Активируем текущий шаг
+        step.classList.add('active');
+        
+        // Через 2 секунды завершаем шаг
+        setTimeout(() => {
+          completeStep(stepNumber);
+          currentStep++;
+          
+          // Если это последний шаг, переходим к игре через 1 секунду
+          if (currentStep >= steps.length) {
+            setTimeout(() => {
+              showMainGame();
+            }, 1000);
+          } else {
+            // Иначе переходим к следующему шагу через 0.5 секунды
+            setTimeout(processNextStep, 500);
+          }
+        }, 2000);
+      }
+    }
+
+    // Начинаем с первого шага
+    processNextStep();
+  }
+
+  // Функция для завершения шага
+  function completeStep(stepNumber) {
+    const step = document.getElementById(`step-${stepNumber}`);
+    const spinner = step.querySelector('.loading-spinner');
+    const checkmark = step.querySelector('.checkmark');
+    
+    spinner.style.display = 'none';
+    checkmark.style.display = 'block';
+    step.classList.add('completed');
+    step.classList.remove('active');
+  }
+
+  // Функция для показа главной игры
+  function showMainGame() {
+    document.getElementById("language-screen").style.display = "none";
+    document.getElementById("verification-screen").style.display = "none";
+    document.getElementById("loading-steps-screen").style.display = "none";
+    document.getElementById("main-game").style.display = "block";
   }
 
   // Функция для установки текста на основе языка
@@ -294,6 +448,13 @@
     document.getElementById("verification-subtitle").textContent = langTexts.verificationSubtitle;
     document.getElementById("verify-button").textContent = langTexts.verifyButton;
     document.getElementById("account-id").placeholder = langTexts.placeholder;
+    
+    // Экран загрузки
+    document.getElementById("loading-title").textContent = langTexts.loadingTitle;
+    document.getElementById("loading-subtitle").textContent = langTexts.loadingSubtitle;
+    document.getElementById("step-1-text").textContent = langTexts.step1;
+    document.getElementById("step-2-text").textContent = langTexts.step2;
+    document.getElementById("step-3-text").textContent = langTexts.step3;
     
     // Кнопка возврата к языкам
     const backBtn = document.querySelector('.back-to-lang-btn');
@@ -335,12 +496,10 @@
     verifyButton.style.display = "none";
     loadingElement.style.display = "block";
 
-    // Симулируем проверку (2 секунды)
+    // Симулируем проверку (1 секунда), затем показываем экран загрузки шагов
     setTimeout(() => {
-      // Скрываем экран верификации и показываем игру
-      document.getElementById("verification-screen").style.display = "none";
-      document.getElementById("main-game").style.display = "block";
-    }, 2000);
+      showLoadingStepsScreen();
+    }, 1000);
   }
 
   // Устанавливаем обработчики событий
@@ -370,7 +529,19 @@
       showLanguageScreen();
     }
   });
-  
+
+  // Функции для игры (заглушки)
+  function getSignal() {
+    // Ваша логика получения сигнала
+  }
+
+  function handleClick(element) {
+    // Ваша логика обработки клика
+  }
+
+  function activeTrapsScreen() {
+    // Ваша логика переключения экранов
+  }
 </script>
 </body>
 
