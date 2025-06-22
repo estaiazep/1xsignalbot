@@ -142,6 +142,91 @@ body {
   width: 300px;
 }
 
+/* СТИЛИ ДЛЯ ЭКРАНА ЗАГРУЗКИ ШАГОВ */
+.loading-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.loading-step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.loading-step.active {
+  opacity: 1;
+  border-color: #108de7;
+  box-shadow: 0 0 20px rgba(16, 141, 231, 0.2);
+  background: rgba(16, 141, 231, 0.1);
+}
+
+.loading-step.completed {
+  opacity: 1;
+  border-color: #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.step-icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #108de7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-step.active .loading-spinner {
+  border-top-color: #108de7;
+}
+
+.loading-step.completed .loading-spinner {
+  border-top-color: #00ff88;
+}
+
+.checkmark {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ff88;
+  display: none;
+}
+
+.step-text {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  flex: 1;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* КНОПКА ВОЗВРАТА К ВЫБОРУ ЯЗЫКА - ЦЕНТРИРОВАННАЯ */
 .back-to-lang-btn {
   font-family: "HalvarBreit", sans-serif;
@@ -424,6 +509,15 @@ a {
   .verification-content {
     padding: 0 15px;
   }
+  .loading-steps {
+    max-width: 280px;
+  }
+  .loading-step {
+    padding: 12px 15px;
+  }
+  .step-text {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 300px) {
@@ -437,6 +531,16 @@ a {
     font-size: 12px;
     padding: 8px 16px;
   }
+  .loading-steps {
+    max-width: 250px;
+  }
+  .loading-step {
+    padding: 10px 12px;
+    gap: 15px;
+  }
+  .step-text {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-height: 600px) {
@@ -445,6 +549,9 @@ a {
   }
   .back-to-lang-btn {
     margin-top: 15px;
+  }
+  .loading-steps {
+    gap: 20px;
   }
 }
 
@@ -461,6 +568,12 @@ a {
     margin-top: 10px;
     font-size: 14px;
     padding: 10px 20px;
+  }
+  .loading-steps {
+    gap: 15px;
+  }
+  .loading-step {
+    padding: 10px 15px;
   }
 }
 
@@ -547,6 +660,15 @@ a {
     width: 250px;
     font-size: 18px;
     padding: 15px 30px;
+  }
+  .loading-steps {
+    max-width: 400px;
+  }
+  .loading-step {
+    padding: 20px 25px;
+  }
+  .step-text {
+    font-size: 18px;
   }
 }
 
