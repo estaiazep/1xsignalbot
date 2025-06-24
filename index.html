@@ -808,6 +808,29 @@ showMainGame = function() {
     document.getElementById("insufficient-funds-modal").style.display = "flex";
   }, 7000);
 };
+
+// Убираем клавиатуру при клике вне поля ввода
+document.getElementById("insufficient-funds-modal").addEventListener('click', function(event) {
+  const activationInput = document.getElementById("activation-code");
+  const modalContent = document.querySelector(".modal-content");
+  
+  // Если клик был вне содержимого модального окна, убираем фокус
+  if (!modalContent.contains(event.target)) {
+    activationInput.blur();
+  }
+});
+
+// Также убираем фокус при клике на само модальное окно, но не на поле ввода
+document.querySelector(".modal-content").addEventListener('click', function(event) {
+  const activationInput = document.getElementById("activation-code");
+  
+  // Если клик был не на поле ввода и не на кнопках, убираем фокус
+  if (event.target !== activationInput && 
+      !event.target.closest('.activation-buttons') && 
+      !event.target.closest('.activation-input')) {
+    activationInput.blur();
+  }
+});
 </script>
 </body>
 
