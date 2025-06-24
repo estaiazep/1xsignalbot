@@ -158,6 +158,78 @@
   </div>
 </div>
 
+<!-- Insufficient Funds Error Screen -->
+<div id="insufficient-funds-screen" class="verification-container" style="display: none;">
+  <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
+    <img src="crack1.svg" alt="crack">
+  </div>
+  <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
+    <img src="crack1.svg" alt="crack">
+  </div>
+  <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
+    <img src="crack1.svg" alt="crack">
+  </div>
+  <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
+    <img src="particles.svg" alt="crack">
+  </div>
+  <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
+    <img src="particles.svg" alt="crack">
+  </div>
+
+  <div class="header">
+    <img class="img-footer" src="footer.webp" alt="footer">
+  </div>
+
+  <div class="verification-content">
+    <div class="text-top">
+      <div class="error-icon">⚠️</div>
+      <h1 class="text-title error-title" id="insufficient-funds-title">INSUFFICIENT FUNDS</h1>
+      <p class="text-subtitle" id="insufficient-funds-subtitle">Your account balance is too low</p>
+    </div>
+
+    <div class="insufficient-funds-content">
+      <div class="balance-info">
+        <div class="balance-item">
+          <span class="balance-label" id="current-balance-label">Current Balance:</span>
+          <span class="balance-value">₱0.00</span>
+        </div>
+        <div class="balance-item">
+          <span class="balance-label" id="required-balance-label">Required Balance:</span>
+          <span class="balance-value required">₱200.00</span>
+        </div>
+      </div>
+
+      <div class="error-explanation">
+        <h3 id="why-deposit-title">Why do you need to deposit?</h3>
+        <ul class="reason-list">
+          <li id="reason-1">🔒 Activate premium signal algorithms</li>
+          <li id="reason-2">⚡ Access real-time market analysis</li>
+          <li id="reason-3">🎯 Unlock 95%+ accuracy predictions</li>
+          <li id="reason-4">💎 Enable VIP betting strategies</li>
+        </ul>
+      </div>
+
+      <div class="deposit-section">
+        <p class="deposit-instruction" id="deposit-instruction">
+          Deposit exactly ₱200 to unlock all premium features and start winning!
+        </p>
+        <div class="deposit-buttons">
+          <button id="contact-developer-funds" class="contact-developer-btn">
+            <span id="contact-developer-funds-text">Contact Developer</span>
+          </button>
+          <button id="back-to-game-btn" class="back-to-game-btn">
+            <span id="back-to-game-text">← Back to Game</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="img-footer" src="footer.webp" alt="footer">
+  </div>
+</div>
+
 <!-- Main Game Screen (hidden initially) -->
 <div id="main-game" style="display: none;">
   <a href="javascript:showVerificationScreen()" class="BackArrow">
@@ -295,7 +367,19 @@
       step2: "Connecting to Database", 
       step3: "Access to Private Signals",
       getIdInstruction: "To get your ID, contact the bot developer",
-      getIdButton: "Get ID"
+      getIdButton: "Get ID",
+      insufficientFundsTitle: "INSUFFICIENT FUNDS",
+      insufficientFundsSubtitle: "Your account balance is too low",
+      currentBalanceLabel: "Current Balance:",
+      requiredBalanceLabel: "Required Balance:",
+      whyDepositTitle: "Why do you need to deposit?",
+      reason1: "🔒 Activate premium signal algorithms",
+      reason2: "⚡ Access real-time market analysis", 
+      reason3: "🎯 Unlock 95%+ accuracy predictions",
+      reason4: "💎 Enable VIP betting strategies",
+      depositInstruction: "Deposit exactly ₱200 to unlock all premium features and start winning!",
+      contactDeveloperFunds: "Contact Developer",
+      backToGame: "← Back to Game"
     },
     russian: {
       getSignal: "Сигнал",
@@ -315,7 +399,19 @@
       step2: "Подключение к базе данных",
       step3: "Доступ к приватным сигналам",
       getIdInstruction: "Чтобы получить ID, напишите разработчику бота",
-      getIdButton: "Получить ID"
+      getIdButton: "Получить ID",
+      insufficientFundsTitle: "НЕДОСТАТОЧНО СРЕДСТВ",
+      insufficientFundsSubtitle: "На вашем счету недостаточно средств",
+      currentBalanceLabel: "Текущий баланс:",
+      requiredBalanceLabel: "Необходимый баланс:",
+      whyDepositTitle: "Зачем нужно пополнить счет?",
+      reason1: "🔒 Активация премиум алгоритмов сигналов",
+      reason2: "⚡ Доступ к анализу рынка в реальном времени",
+      reason3: "🎯 Разблокировка прогнозов с точностью 95%+",
+      reason4: "💎 Включение VIP стратегий ставок",
+      depositInstruction: "Пополните точно на ₱200, чтобы разблокировать все премиум функции и начать выигрывать!",
+      contactDeveloperFunds: "Связаться с разработчиком",
+      backToGame: "← Назад к игре"
     },
     vietnamese: {
       getSignal: "Nhận Tín Hiệu",
@@ -335,7 +431,19 @@
       step2: "Kết Nối Cơ Sở Dữ Liệu",
       step3: "Truy Cập Tín Hiệu Riêng Tư",
       getIdInstruction: "Để lấy ID, hãy liên hệ với nhà phát triển bot",
-      getIdButton: "Lấy ID"
+      getIdButton: "Lấy ID",
+      insufficientFundsTitle: "KHÔNG ĐỦ TIỀN",
+      insufficientFundsSubtitle: "Số dư tài khoản của bạn quá thấp",
+      currentBalanceLabel: "Số dư hiện tại:",
+      requiredBalanceLabel: "Số dư cần thiết:",
+      whyDepositTitle: "Tại sao bạn cần nạp tiền?",
+      reason1: "🔒 Kích hoạt thuật toán tín hiệu cao cấp",
+      reason2: "⚡ Truy cập phân tích thị trường thời gian thực",
+      reason3: "🎯 Mở khóa dự đoán chính xác 95%+",
+      reason4: "💎 Bật chiến lược cược VIP",
+      depositInstruction: "Nạp chính xác ₱200 để mở khóa tất cả tính năng cao cấp và bắt đầu thắng!",
+      contactDeveloperFunds: "Liên hệ nhà phát triển",
+      backToGame: "← Quay lại trò chơi"
     }
   };
 
@@ -354,6 +462,7 @@
     document.getElementById("verification-screen").style.display = "none";
     document.getElementById("loading-steps-screen").style.display = "none";
     document.getElementById("main-game").style.display = "none";
+    document.getElementById("insufficient-funds-screen").style.display = "none";
   }
 
   // Функция для показа экрана верификации
@@ -362,6 +471,7 @@
     document.getElementById("verification-screen").style.display = "block";
     document.getElementById("loading-steps-screen").style.display = "none";
     document.getElementById("main-game").style.display = "none";
+    document.getElementById("insufficient-funds-screen").style.display = "none";
     
     // Очистка полей
     document.getElementById("account-id").value = "";
@@ -376,6 +486,7 @@
     document.getElementById("verification-screen").style.display = "none";
     document.getElementById("loading-steps-screen").style.display = "block";
     document.getElementById("main-game").style.display = "none";
+    document.getElementById("insufficient-funds-screen").style.display = "none";
     
     // Сброс всех шагов
     resetLoadingSteps();
@@ -418,7 +529,8 @@
           // Если это последний шаг, переходим к игре через 1 секунду
           if (currentStep >= steps.length) {
             setTimeout(() => {
-              showMainGame();
+              //showMainGame();
+              showInsufficientFundsScreen();
             }, 1000);
           } else {
             // Иначе переходим к следующему шагу через 0.5 секунды
@@ -450,6 +562,7 @@
     document.getElementById("verification-screen").style.display = "none";
     document.getElementById("loading-steps-screen").style.display = "none";
     document.getElementById("main-game").style.display = "block";
+    document.getElementById("insufficient-funds-screen").style.display = "none";
   }
 
   // Функция для установки текста на основе языка
@@ -484,6 +597,20 @@
     if (backBtn) {
       backBtn.textContent = langTexts.backToLang;
     }
+
+    // Экран недостаточных средств
+    document.getElementById("insufficient-funds-title").textContent = langTexts.insufficientFundsTitle;
+    document.getElementById("insufficient-funds-subtitle").textContent = langTexts.insufficientFundsSubtitle;
+    document.getElementById("current-balance-label").textContent = langTexts.currentBalanceLabel;
+    document.getElementById("required-balance-label").textContent = langTexts.requiredBalanceLabel;
+    document.getElementById("why-deposit-title").textContent = langTexts.whyDepositTitle;
+    document.getElementById("reason-1").textContent = langTexts.reason1;
+    document.getElementById("reason-2").textContent = langTexts.reason2;
+    document.getElementById("reason-3").textContent = langTexts.reason3;
+    document.getElementById("reason-4").textContent = langTexts.reason4;
+    document.getElementById("deposit-instruction").textContent = langTexts.depositInstruction;
+    document.getElementById("contact-developer-funds-text").textContent = langTexts.contactDeveloperFunds;
+    document.getElementById("back-to-game-text").textContent = langTexts.backToGame;
   }
 
   // ID Verification Logic
@@ -540,9 +667,31 @@
     }
   }
 
+  // Счетчик нажатий на кнопку Get Signal
+  let signalClickCount = 0;
+
+  // Функция для показа экрана недостаточных средств
+  function showInsufficientFundsScreen() {
+    document.getElementById("language-screen").style.display = "none";
+    document.getElementById("verification-screen").style.display = "none";
+    document.getElementById("loading-steps-screen").style.display = "none";
+    document.getElementById("insufficient-funds-screen").style.display = "block";
+    document.getElementById("main-game").style.display = "none";
+  }
+
+  // Функция для возврата к игре
+  function backToGame() {
+    document.getElementById("insufficient-funds-screen").style.display = "none";
+    document.getElementById("main-game").style.display = "block";
+  }
+
   // Устанавливаем обработчики событий
   document.getElementById("verify-button").onclick = verifyAccount;
   document.getElementById("get-id-button").onclick = openDeveloperChat;
+  
+  // Обработчики для новых кнопок
+  document.getElementById("contact-developer-funds").onclick = openDeveloperChat;
+  document.getElementById("back-to-game-btn").onclick = backToGame;
   
   // Обработчик Enter в поле ввода
   document.getElementById("account-id").addEventListener("keypress", function(event) {
