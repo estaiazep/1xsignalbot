@@ -982,127 +982,111 @@ a {
   }
 }
 
-/* СТИЛИ ДЛЯ ЭКРАНА НЕДОСТАТОЧНЫХ СРЕДСТВ */
-.insufficient-funds-content {
+/* СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА НЕДОСТАТОЧНЫХ СРЕДСТВ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 25px;
-  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #1a0a0a, #2d1414);
+  border: 3px solid #ff4757;
+  border-radius: 20px;
+  padding: 30px;
   max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 50px rgba(255, 71, 87, 0.5);
+  animation: modalAppear 0.3s ease-out;
 }
 
-.error-icon {
-  font-size: 48px;
-  margin-bottom: 10px;
+.error-modal {
+  text-align: center;
+}
+
+.error-header {
+  margin-bottom: 25px;
+}
+
+.error-icon-large {
+  font-size: 64px;
+  margin-bottom: 15px;
   animation: pulse 2s infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 71, 87, 0.8));
 }
 
-.error-title {
-  color: #ff4757 !important;
+.error-title-modal {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #ff4757;
+  margin: 0;
   text-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
+  letter-spacing: 1px;
 }
 
-.balance-info {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 20px;
+.error-body {
+  margin-bottom: 25px;
 }
 
-.balance-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.error-message-modal {
   font-family: "HalvarBreit", sans-serif;
   font-size: 16px;
   font-weight: 600;
+  color: #ffffff;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
-.balance-label {
+.balance-display {
+  background: rgba(255, 71, 87, 0.1);
+  border: 2px solid rgba(255, 71, 87, 0.3);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.balance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.balance-row span:first-child {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.balance-value {
-  color: #ffffff;
+.balance-amount {
   font-weight: 900;
+  font-size: 16px;
 }
 
-.balance-value.required {
+.balance-amount.error {
+  color: #ff4757;
+}
+
+.balance-amount.success {
   color: #00ff88;
   text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
-.error-explanation {
-  width: 100%;
-  background: rgba(255, 71, 87, 0.1);
-  border: 2px solid rgba(255, 71, 87, 0.3);
-  border-radius: 12px;
-  padding: 20px;
+.error-footer {
+  margin-top: 25px;
 }
 
-.error-explanation h3 {
-  font-family: "HalvarBreit", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.reason-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.reason-list li {
-  font-family: "HalvarBreit", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  border-left: 4px solid #00ff88;
-}
-
-.deposit-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.deposit-instruction {
-  font-family: "HalvarBreit", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  text-align: center;
-  line-height: 1.4;
-  background: rgba(0, 255, 136, 0.1);
-  border: 2px solid rgba(0, 255, 136, 0.3);
-  border-radius: 12px;
-  padding: 15px;
-}
-
-.deposit-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-}
-
-.contact-developer-btn {
+.contact-developer-modal-btn {
   font-family: "HalvarBreit", sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -1113,44 +1097,29 @@ a {
   height: 55px;
   background: linear-gradient(93.73deg, #ff4757, #ff3742);
   cursor: pointer;
-  box-shadow: 0px 0px 20px rgba(255, 71, 87, 0.4);
+  box-shadow: 0px 0px 25px rgba(255, 71, 87, 0.6);
   border-radius: 12px;
   transition: all 0.2s ease;
 }
 
-.contact-developer-btn:hover {
-  box-shadow: 0px 0px 30px rgba(255, 71, 87, 0.6);
+.contact-developer-modal-btn:hover {
+  box-shadow: 0px 0px 35px rgba(255, 71, 87, 0.8);
   transform: translateY(-2px);
 }
 
-.contact-developer-btn:active {
+.contact-developer-modal-btn:active {
   transform: scale(0.95);
 }
 
-.back-to-game-btn {
-  font-family: "HalvarBreit", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 12px 24px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  height: 45px;
-}
-
-.back-to-game-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.back-to-game-btn:active {
-  transform: scale(0.95);
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 @keyframes pulse {
@@ -1165,83 +1134,75 @@ a {
   }
 }
 
-/* АДАПТИВНЫЕ СТИЛИ ДЛЯ ЭКРАНА НЕДОСТАТОЧНЫХ СРЕДСТВ */
+/* АДАПТИВНЫЕ СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА */
 @media screen and (max-width: 350px) {
-  .insufficient-funds-content {
-    max-width: 280px;
+  .modal-content {
+    padding: 20px;
+    max-width: 320px;
   }
-  .balance-info,
-  .error-explanation,
-  .deposit-instruction {
-    padding: 15px;
+  .error-icon-large {
+    font-size: 48px;
   }
-  .balance-item {
+  .error-title-modal {
+    font-size: 20px;
+  }
+  .error-message-modal {
     font-size: 14px;
   }
-  .reason-list li {
-    font-size: 12px;
-  }
-  .deposit-instruction {
-    font-size: 14px;
-  }
-  .contact-developer-btn {
+  .contact-developer-modal-btn {
     font-size: 16px;
     height: 50px;
   }
 }
 
 @media screen and (max-width: 300px) {
-  .insufficient-funds-content {
-    max-width: 250px;
+  .modal-content {
+    padding: 15px;
+    max-width: 280px;
   }
-  .error-icon {
-    font-size: 36px;
+  .error-icon-large {
+    font-size: 40px;
   }
-  .balance-info,
-  .error-explanation,
-  .deposit-instruction {
-    padding: 12px;
+  .error-title-modal {
+    font-size: 18px;
   }
-  .balance-item {
+  .error-message-modal {
     font-size: 12px;
   }
-  .reason-list li {
-    font-size: 11px;
-    padding: 6px 10px;
-  }
-  .deposit-instruction {
+  .balance-row {
     font-size: 12px;
   }
-  .contact-developer-btn {
+  .balance-amount {
+    font-size: 14px;
+  }
+  .contact-developer-modal-btn {
     font-size: 14px;
     height: 45px;
   }
 }
 
 @media screen and (min-width: 500px) {
-  .insufficient-funds-content {
+  .modal-content {
     max-width: 450px;
+    padding: 40px;
   }
-  .error-icon {
-    font-size: 64px;
+  .error-icon-large {
+    font-size: 80px;
   }
-  .balance-item {
+  .error-title-modal {
+    font-size: 28px;
+  }
+  .error-message-modal {
     font-size: 18px;
   }
-  .reason-list li {
+  .balance-row {
     font-size: 16px;
-    padding: 10px 15px;
   }
-  .deposit-instruction {
+  .balance-amount {
     font-size: 18px;
-    padding: 20px;
   }
-  .contact-developer-btn {
+  .contact-developer-modal-btn {
     font-size: 20px;
     height: 65px;
-  }
-  .back-to-game-btn {
-    font-size: 18px;
-    height: 50px;
   }
 }
