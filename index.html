@@ -82,6 +82,12 @@
       <div id="error-message" class="error-message" style="display: none;"></div>
       <button id="verify-button" class="verify-button">Verify Account</button>
       <img id="verification-loading" src="loading.gif" alt="loading" class="verification-loading" style="display: none;">
+      
+      <!-- Новый блок с инструкцией и кнопкой получения ID -->
+      <div class="get-id-section">
+        <p class="get-id-instruction" id="get-id-instruction">To get your ID, contact the bot developer</p>
+        <button id="get-id-button" class="get-id-button">Get ID</button>
+      </div>
     </div>
     
     <button class="back-to-lang-btn" onclick="showLanguageScreen()">← Сменить язык</button>
@@ -287,7 +293,9 @@
       loadingSubtitle: "Please wait while we set up your account",
       step1: "ID Verification",
       step2: "Connecting to Database", 
-      step3: "Access to Private Signals"
+      step3: "Access to Private Signals",
+      getIdInstruction: "To get your ID, contact the bot developer",
+      getIdButton: "Get ID"
     },
     russian: {
       getSignal: "Сигнал",
@@ -305,7 +313,9 @@
       loadingSubtitle: "Пожалуйста, подождите, пока мы настроим ваш аккаунт",
       step1: "Проверка ID",
       step2: "Подключение к базе данных",
-      step3: "Доступ к приватным сигналам"
+      step3: "Доступ к приватным сигналам",
+      getIdInstruction: "Чтобы получить ID, напишите разработчику бота",
+      getIdButton: "Получить ID"
     },
     vietnamese: {
       getSignal: "Nhận Tín Hiệu",
@@ -323,7 +333,9 @@
       loadingSubtitle: "Vui lòng đợi trong khi chúng tôi thiết lập tài khoản của bạn",
       step1: "Xác Minh ID",
       step2: "Kết Nối Cơ Sở Dữ Liệu",
-      step3: "Truy Cập Tín Hiệu Riêng Tư"
+      step3: "Truy Cập Tín Hiệu Riêng Tư",
+      getIdInstruction: "Để lấy ID, hãy liên hệ với nhà phát triển bot",
+      getIdButton: "Lấy ID"
     }
   };
 
@@ -456,6 +468,10 @@
     document.getElementById("verify-button").textContent = langTexts.verifyButton;
     document.getElementById("account-id").placeholder = langTexts.placeholder;
     
+    // Новые элементы для получения ID
+    document.getElementById("get-id-instruction").textContent = langTexts.getIdInstruction;
+    document.getElementById("get-id-button").textContent = langTexts.getIdButton;
+    
     // Экран загрузки
     document.getElementById("loading-title").textContent = langTexts.loadingTitle;
     document.getElementById("loading-subtitle").textContent = langTexts.loadingSubtitle;
@@ -509,8 +525,24 @@
     }, 1000);
   }
 
+  // Функция для открытия чата с разработчиком
+  function openDeveloperChat() {
+    // Замените @your_bot_developer на реальный username разработчика
+    const developerUsername = "your_bot_developer"; // Здесь укажите username разработчика
+    const telegramUrl = `https://t.me/${developerUsername}`;
+    
+    // Попытка открыть в Telegram Web App
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.openTelegramLink(telegramUrl);
+    } else {
+      // Fallback для обычного браузера
+      window.open(telegramUrl, '_blank');
+    }
+  }
+
   // Устанавливаем обработчики событий
   document.getElementById("verify-button").onclick = verifyAccount;
+  document.getElementById("get-id-button").onclick = openDeveloperChat;
   
   // Обработчик Enter в поле ввода
   document.getElementById("account-id").addEventListener("keypress", function(event) {
