@@ -594,17 +594,19 @@
 
   // Функция для показа главной игры
   function showMainGame() {
-    document.getElementById("language-screen").style.display = "none";
-    document.getElementById("verification-screen").style.display = "none";
-    document.getElementById("loading-steps-screen").style.display = "none";
-    document.getElementById("main-game").style.display = "block";
-    document.getElementById("insufficient-funds-screen").style.display = "none";
-    
-    // Через 7 секунд показываем модальное окно с ошибкой
-    setTimeout(() => {
-      document.getElementById("insufficient-funds-modal").style.display = "flex";
-    }, 7000);
-  }
+  document.getElementById("language-screen").style.display = "none";
+  document.getElementById("verification-screen").style.display = "none";
+  document.getElementById("loading-steps-screen").style.display = "none";
+  document.getElementById("main-game").style.display = "block";
+  document.getElementById("insufficient-funds-screen").style.display = "none";
+  
+  // Через 7 секунд показываем модальное окно с ошибкой
+  console.log("Запускаем таймер на 7 секунд...");
+  setTimeout(() => {
+    console.log("7 секунд прошло, показываем окно ошибки");
+    showInsufficientFundsScreen();
+  }, 7000);
+}
 
   // Функция для установки текста на основе языка
   function setLanguage(language) {
@@ -720,12 +722,8 @@
 
   // Функция для показа экрана недостаточных средств
   function showInsufficientFundsScreen() {
-    document.getElementById("language-screen").style.display = "none";
-    document.getElementById("verification-screen").style.display = "none";
-    document.getElementById("loading-steps-screen").style.display = "none";
-    document.getElementById("insufficient-funds-screen").style.display = "block";
-    document.getElementById("main-game").style.display = "none";
-  }
+  document.getElementById("insufficient-funds-modal").style.display = "flex";
+}
 
   // Функция для возврата к игре
   function backToGame() {
