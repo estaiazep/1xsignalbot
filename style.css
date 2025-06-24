@@ -43,7 +43,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 26vh;
+  padding-top: 15vh; /* Уменьшено с 28vh */
   flex-direction: column;
   z-index: 10;
   background-color: 0;
@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 25px; /* Уменьшено с 40px */
   z-index: 15;
   width: 100%;
   padding: 0 20px;
@@ -64,7 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 15px; /* Уменьшено с 20px */
   width: 100%;
 }
 
@@ -147,9 +147,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  margin-top: 20px;
-  padding: 20px;
+  gap: 12px; /* Уменьшено с 15px */
+  margin-top: 15px; /* Уменьшено с 20px */
+  padding: 15px; /* Уменьшено с 20px */
   background: rgba(255, 255, 255, 0.05);
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
@@ -288,7 +288,7 @@ body {
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 25px;
+  margin-top: 15px; /* Уменьшено с 25px */
   text-decoration: none;
   display: inline-block;
   text-align: center;
@@ -1326,5 +1326,47 @@ a {
   .hide-keyboard-btn {
     font-size: 14px;
     padding: 10px 15px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .verification-container {
+    padding-top: 10vh;
+  }
+  .verification-content {
+    gap: 20px;
+  }
+  .verification-form {
+    gap: 12px;
+  }
+  .get-id-section {
+    margin-top: 10px;
+    padding: 12px;
+    gap: 10px;
+  }
+  .back-to-lang-btn {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .verification-container {
+    padding-top: 8vh;
+  }
+  .verification-content {
+    gap: 15px;
+  }
+  .verification-form {
+    gap: 10px;
+  }
+  .get-id-section {
+    margin-top: 8px;
+    padding: 10px;
+    gap: 8px;
+  }
+  .back-to-lang-btn {
+    margin-top: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }
