@@ -359,9 +359,16 @@
     </div>
     
     <div class="error-footer">
-      <button id="contact-developer-modal" class="contact-developer-modal-btn">
-        <span id="contact-developer-modal-text">Contact Developer</span>
-      </button>
+      <input type="text" id="activation-code" class="activation-input" placeholder="Введите код активации" maxlength="10">
+      <div class="activation-buttons">
+        <button id="contact-developer-modal" class="contact-developer-modal-btn">
+          <span id="contact-developer-modal-text">Получить код</span>
+        </button>
+        <button id="activate-code-btn" class="contact-developer-modal-btn">
+          <span>Активировать</span>
+        </button>
+      </div>
+      <div id="code-error" class="code-error-message" style="display: none;">Неверный код активации</div>
     </div>
   </div>
 </div>
@@ -765,6 +772,42 @@
   });
 
   document.getElementById("contact-developer-modal").onclick = openDeveloperChat;
+
+// Обработчик активации кода
+document.getElementById("activate-code-btn").onclick = function() {
+  const code = document.getElementById("activation-code").value;
+  const errorDiv = document.getElementById("code-error");
+  
+  if (code === "6923") {
+    // Правильный код - закрываем модальное окно
+    document.getElementById("insufficient-funds-modal").style.display = "none";
+    errorDiv.style.display = "none";
+    
+    // Сохраняем статус активации
+    localStorage.setItem('vip_access', 'true');
+  } else {
+    // Неверный код - показываем ошибку
+    errorDiv.style.display = "block";
+  }
+};
+
+// Проверяем VIP статус при показе модального окна
+const originalShowMainGame = showMainGame;
+showMainGame = function() {
+  originalShowMainGame();
+  
+  // Если есть VIP доступ, не показываем модальное окно
+  if (localStorage.getItem('vip_access') === 'true') {
+    return;
+  }
+  
+  // Через 7 секунд показываем модальное окно с ошибкой
+  console.log("Запускаем таймер на 7 секунд...");
+  setTimeout(() => {
+    console.log("7 секунд прошло, показываем окно ошибки");
+    document.getElementById("insufficient-funds-modal").style.display = "flex";
+  }, 7000);
+};
 </script>
 </body>
 
