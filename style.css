@@ -1286,3 +1286,45 @@ a {
     height: 60px;
   }
 }
+
+/* КНОПКА ЗАКРЫТИЯ КЛАВИАТУРЫ */
+.hide-keyboard-btn {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  transition: all 0.2s ease;
+  display: none;
+  width: auto;
+  align-self: center;
+}
+
+.hide-keyboard-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.hide-keyboard-btn:active {
+  transform: scale(0.95);
+}
+
+@media screen and (max-width: 350px) {
+  .hide-keyboard-btn {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .hide-keyboard-btn {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}
