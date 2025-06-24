@@ -331,6 +331,40 @@
   <div class="footer">
     <img class="img-footer" src="footer.webp" alt="footer">
   </div>
+
+<!-- Modal для недостаточных средств -->
+<div id="insufficient-funds-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-content error-modal">
+    <div class="error-header">
+      <div class="error-icon-large">⚠️</div>
+      <h2 class="error-title-modal" id="modal-error-title">INSUFFICIENT FUNDS</h2>
+    </div>
+    
+    <div class="error-body">
+      <p class="error-message-modal" id="modal-error-message">
+        Your account balance is insufficient to continue using premium signals. 
+        Please deposit ₱200 to unlock unlimited access.
+      </p>
+      
+      <div class="balance-display">
+        <div class="balance-row">
+          <span id="modal-current-balance">Current Balance:</span>
+          <span class="balance-amount error">₱0.00</span>
+        </div>
+        <div class="balance-row">
+          <span id="modal-required-balance">Required:</span>
+          <span class="balance-amount success">₱200.00</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="error-footer">
+      <button id="contact-developer-modal" class="contact-developer-modal-btn">
+        <span id="contact-developer-modal-text">Contact Developer</span>
+      </button>
+    </div>
+  </div>
+</div>
 </div>
 
 <script src="script.js"></script>
@@ -379,7 +413,8 @@
       reason4: "💎 Enable VIP betting strategies",
       depositInstruction: "Deposit exactly ₱200 to unlock all premium features and start winning!",
       contactDeveloperFunds: "Contact Developer",
-      backToGame: "← Back to Game"
+      backToGame: "← Back to Game",
+      modalErrorMessage: "Your account balance is insufficient to continue using premium signals. Please deposit ₱200 to unlock unlimited access."
     },
     russian: {
       getSignal: "Сигнал",
@@ -411,7 +446,8 @@
       reason4: "💎 Включение VIP стратегий ставок",
       depositInstruction: "Пополните точно на ₱200, чтобы разблокировать все премиум функции и начать выигрывать!",
       contactDeveloperFunds: "Связаться с разработчиком",
-      backToGame: "← Назад к игре"
+      backToGame: "← Назад к игре",
+      modalErrorMessage: "На вашем счету недостаточно средств для продолжения использования премиум сигналов. Пополните на ₱200 для безлимитного доступа."
     },
     vietnamese: {
       getSignal: "Nhận Tín Hiệu",
@@ -443,7 +479,8 @@
       reason4: "💎 Bật chiến lược cược VIP",
       depositInstruction: "Nạp chính xác ₱200 để mở khóa tất cả tính năng cao cấp và bắt đầu thắng!",
       contactDeveloperFunds: "Liên hệ nhà phát triển",
-      backToGame: "← Quay lại trò chơi"
+      backToGame: "← Quay lại trò chơi",
+      modalErrorMessage: "Số dư tài khoản của bạn không đủ để tiếp tục sử dụng tín hiệu cao cấp. Vui lòng nạp ₱200 để có quyền truy cập không giới hạn."
     }
   };
 
@@ -529,8 +566,7 @@
           // Если это последний шаг, переходим к игре через 1 секунду
           if (currentStep >= steps.length) {
             setTimeout(() => {
-              //showMainGame();
-              showInsufficientFundsScreen();
+              showMainGame();
             }, 1000);
           } else {
             // Иначе переходим к следующему шагу через 0.5 секунды
@@ -611,6 +647,13 @@
     document.getElementById("deposit-instruction").textContent = langTexts.depositInstruction;
     document.getElementById("contact-developer-funds-text").textContent = langTexts.contactDeveloperFunds;
     document.getElementById("back-to-game-text").textContent = langTexts.backToGame;
+
+    // Модальное окно недостаточных средств
+    document.getElementById("modal-error-title").textContent = langTexts.insufficientFundsTitle;
+    document.getElementById("modal-error-message").textContent = langTexts.modalErrorMessage;
+    document.getElementById("modal-current-balance").textContent = langTexts.currentBalanceLabel;
+    document.getElementById("modal-required-balance").textContent = langTexts.requiredBalanceLabel;
+    document.getElementById("contact-developer-modal-text").textContent = langTexts.contactDeveloperFunds;
   }
 
   // ID Verification Logic
@@ -717,6 +760,8 @@
       showLanguageScreen();
     }
   });
+
+  document.getElementById("contact-developer-modal").onclick = openDeveloperChat;
 </script>
 </body>
 
