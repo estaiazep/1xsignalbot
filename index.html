@@ -360,6 +360,7 @@
     
     <div class="error-footer">
       <input type="text" id="activation-code" class="activation-input" placeholder="Введите код активации" maxlength="10">
+      <button id="hide-keyboard-btn" class="hide-keyboard-btn">✕ Закрыть клавиатуру</button>
       <div class="activation-buttons">
         <button id="contact-developer-modal" class="contact-developer-modal-btn">
           <span id="contact-developer-modal-text">Получить код</span>
@@ -810,26 +811,50 @@ showMainGame = function() {
 };
 
 // Убираем клавиатуру при клике вне поля ввода
-document.getElementById("insufficient-funds-modal").addEventListener('click', function(event) {
+document.addEventListener('click', function(event) {
   const activationInput = document.getElementById("activation-code");
-  const modalContent = document.querySelector(".modal-content");
+  const modal = document.getElementById("insufficient-funds-modal");
   
-  // Если клик был вне содержимого модального окна, убираем фокус
-  if (!modalContent.contains(event.target)) {
+  // Если модальное окно открыто и клик был не на поле ввода
+  if (modal && modal.style.display === "flex" && 
+      event.target !== activationInput && 
+      !activationInput.contains(event.target)) {
     activationInput.blur();
   }
 });
 
-// Также убираем фокус при клике на само модальное окно, но не на поле ввода
-document.querySelector(".modal-content").addEventListener('click', function(event) {
+// Для мобильных устройств - touchstart
+document.addEventListener('touchstart', function(event) {
   const activationInput = document.getElementById("activation-code");
+  const modal = document.getElementById("insufficient-funds-modal");
   
-  // Если клик был не на поле ввода и не на кнопках, убираем фокус
-  if (event.target !== activationInput && 
-      !event.target.closest('.activation-buttons') && 
-      !event.target.closest('.activation-input')) {
+  if (modal && modal.style.display === "flex" && 
+      event.target !== activationInput && 
+      !activationInput.contains(event.target)) {
     activationInput.blur();
   }
+});
+
+// Кнопка для принудительного закрытия клавиатуры
+document.getElementById("hide-keyboard-btn").onclick = function() {
+  const activationInput = document.getElementById("activation-code");
+  activationInput.blur();
+  // Дополнительно убираем фокус через небольшую задержку
+  setTimeout(() => {
+    activationInput.blur();
+    document.activeElement.blur();
+  }, 100);
+};
+
+// Показываем/скрываем кнопку закрытия клавиатуры
+document.getElementById("activation-code").addEventListener('focus', function() {
+  document.getElementById("hide-keyboard-btn").style.display = "block";
+});
+
+document.getElementById("activation-code").addEventListener('blur', function() {
+  setTimeout(() => {
+    document.getElementById("hide-keyboard-btn").style.display = "none";
+  }, 200);
 });
 </script>
 </body>
