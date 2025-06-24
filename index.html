@@ -10,6 +10,32 @@
   <link rel="stylesheet" href="style.css">
   <title>MINES</title>
   <style type="text/css" id="operaUserStyle"></style>
+  <script>
+  // Проверяем: если не Telegram — показываем заглушку и останавливаем всё
+  const tg = window.Telegram && window.Telegram.WebApp;
+
+  if (!tg || !navigator.userAgent.includes("Telegram")) {
+    document.write(`
+      <style>
+        body {
+          background: #111;
+          color: #fff;
+          font-family: sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          text-align: center;
+        }
+      </style>
+      <div>
+        <h2>❌ Этот миниап работает только в Telegram</h2>
+        <p>Пожалуйста, откройте его внутри Telegram-приложения</p>
+      </div>
+    `);
+    throw new Error("Not in Telegram");
+  }
+</script>
 </head>
 
 <body>
