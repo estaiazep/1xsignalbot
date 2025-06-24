@@ -142,6 +142,55 @@ body {
   width: 300px;
 }
 
+/* НОВЫЕ СТИЛИ ДЛЯ СЕКЦИИ ПОЛУЧЕНИЯ ID */
+.get-id-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 300px;
+}
+
+.get-id-instruction {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.get-id-button {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  color: #ffffff;
+  width: 200px;
+  height: 45px;
+  background: linear-gradient(93.73deg, #00ff88, #00cc6a);
+  cursor: pointer;
+  box-shadow: 0px 0px 15px rgba(0, 255, 136, 0.4);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.get-id-button:hover {
+  box-shadow: 0px 0px 25px rgba(0, 255, 136, 0.6);
+  transform: translateY(-2px);
+}
+
+.get-id-button:active {
+  transform: scale(0.95);
+}
+
 /* СТИЛИ ДЛЯ ЭКРАНА ЗАГРУЗКИ ШАГОВ */
 .loading-steps {
   display: flex;
@@ -498,8 +547,16 @@ a {
 @media screen and (max-width: 350px) {
   .verify-button,
   .account-input,
-  .error-message {
+  .error-message,
+  .get-id-section {
     width: 280px;
+  }
+  .get-id-button {
+    width: 180px;
+    font-size: 14px;
+  }
+  .get-id-instruction {
+    font-size: 12px;
   }
   .back-to-lang-btn {
     width: 180px;
@@ -523,8 +580,16 @@ a {
 @media screen and (max-width: 300px) {
   .verify-button,
   .account-input,
-  .error-message {
+  .error-message,
+  .get-id-section {
     width: 250px;
+  }
+  .get-id-button {
+    width: 160px;
+    font-size: 12px;
+  }
+  .get-id-instruction {
+    font-size: 11px;
   }
   .back-to-lang-btn {
     width: 160px;
@@ -553,6 +618,10 @@ a {
   .loading-steps {
     gap: 20px;
   }
+  .get-id-section {
+    margin-top: 15px;
+    padding: 15px;
+  }
 }
 
 @media screen and (max-height: 500px) {
@@ -564,6 +633,9 @@ a {
     height: 50px;
     font-size: 16px;
   }
+  .get-id-button {
+    height: 40px;
+  }
   .back-to-lang-btn {
     margin-top: 10px;
     font-size: 14px;
@@ -574,6 +646,10 @@ a {
   }
   .loading-step {
     padding: 10px 15px;
+  }
+  .get-id-section {
+    margin-top: 10px;
+    padding: 12px;
   }
 }
 
@@ -651,10 +727,22 @@ a {
   /* Увеличиваем элементы верификации на больших экранах */
   .verify-button,
   .account-input,
-  .error-message {
+  .error-message,
+  .get-id-section {
     width: 350px;
+  }
+  .verify-button,
+  .account-input {
     height: 70px;
     font-size: 22px;
+  }
+  .get-id-button {
+    width: 250px;
+    height: 55px;
+    font-size: 18px;
+  }
+  .get-id-instruction {
+    font-size: 16px;
   }
   .back-to-lang-btn {
     width: 250px;
