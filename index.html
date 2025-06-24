@@ -422,7 +422,12 @@
       depositInstruction: "Deposit exactly ₱200 to unlock all premium features and start winning!",
       contactDeveloperFunds: "Contact Developer",
       backToGame: "← Back to Game",
-      modalErrorMessage: "Your account balance is insufficient to continue using premium signals. Please deposit ₱200 to unlock unlimited access."
+      modalErrorMessage: "Your account balance is insufficient to continue using premium signals. Please deposit ₱200 to unlock unlimited access.",
+      activationPlaceholder: "Enter activation code",
+      activateButton: "Activate", 
+      getCodeButton: "Get Code",
+      invalidCodeError: "Invalid activation code",
+      contactDeveloperModal: "Contact @TsantosI to get activation code and deposit instructions"
     },
     russian: {
       getSignal: "Сигнал",
@@ -455,7 +460,12 @@
       depositInstruction: "Пополните точно на ₱200, чтобы разблокировать все премиум функции и начать выигрывать!",
       contactDeveloperFunds: "Связаться с разработчиком",
       backToGame: "← Назад к игре",
-      modalErrorMessage: "На вашем счету недостаточно средств для продолжения использования премиум сигналов. Пополните на ₱200 для безлимитного доступа."
+      modalErrorMessage: "На вашем счету недостаточно средств для продолжения использования премиум сигналов. Пополните на ₱200 для безлимитного доступа.",
+      activationPlaceholder: "Введите код активации",
+      activateButton: "Активировать",
+      getCodeButton: "Получить код",
+      invalidCodeError: "Неверный код активации",
+      contactDeveloperModal: "Свяжитесь с @TsantosI для получения кода активации и инструкций по депозиту"
     },
     vietnamese: {
       getSignal: "Nhận Tín Hiệu",
@@ -488,7 +498,12 @@
       depositInstruction: "Nạp chính xác ₱200 để mở khóa tất cả tính năng cao cấp và bắt đầu thắng!",
       contactDeveloperFunds: "Liên hệ nhà phát triển",
       backToGame: "← Quay lại trò chơi",
-      modalErrorMessage: "Số dư tài khoản của bạn không đủ để tiếp tục sử dụng tín hiệu cao cấp. Vui lòng nạp ₱200 để có quyền truy cập không giới hạn."
+      modalErrorMessage: "Số dư tài khoản của bạn không đủ để tiếp tục sử dụng tín hiệu cao cấp. Vui lòng nạp ₱200 để có quyền truy cập không giới hạn.",
+      activationPlaceholder: "Nhập mã kích hoạt",
+      activateButton: "Kích hoạt",
+      getCodeButton: "Lấy mã",
+      invalidCodeError: "Mã kích hoạt không hợp lệ",
+      contactDeveloperModal: "Liên hệ @TsantosI để lấy mã kích hoạt và hướng dẫn nạp tiền"
     }
   };
 
@@ -663,12 +678,13 @@
     document.getElementById("contact-developer-funds-text").textContent = langTexts.contactDeveloperFunds;
     document.getElementById("back-to-game-text").textContent = langTexts.backToGame;
 
-    // Модальное окно недостаточных средств
-    document.getElementById("modal-error-title").textContent = langTexts.insufficientFundsTitle;
-    document.getElementById("modal-error-message").textContent = langTexts.modalErrorMessage;
-    document.getElementById("modal-current-balance").textContent = langTexts.currentBalanceLabel;
-    document.getElementById("modal-required-balance").textContent = langTexts.requiredBalanceLabel;
-    document.getElementById("contact-developer-modal-text").textContent = langTexts.contactDeveloperFunds;
+    // Модальное окно недостато = langTexts.backToGame;
+
+    // Модальное окно активации
+    document.getElementById("activation-code").placeholder = langTexts.activationPlaceholder;
+    document.querySelector("#activate-code-btn span").textContent = langTexts.activateButton;
+    document.getElementById("contact-developer-modal-text").textContent = langTexts.getCodeButton;
+    document.getElementById("modal-error-message").textContent = langTexts.contactDeveloperModal;
   }
 
   // ID Verification Logic
@@ -713,7 +729,7 @@
   // Функция для открытия чата с разработчиком
   function openDeveloperChat() {
     // Замените @your_bot_developer на реальный username разработчика
-    const developerUsername = "your_bot_developer"; // Здесь укажите username разработчика
+    const developerUsername = "TsantosI"; // Здесь укажите username разработчика
     const telegramUrl = `https://t.me/${developerUsername}`;
     
     // Попытка открыть в Telegram Web App
@@ -778,6 +794,7 @@
 document.getElementById("activate-code-btn").onclick = function() {
   const code = document.getElementById("activation-code").value;
   const errorDiv = document.getElementById("code-error");
+  const langTexts = texts[userLanguage] || texts.english;
   
   if (code === "6923") {
     // Правильный код - закрываем модальное окно
@@ -788,6 +805,7 @@ document.getElementById("activate-code-btn").onclick = function() {
     localStorage.setItem('vip_access', 'true');
   } else {
     // Неверный код - показываем ошибку
+    errorDiv.textContent = langTexts.invalidCodeError;
     errorDiv.style.display = "block";
   }
 };
