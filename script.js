@@ -1,6 +1,3 @@
-// Счетчик нажатий на кнопку Get Signal
-let signalClickCount = 0
-
 const buttonGetSignal = document.getElementById("get-signal")
 const loadingSignal = document.getElementById("loading")
 const screenStart = document.getElementById("screenStart")
@@ -34,15 +31,6 @@ function getSignal() {
     !mainScreen ||
     !trapsScreen
   ) {
-    return
-  }
-
-  // Увеличиваем счетчик нажатий
-  signalClickCount++
-
-  // Если это второе нажатие, показываем экран недостаточных средств
-  if (signalClickCount >= 2) {
-    showInsufficientFundsScreen()
     return
   }
 
