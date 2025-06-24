@@ -1,8 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script>
+  (function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initData = urlParams.get("tgWebAppData") || urlParams.get("initData");
+    const isUserAgentTelegram = navigator.userAgent.includes("Telegram");
+
+    if (!initData || !isUserAgentTelegram) {
+      window.stop();
+      document.open();
+      document.write(`
+        <html><head>
+          <meta charset="UTF-8">
+          <style>
+            body {
+              margin: 0;
+              background: #000;
+              color: #fff;
+              font-family: sans-serif;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              text-align: center;
+            }
+          </style>
+        </head><body>
+          <div>
+            <h2>🚫 Доступ запрещён</h2>
+            <p>Открой миниап через Telegram-приложение</p>
+          </div>
+        </body></html>
+      `);
+      document.close();
+    }
+  })();
+</script>
+
 <head>
-      <script src="protect.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
