@@ -1206,3 +1206,83 @@ a {
     height: 65px;
   }
 }
+
+/* СТИЛИ ДЛЯ АКТИВАЦИИ КОДА */
+.activation-input {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  padding: 12px 15px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.activation-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.activation-input:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+.activation-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.activation-buttons .contact-developer-modal-btn {
+  flex: 1;
+  font-size: 16px;
+  height: 50px;
+}
+
+.code-error-message {
+  color: #ff4757;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px;
+  padding: 8px;
+  background: rgba(255, 71, 87, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+/* АДАПТИВНЫЕ СТИЛИ ДЛЯ АКТИВАЦИИ */
+@media screen and (max-width: 350px) {
+  .activation-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .activation-input {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .activation-buttons .contact-developer-modal-btn {
+    font-size: 14px;
+    height: 45px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .activation-input {
+    font-size: 18px;
+    padding: 15px 20px;
+  }
+
+  .activation-buttons .contact-developer-modal-btn {
+    font-size: 18px;
+    height: 60px;
+  }
+}
