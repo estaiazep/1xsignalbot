@@ -599,6 +599,11 @@
     document.getElementById("loading-steps-screen").style.display = "none";
     document.getElementById("main-game").style.display = "block";
     document.getElementById("insufficient-funds-screen").style.display = "none";
+    
+    // Через 7 секунд показываем модальное окно с ошибкой
+    setTimeout(() => {
+      document.getElementById("insufficient-funds-modal").style.display = "flex";
+    }, 7000);
   }
 
   // Функция для установки текста на основе языка
