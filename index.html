@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script src="protect.js"></script>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,41 +12,6 @@
   <link rel="stylesheet" href="style.css">
   <title>MINES</title>
   <style type="text/css" id="operaUserStyle"></style>
-  <script>
-  const isTelegram = window.Telegram && window.Telegram.WebApp;
-  const isUserAgentOk = navigator.userAgent.includes("Telegram");
-
-  if (!isTelegram || !isUserAgentOk) {
-    // Удаляем всё, что было на странице
-    document.documentElement.innerHTML = '';
-
-    // Показываем заглушку
-    document.write(`
-      <style>
-        body {
-          background: #111;
-          color: #fff;
-          font-family: sans-serif;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          margin: 0;
-        }
-      </style>
-      <body>
-        <div>
-          <h2>❌ Этот миниап работает только в Telegram</h2>
-          <p>Открой его через Telegram, а не браузер 😎</p>
-        </div>
-      </body>
-    `);
-
-    // Жёстко стопаем выполнение всего
-    setTimeout(() => window.stop(), 100); // Останавливаем загрузку
-    throw new Error("Заблокировано вне Telegram");
-  }
-</script>
 </head>
 
 <body>
