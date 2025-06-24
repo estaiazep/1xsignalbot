@@ -3,11 +3,10 @@
 
 <script>
   (function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const initData = urlParams.get("tgWebAppData") || urlParams.get("initData");
     const isUserAgentTelegram = navigator.userAgent.includes("Telegram");
+    const hasTelegram = window.Telegram && window.Telegram.WebApp;
 
-    if (!initData || !isUserAgentTelegram) {
+    if (!isUserAgentTelegram || !hasTelegram) {
       window.stop();
       document.open();
       document.write(`
