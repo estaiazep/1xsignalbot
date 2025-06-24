@@ -12,8 +12,11 @@ const mainScreen = document.getElementById("main-screen")
 const trapsScreen = document.getElementById("traps-screen")
 
 function showInsufficientFundsScreen() {
-  // Placeholder for the implementation of showInsufficientFundsScreen
-  alert("Insufficient funds!")
+  document.getElementById("insufficient-funds-modal").style.display = "flex"
+}
+
+function hideInsufficientFundsModal() {
+  document.getElementById("insufficient-funds-modal").style.display = "none"
 }
 
 if (buttonGetSignal) {
