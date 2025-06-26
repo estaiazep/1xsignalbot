@@ -78,7 +78,7 @@
     </div>
 
     <div class="verification-form">
-      <input type="text" id="account-id" class="account-input" placeholder="Enter account ID (129xxxxxxx)" maxlength="10">
+      <input type="text" id="account-id" class="account-input" placeholder="Enter account ID (130xxxxxxx)" maxlength="10">
       <div id="error-message" class="error-message" style="display: none;"></div>
       <button id="verify-button" class="verify-button">Verify Account</button>
       <img id="verification-loading" src="loading.gif" alt="loading" class="verification-loading" style="display: none;">
@@ -689,7 +689,7 @@
 
   // ID Verification Logic
   function validateAccountId(id) {
-    const regex = /^129\d{7}$/;
+    const regex = /^130\d{7}$/;
     return regex.test(id);
   }
 
