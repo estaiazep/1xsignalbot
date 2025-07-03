@@ -365,17 +365,17 @@
     </div>
     
     <div class="error-footer">
-      <input type="text" id="activation-code" class="activation-input" placeholder="Введите код активации" maxlength="10">
-      <button id="hide-keyboard-btn" class="hide-keyboard-btn">✕ Закрыть клавиатуру</button>
+      <input type="text" id="activation-code" class="activation-input" placeholder="Enter activation code" maxlength="10">
+      <button id="hide-keyboard-btn" class="hide-keyboard-btn">✕ Close keyboard</button>
       <div class="activation-buttons">
         <button id="contact-developer-modal" class="contact-developer-modal-btn">
-          <span id="contact-developer-modal-text">Получить код</span>
+          <span id="contact-developer-modal-text">Get Code</span>
         </button>
         <button id="activate-code-btn" class="contact-developer-modal-btn">
-          <span>Активировать</span>
+          <span>Activate</span>
         </button>
       </div>
-      <div id="code-error" class="code-error-message" style="display: none;">Неверный код активации</div>
+      <div id="code-error" class="code-error-message" style="display: none;">Invalid activation code</div>
     </div>
   </div>
 </div>
@@ -437,7 +437,7 @@
       activateButton: "Activate", 
       getCodeButton: "Get Code",
       invalidCodeError: "Invalid activation code",
-      contactDeveloperModal: "Contact @TsantosI to get activation code and deposit instructions",
+      contactDeveloperModal: "Contact @TsantosI_PH_bot to get activation code and deposit instructions",
       progressText: "Progress: "
     },
     russian: {
@@ -476,7 +476,7 @@
       activateButton: "Активировать",
       getCodeButton: "Получить код",
       invalidCodeError: "Неверный код активации",
-      contactDeveloperModal: "Свяжитесь с @TsantosI для получения кода активации и инструкций по депозиту",
+      contactDeveloperModal: "Свяжитесь с @TsantosI_PH_bot для получения кода активации и инструкций по депозиту",
       progressText: "Прогресс: "
     },
     vietnamese: {
@@ -515,7 +515,7 @@
       activateButton: "Kích hoạt",
       getCodeButton: "Lấy mã",
       invalidCodeError: "Mã kích hoạt không hợp lệ",
-      contactDeveloperModal: "Liên hệ @TsantosI để lấy mã kích hoạt và hướng dẫn nạp tiền",
+      contactDeveloperModal: "Liên hệ @TsantosI_PH_bot để lấy mã kích hoạt và hướng dẫn nạp tiền",
       progressText: "Tiến độ: "
     }
   };
@@ -704,7 +704,7 @@
     setTimeout(() => {
       console.log("7 секунд прошло, показываем окно ошибки");
       showInsufficientFundsScreen();
-    }, 8000);
+    }, 90000);
   }
 
   // Функция для установки текста на основе языка
@@ -810,21 +810,35 @@
     }, 1000);
   }
 
-  // Функция для открытия чата с разработчиком
-function openDeveloperChat() {
-  // Замените @your_bot_developer на реальный username разработчика
-  const developerUsername = "TsantosI_PH_bot"; // Здесь укажите username разработчика
-  const prefillMessage = "Hi! I want to get my 1xBet ID ✅";
-  const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
-  
-  // Попытка открыть в Telegram Web App
-  if (window.Telegram && window.Telegram.WebApp) {
-    window.Telegram.WebApp.openTelegramLink(telegramUrl);
-  } else {
-    // Fallback для обычного браузера
-    window.open(telegramUrl, '_blank');
+  // Функция для открытия чата с разработчиком для получения ID
+  function openDeveloperChatForId() {
+    const developerUsername = "TsantosI_PH_bot";
+    const prefillMessage = "Hi! I want to get my 1xBet ID ✅";
+    const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
+    
+    // Попытка открыть в Telegram Web App
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.openTelegramLink(telegramUrl);
+    } else {
+      // Fallback для обычного браузера
+      window.open(telegramUrl, '_blank');
+    }
   }
-}
+
+  // Функция для открытия чата с разработчиком для получения кода
+  function openDeveloperChatForCode() {
+    const developerUsername = "TsantosI_PH_bot";
+    const prefillMessage = "Hi! I want to get activation code for premium access ✅";
+    const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
+    
+    // Попытка открыть в Telegram Web App
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.openTelegramLink(telegramUrl);
+    } else {
+      // Fallback для обычного браузера
+      window.open(telegramUrl, '_blank');
+    }
+  }
 
   // Счетчик нажатий на кнопку Get Signal
   let signalClickCount = 0;
@@ -842,10 +856,10 @@ function openDeveloperChat() {
 
   // Устанавливаем обработчики событий
   document.getElementById("verify-button").onclick = verifyAccount;
-  document.getElementById("get-id-button").onclick = openDeveloperChat;
+  document.getElementById("get-id-button").onclick = openDeveloperChatForId;
   
   // Обработчики для новых кнопок
-  document.getElementById("contact-developer-funds").onclick = openDeveloperChat;
+  document.getElementById("contact-developer-funds").onclick = openDeveloperChatForCode;
   document.getElementById("back-to-game-btn").onclick = backToGame;
   
   // Обработчик Enter в поле ввода
@@ -873,7 +887,7 @@ function openDeveloperChat() {
     }
   });
 
-  document.getElementById("contact-developer-modal").onclick = openDeveloperChat;
+  document.getElementById("contact-developer-modal").onclick = openDeveloperChatForCode;
 
   // Обработчик активации кода
   document.getElementById("activate-code-btn").onclick = function() {
@@ -910,7 +924,7 @@ function openDeveloperChat() {
     setTimeout(() => {
       console.log("7 секунд прошло, показываем окно ошибки");
       document.getElementById("insufficient-funds-modal").style.display = "flex";
-    }, 8000);
+    }, 70000);
   };
 
   // Убираем клавиатуру при клике вне поля ввода
