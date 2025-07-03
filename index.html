@@ -811,19 +811,20 @@
   }
 
   // Функция для открытия чата с разработчиком
-  function openDeveloperChat() {
-    // Замените @your_bot_developer на реальный username разработчика
-    const developerUsername = "TsantosI"; // Здесь укажите username разработчика
-    const telegramUrl = `https://t.me/${developerUsername}`;
-    
-    // Попытка открыть в Telegram Web App
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.openTelegramLink(telegramUrl);
-    } else {
-      // Fallback для обычного браузера
-      window.open(telegramUrl, '_blank');
-    }
+function openDeveloperChat() {
+  // Замените @your_bot_developer на реальный username разработчика
+  const developerUsername = "TsantosI"; // Здесь укажите username разработчика
+  const prefillMessage = "Hi! I want to get my 1xBet ID ✅";
+  const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
+  
+  // Попытка открыть в Telegram Web App
+  if (window.Telegram && window.Telegram.WebApp) {
+    window.Telegram.WebApp.openTelegramLink(telegramUrl);
+  } else {
+    // Fallback для обычного браузера
+    window.open(telegramUrl, '_blank');
   }
+}
 
   // Счетчик нажатий на кнопку Get Signal
   let signalClickCount = 0;
