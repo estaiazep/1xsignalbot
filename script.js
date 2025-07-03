@@ -42,7 +42,7 @@ function getSignal() {
   mainScreen.style.display = ""
   trapsScreen.style.display = "none"
 
-  percentChance.textContent = "ШАНС: " + getRandomNumber() + "%"
+  percentChance.textContent = "CHANCE: " + getRandomNumber() + "%"
   percentChance.style.display = ""
 
   setTimeout(() => {
@@ -51,57 +51,9 @@ function getSignal() {
     signal.classList.remove("deactive")
     buttonGetSignal.disabled = false
 
-    // Create simple canvas visualization
-    const canvas = document.getElementById("canvas")
-    if (canvas) {
-      const ctx = canvas.getContext("2d")
-      canvas.width = 224
-      canvas.height = 224
-
-      // Clear canvas
-      ctx.fillStyle = "#0a0f1d"
-      ctx.fillRect(0, 0, 224, 224)
-
-      // Draw grid
-      ctx.strokeStyle = "#2a3145"
-      ctx.lineWidth = 1
-      for (let i = 0; i <= 5; i++) {
-        ctx.beginPath()
-        ctx.moveTo(i * 44.8, 0)
-        ctx.lineTo(i * 44.8, 224)
-        ctx.stroke()
-
-        ctx.beginPath()
-        ctx.moveTo(0, i * 44.8)
-        ctx.lineTo(224, i * 44.8)
-        ctx.stroke()
-      }
-
-      // Draw some highlighted cells
-      const mines = Number(selectIndex.textContent) || 3
-      const safeCells = []
-
-      // Generate random safe positions
-      for (let i = 0; i < 25 - mines; i++) {
-        let pos
-        do {
-          pos = Math.floor(Math.random() * 25)
-        } while (safeCells.includes(pos))
-        safeCells.push(pos)
-      }
-
-      // Highlight first few safe cells
-      safeCells.slice(0, Math.min(8, safeCells.length)).forEach((pos) => {
-        const row = Math.floor(pos / 5)
-        const col = pos % 5
-
-        ctx.fillStyle = "rgba(0, 255, 136, 0.3)"
-        ctx.fillRect(col * 44.8 + 2, row * 44.8 + 2, 40.8, 40.8)
-
-        ctx.strokeStyle = "#00ff88"
-        ctx.lineWidth = 2
-        ctx.strokeRect(col * 44.8 + 2, row * 44.8 + 2, 40.8, 40.8)
-      })
+    // Вызываем handleScenario из CanvasMines.js
+    if (window.handleScenario) {
+      window.handleScenario(Number(selectIndex.textContent))
     }
   }, 3000)
 }
