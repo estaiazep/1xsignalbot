@@ -31,7 +31,7 @@ body {
   font-variation-settings: "slnt" 0;
   background-color: #090e1d;
   position: fixed;
-  transform: scale(0.85); /* Уменьшение на 15% */
+  transform: scale(0.925); /* Уменьшение на 7.5% */
   transform-origin: center;
 }
 
@@ -1471,7 +1471,7 @@ a {
     top: 26px; /* Уменьшено с 30px */
   }
   .progress-text {
-    font-size: 15px; /*Уменьшено с 18px */
+    font-size: 15px; /* Уменьшено с 18px */
     top: -30px; /* Уменьшено с -35px */
   }
 }
