@@ -31,7 +31,7 @@ body {
   font-variation-settings: "slnt" 0;
   background-color: #090e1d;
   position: fixed;
-  transform: scale(0.925); /* Уменьшение на 7.5% */
+  transform: scale(0.945); /* Уменьшение на 7.5% */
   transform-origin: center;
 }
 
