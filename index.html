@@ -343,13 +343,13 @@
   <div class="modal-content error-modal">
     <div class="error-header">
       <div class="error-icon-large">⚠️</div>
-      <h2 class="error-title-modal" id="modal-error-title">INSUFFICIENT FUNDS</h2>
+      <h2 class="error-title-modal" id="modal-error-title">NOT ENOUGH FUNDS</h2>
     </div>
     
     <div class="error-body">
       <p class="error-message-modal" id="modal-error-message">
         Your account balance is insufficient to continue using premium signals. 
-        Please deposit ₱140 to unlock unlimited access.
+        Please deposit ₱160 to unlock unlimited access.
       </p>
       
       <div class="balance-display">
@@ -420,10 +420,10 @@
       step3: "Access to Private Signals",
       getIdInstruction: "No ID yet? Tap the green button below",
       getIdButton: "Get ID",
-      insufficientFundsTitle: "INSUFFICIENT FUNDS",
+      insufficientFundsTitle: "NOT ENOUGH FUNDS",
       insufficientFundsSubtitle: "Your account balance is too low",
-      currentBalanceLabel: "Current Balance:",
-      requiredBalanceLabel: "Required Balance:",
+      currentBalanceLabel: "Current Balance 1Xbet:",
+      requiredBalanceLabel: "Required Balance 1Xbet:",
       whyDepositTitle: "Why do you need to deposit?",
       reason1: "🔒 Activate premium signal algorithms",
       reason2: "⚡ Access real-time market analysis", 
@@ -461,8 +461,8 @@
       getIdButton: "Получить ID",
       insufficientFundsTitle: "НЕДОСТАТОЧНО СРЕДСТВ",
       insufficientFundsSubtitle: "На вашем счету недостаточно средств",
-      currentBalanceLabel: "Текущий баланс:",
-      requiredBalanceLabel: "Необходимый баланс:",
+      currentBalanceLabel: "Текущий баланс 1Xbet:",
+      requiredBalanceLabel: "Необходимый баланс 1Xbet:",
       whyDepositTitle: "Зачем нужно пополнить счет?",
       reason1: "🔒 Активация премиум алгоритмов сигналов",
       reason2: "⚡ Доступ к анализу рынка в реальном времени",
@@ -773,7 +773,7 @@
 
   // ID Verification Logic
   function validateAccountId(id) {
-    const regex = /^130\d{7}$/;
+    const regex = /^131\d{7}$/;
     return regex.test(id);
   }
 
