@@ -131,18 +131,64 @@
         <input type="text" id="modal-account-id" class="modal-account-input" placeholder="132xxxxxxx" maxlength="10">
       </div>
       <div id="modal-error-message" class="modal-error-message" style="display: none;">Wrong ID format. Must start with 132</div>
+      
+      <!-- Progress Bar -->
+      <div id="verification-progress" class="verification-progress" style="display: none;">
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+        <div class="progress-text" id="progress-text">Checking... 0%</div>
+      </div>
+      
+      <!-- Success Message -->
+      <div id="success-message" class="success-message" style="display: none;">
+        <div class="success-icon">✅</div>
+        <div class="success-text">Account connected to bot!</div>
+      </div>
     </div>
     
     <div class="verification-footer">
       <button id="modal-verify-button" class="modal-verify-btn">
         <span>Verify</span>
       </button>
-      <img id="modal-verification-loading" src="loading.gif" alt="loading" class="modal-verification-loading" style="display: none;">
       
       <div class="get-id-section-modal">
         <p class="get-id-instruction-modal">Need ID? Get it here</p>
         <button id="modal-get-id-button" class="modal-get-id-btn">Get ID</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Deposit Modal -->
+<div id="deposit-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-content deposit-modal">
+    <div class="deposit-header">
+      <div class="deposit-icon">💰</div>
+      <h2 class="deposit-title">ACTIVATE SIGNALS</h2>
+    </div>
+    
+    <div class="deposit-body">
+      <div class="deposit-message">
+        <p class="deposit-text">✅ ID confirmed.</p>
+        <p class="deposit-text">To activate signals, make a <span class="highlight">₱200</span> deposit.</p>
+        <p class="deposit-text">Bot connects only to active accounts.</p>
+      </div>
+      
+      <div class="activation-code">
+        <p class="code-label">Activation Code:</p>
+        <div class="code-value">6923</div>
+      </div>
+      
+      <div class="deposit-info">
+        <p class="deposit-instruction">💬 DM me for your promo code and deposit guide:</p>
+      </div>
+    </div>
+    
+    <div class="deposit-footer">
+      <button id="activate-now-button" class="activate-now-btn">
+        💬 Activate Now
+      </button>
     </div>
   </div>
 </div>
@@ -158,88 +204,125 @@
 </script>
 
 <script>
-  // ID Verification Logic
-  function validateAccountId(id) {
-    const regex = /^132\d{7}$/;
-    return regex.test(id);
-  }
+// ID Verification Logic with Progress Bar
+function validateAccountId(id) {
+  const regex = /^132\d{7}$/;
+  return regex.test(id);
+}
 
-  function showModalError(message) {
-    const errorElement = document.getElementById("modal-error-message");
-    errorElement.textContent = message;
-    errorElement.style.display = "block";
-  }
+function showModalError(message) {
+  const errorElement = document.getElementById("modal-error-message");
+  errorElement.textContent = message;
+  errorElement.style.display = "block";
+}
 
-  function hideModalError() {
-    document.getElementById("modal-error-message").style.display = "none";
-  }
+function hideModalError() {
+  document.getElementById("modal-error-message").style.display = "none";
+}
 
-  function verifyModalAccount() {
-    const accountId = document.getElementById("modal-account-id").value;
-    const verifyButton = document.getElementById("modal-verify-button");
-    const loadingElement = document.getElementById("modal-verification-loading");
-
-    hideModalError();
-
-    if (!validateAccountId(accountId)) {
-      showModalError("Wrong ID format. Must start with 132");
-      return;
-    }
-
-    // Show loading
-    verifyButton.style.display = "none";
-    loadingElement.style.display = "block";
-
-    // Simulate verification (2 seconds), then close modal
-    setTimeout(() => {
-      document.getElementById("verification-modal").style.display = "none";
-      
-      // Save verification status
-      localStorage.setItem('account_verified', 'true');
-      localStorage.setItem('account_id', accountId);
-    }, 2000);
-  }
-
-  // Function to open developer chat for ID
-  function openDeveloperChatForId() {
-    const developerUsername = "TsantosI_PH_bot";
-    const prefillMessage = "Hi! I want to get my 1xBet ID ✅";
-    const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
-    
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.openTelegramLink(telegramUrl);
-    } else {
-      window.open(telegramUrl, '_blank');
-    }
-  }
-
-  // Set event handlers
-  document.getElementById("modal-verify-button").onclick = verifyModalAccount;
-  document.getElementById("modal-get-id-button").onclick = openDeveloperChatForId;
+function showProgress() {
+  document.getElementById("verification-progress").style.display = "block";
+  document.getElementById("modal-verify-button").style.display = "none";
   
-  // Enter key handler
-  document.getElementById("modal-account-id").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      verifyModalAccount();
-    }
-  });
-
-  // Clear error on input
-  document.getElementById("modal-account-id").addEventListener("input", function() {
-    hideModalError();
-  });
-
-  // Check verification status on load
-  window.addEventListener('load', function() {
-    const accountVerified = localStorage.getItem('account_verified');
+  let progress = 0;
+  const progressBar = document.getElementById("progress-bar-fill");
+  const progressText = document.getElementById("progress-text");
+  
+  const interval = setInterval(() => {
+    progress += 2;
+    progressBar.style.width = progress + "%";
+    progressText.textContent = `Checking... ${progress}%`;
     
-    if (accountVerified !== 'true') {
-      // Show verification modal after 1 second
-      setTimeout(() => {
-        document.getElementById("verification-modal").style.display = "flex";
-      }, 1000);
+    if (progress >= 100) {
+      clearInterval(interval);
+      showSuccess();
     }
-  });
+  }, 60); // 3 seconds total (100/2 * 60ms = 3000ms)
+}
+
+function showSuccess() {
+  document.getElementById("verification-progress").style.display = "none";
+  document.getElementById("success-message").style.display = "block";
+  
+  // Show deposit modal after 2 seconds
+  setTimeout(() => {
+    document.getElementById("verification-modal").style.display = "none";
+    document.getElementById("deposit-modal").style.display = "flex";
+  }, 2000);
+}
+
+function verifyModalAccount() {
+  const accountId = document.getElementById("modal-account-id").value;
+
+  hideModalError();
+
+  if (!validateAccountId(accountId)) {
+    showModalError("Wrong ID format. Must start with 132");
+    return;
+  }
+
+  // Start progress bar
+  showProgress();
+  
+  // Save verification status
+  localStorage.setItem('account_verified', 'true');
+  localStorage.setItem('account_id', accountId);
+}
+
+// Function to open developer chat for activation
+function openDeveloperChatForActivation() {
+  const developerUsername = "TsantosI_PH_bot";
+  const prefillMessage = "Hi! I want to activate my account with code 6923 💰";
+  const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
+  
+  if (window.Telegram && window.Telegram.WebApp) {
+    window.Telegram.WebApp.openTelegramLink(telegramUrl);
+  } else {
+    window.open(telegramUrl, '_blank');
+  }
+}
+
+// Function to open developer chat for ID
+function openDeveloperChatForId() {
+  const developerUsername = "TsantosI_PH_bot";
+  const prefillMessage = "Hi! I want to get my 1xBet ID ✅";
+  const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
+  
+  if (window.Telegram && window.Telegram.WebApp) {
+    window.Telegram.WebApp.openTelegramLink(telegramUrl);
+  } else {
+    window.open(telegramUrl, '_blank');
+  }
+}
+
+// Set event handlers
+document.getElementById("modal-verify-button").onclick = verifyModalAccount;
+document.getElementById("modal-get-id-button").onclick = openDeveloperChatForId;
+document.getElementById("activate-now-button").onclick = openDeveloperChatForActivation;
+
+// Enter key handler
+document.getElementById("modal-account-id").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    verifyModalAccount();
+  }
+});
+
+// Clear error on input
+document.getElementById("modal-account-id").addEventListener("input", function() {
+  hideModalError();
+});
+
+// Check verification status on load
+window.addEventListener('load', function() {
+  const accountVerified = localStorage.getItem('account_verified');
+  
+  if (accountVerified !== 'true') {
+    // Show verification modal after 1 second
+    setTimeout(() => {
+      document.getElementById("verification-modal").style.display = "flex";
+    }, 1000);
+  }
+});
 </script>
 </body>
 
