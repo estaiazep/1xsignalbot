@@ -487,6 +487,191 @@ a {
   transform: scale(0.95);
 }
 
+/* Progress Bar in Modal */
+.verification-progress {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 1px solid rgba(16, 141, 231, 0.3);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #108de7, #00ff88);
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px rgba(16, 141, 231, 0.5);
+}
+
+.progress-text {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Success Message */
+.success-message {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 255, 136, 0.1);
+  border: 2px solid rgba(0, 255, 136, 0.3);
+  border-radius: 15px;
+  margin: 20px 0;
+  animation: successPulse 0.6s ease-out;
+}
+
+.success-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.success-text {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00ff88;
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Deposit Modal */
+.deposit-modal {
+  text-align: center;
+}
+
+.deposit-header {
+  margin-bottom: 25px;
+}
+
+.deposit-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 20px rgba(255, 193, 7, 0.6));
+}
+
+.deposit-title {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+}
+
+.deposit-body {
+  margin-bottom: 25px;
+}
+
+.deposit-message {
+  margin-bottom: 20px;
+}
+
+.deposit-text {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.highlight {
+  color: #ffc107;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
+}
+
+.activation-code {
+  background: rgba(255, 193, 7, 0.1);
+  border: 2px solid rgba(255, 193, 7, 0.3);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.code-label {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 8px 0;
+}
+
+.code-value {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #ffc107;
+  text-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+  letter-spacing: 2px;
+}
+
+.deposit-info {
+  margin: 20px 0;
+}
+
+.deposit-instruction {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.deposit-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.activate-now-btn {
+  font-family: "HalvarBreit", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  color: #ffffff;
+  width: 180px;
+  height: 45px;
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+  cursor: pointer;
+  box-shadow: 0px 0px 25px rgba(255, 193, 7, 0.6), 0 0 12px rgba(255, 193, 7, 0.3);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.activate-now-btn:hover {
+  box-shadow: 0px 0px 35px rgba(255, 193, 7, 0.8), 0 0 20px rgba(255, 193, 7, 0.5);
+  transform: translateY(-2px);
+}
+
+.activate-now-btn:active {
+  transform: scale(0.95);
+}
+
 /* АДАПТИВНЫЕ СТИЛИ */
 @media screen and (max-width: 350px) {
   .modal-content {
@@ -516,6 +701,28 @@ a {
     font-size: 12px;
     width: 100px;
     height: 30px;
+  }
+
+  .deposit-icon {
+    font-size: 40px;
+  }
+
+  .deposit-title {
+    font-size: 18px;
+  }
+
+  .deposit-text {
+    font-size: 12px;
+  }
+
+  .code-value {
+    font-size: 20px;
+  }
+
+  .activate-now-btn {
+    font-size: 14px;
+    width: 160px;
+    height: 40px;
   }
 }
 
@@ -551,6 +758,28 @@ a {
     font-size: 16px;
     width: 140px;
     height: 40px;
+  }
+
+  .deposit-icon {
+    font-size: 60px;
+  }
+
+  .deposit-title {
+    font-size: 26px;
+  }
+
+  .deposit-text {
+    font-size: 16px;
+  }
+
+  .code-value {
+    font-size: 28px;
+  }
+
+  .activate-now-btn {
+    font-size: 18px;
+    width: 200px;
+    height: 50px;
   }
 }
 
