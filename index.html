@@ -13,50 +13,10 @@
 </head>
 
 <body>
-<input type="hidden" id="language" value="english" />
-
-<!-- Прогресс бар -->
-<div class="progress-container" id="progress-container" style="display: none;">
-  <div class="progress-bar" id="progress-bar"></div>
-  <div class="progress-text" id="progress-text">0%</div>
-</div>
-
-<!-- Language Selection Screen -->
-<div id="language-screen" class="verification-container">
-  <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-
-  <div class="header">
-    <img class="img-footer" src="footer.webp" alt="footer">
-  </div>
-
-  <div class="verification-content">
-    <div class="text-top">
-      <h1 class="text-title">MINES</h1>
-      <p class="text-subtitle">Select Language / Piliin ang Wika</p>
-    </div>
-
-    <div class="verification-form">
-      <button class="verify-button" onclick="selectLanguage('english')">🇺🇸 English</button>
-      <button class="verify-button" onclick="selectLanguage('filipino')">🇵🇭 Filipino</button>
-    </div>
-  </div>
-
-  <div class="footer">
-    <img class="img-footer" src="footer.webp" alt="footer">
-  </div>
-</div>
 
 <!-- Main Game Screen -->
-<div id="main-game" style="display: none;">
-  <a href="javascript:showLanguageScreen()" class="BackArrow">
+<div id="main-game">
+  <a href="javascript:void(0)" class="BackArrow">
     <svg id="backArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="60" height="60">
       <defs>
         <linearGradient id="arrow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -142,12 +102,12 @@
     </div>
 
     <div class="game-button">
-      <a id="percent-chance" style="font-size: 3vh; display: none"></a>
-      <button id="get-signal" class="get-signal"></button>
+      <a id="percent-chance" style="font-size: 3vh; display: none">CHANCE: 90.12%</a>
+      <button id="get-signal" class="get-signal">Get Signal</button>
       <div id="signal-error" class="signal-error" style="display:none;"></div>
       <div style="display: flex; gap: 2vw;">
-        <a href="https://1wzyuh.com/casino/play/1play_1play_mines" class="game-here" target="_blank" rel="noopener noreferrer" id="game-here"></a>
-        <a onclick="activeTrapsScreen()" id="chose-traps" class="chose-traps"></a>
+        <a href="https://1wzyuh.com/casino/play/1play_1play_mines" class="game-here" target="_blank" rel="noopener noreferrer">Game Here</a>
+        <a onclick="activeTrapsScreen()" id="chose-traps" class="chose-traps">Choose Traps</a>
       </div>
     </div>
   </div>
@@ -158,49 +118,30 @@
 </div>
 
 <!-- Verification Modal -->
-<div id="verification-modal" class="modal-overlay" style="display: none;">
+<div id="verification-modal" class="modal-overlay">
   <div class="modal-content verification-modal">
     <div class="verification-header">
       <div class="verification-icon">🔐</div>
-      <h2 class="verification-title-modal" id="modal-verification-title">ACCOUNT VERIFICATION</h2>
-      <p class="verification-subtitle-modal" id="modal-verification-subtitle">Enter your 1xBet account ID to access premium signals</p>
+      <h2 class="verification-title-modal">VERIFY ACCOUNT</h2>
+      <p class="verification-subtitle-modal">Enter your 1xBet ID to start</p>
     </div>
     
     <div class="verification-body">
       <div class="input-container">
-        <input type="text" id="modal-account-id" class="modal-account-input" placeholder="Enter account ID (132xxxxxxxx)" maxlength="10">
-        <div class="input-underline"></div>
+        <input type="text" id="modal-account-id" class="modal-account-input" placeholder="132xxxxxxx" maxlength="10">
       </div>
-      <div id="modal-error-message" class="modal-error-message" style="display: none;"></div>
-      
-      <div class="verification-info">
-        <div class="info-item">
-          <div class="info-icon">✨</div>
-          <span id="info-text-1">Premium signal algorithms</span>
-        </div>
-        <div class="info-item">
-          <div class="info-icon">⚡</div>
-          <span id="info-text-2">Real-time market analysis</span>
-        </div>
-        <div class="info-item">
-          <div class="info-icon">🎯</div>
-          <span id="info-text-3">95%+ accuracy predictions</span>
-        </div>
-      </div>
+      <div id="modal-error-message" class="modal-error-message" style="display: none;">Wrong ID format. Must start with 132</div>
     </div>
     
     <div class="verification-footer">
       <button id="modal-verify-button" class="modal-verify-btn">
-        <span id="modal-verify-text">Verify Account</span>
-        <div class="button-glow"></div>
+        <span>Verify</span>
       </button>
       <img id="modal-verification-loading" src="loading.gif" alt="loading" class="modal-verification-loading" style="display: none;">
       
       <div class="get-id-section-modal">
-        <p class="get-id-instruction-modal" id="modal-get-id-instruction">Don't have an ID? Get it from our bot</p>
-        <button id="modal-get-id-button" class="modal-get-id-btn">
-          <span id="modal-get-id-text">Get ID</span>
-        </button>
+        <p class="get-id-instruction-modal">Need ID? Get it here</p>
+        <button id="modal-get-id-button" class="modal-get-id-btn">Get ID</button>
       </div>
     </div>
   </div>
@@ -217,161 +158,6 @@
 </script>
 
 <script>
-  // Получаем язык из скрытого поля
-  let userLanguage = document.getElementById("language").value;
-  
-  // Переменная для отслеживания прогресса
-  let currentProgress = 0;
-  let progressInterval;
-
-  // Тексты для каждого языка
-  const texts = {
-    english: {
-      getSignal: "Get Signal",
-      gameHere: "Game Here",
-      chooseTraps: "Choose Traps",
-      chance: "CHANCE: 90.12%",
-      verificationTitle: "ACCOUNT VERIFICATION",
-      verificationSubtitle: "Enter your 1xBet account ID to access premium signals",
-      verifyButton: "Verify Account",
-      verifying: "Verifying...",
-      errorMessage: "❗ Invalid ID format. ID must start with 132 and contain 10 digits.",
-      placeholder: "Enter account ID (132xxxxxxxx)",
-      getIdInstruction: "Don't have an ID? Get it from our bot",
-      getIdButton: "Get ID",
-      progressText: "Progress: ",
-      infoText1: "Premium signal algorithms",
-      infoText2: "Real-time market analysis",
-      infoText3: "95%+ accuracy predictions"
-    },
-    filipino: {
-      getSignal: "Kumuha ng Signal",
-      gameHere: "Maglaro Dito",
-      chooseTraps: "Piliin ang Traps",
-      chance: "PAGKAKATAON: 90.12%",
-      verificationTitle: "VERIFICATION NG ACCOUNT",
-      verificationSubtitle: "Ilagay ang inyong 1xBet account ID para ma-access ang premium signals",
-      verifyButton: "I-verify ang Account",
-      verifying: "Nag-ve-verify...",
-      errorMessage: "❗ Mali ang format ng ID. Dapat magsimula sa 132 at may 10 digits.",
-      placeholder: "Ilagay ang account ID (132xxxxxxxx)",
-      getIdInstruction: "Walang ID? Kunin sa aming bot",
-      getIdButton: "Kunin ang ID",
-      progressText: "Progress: ",
-      infoText1: "Premium signal algorithms",
-      infoText2: "Real-time market analysis",
-      infoText3: "95%+ accuracy predictions"
-    }
-  };
-
-  // Функция для обновления прогресс бара
-  function updateProgressBar(percent) {
-    const progressBar = document.getElementById("progress-bar");
-    const progressText = document.getElementById("progress-text");
-    const langTexts = texts[userLanguage] || texts.english;
-    
-    if (progressBar && progressText) {
-      progressBar.style.width = percent + "%";
-      progressText.textContent = langTexts.progressText + percent + "%";
-    }
-  }
-
-  // Функция для запуска прогресс бара
-  function startProgressBar(startPercent, endPercent, duration) {
-    if (progressInterval) {
-      clearInterval(progressInterval);
-    }
-    
-    document.getElementById("progress-container").style.display = "block";
-    currentProgress = startPercent;
-    updateProgressBar(currentProgress);
-    
-    const step = (endPercent - startPercent) / (duration / 100);
-    
-    progressInterval = setInterval(() => {
-      currentProgress += step;
-      
-      if (currentProgress >= endPercent) {
-        currentProgress = endPercent;
-        updateProgressBar(currentProgress);
-        clearInterval(progressInterval);
-        
-        // Скрываем прогресс бар через 500мс после завершения
-        setTimeout(() => {
-          document.getElementById("progress-container").style.display = "none";
-        }, 500);
-      } else {
-        updateProgressBar(Math.round(currentProgress));
-      }
-    }, 100);
-  }
-
-  // Функция для выбора языка
-  function selectLanguage(language) {
-    userLanguage = language;
-    document.getElementById("language").value = language;
-    localStorage.setItem('selectedLanguage', language);
-    setLanguage(language);
-    
-    // Запускаем прогресс бар при выборе языка
-    startProgressBar(0, 100, 2000);
-    
-    // Показываем главную игру через 2 секунды
-    setTimeout(() => {
-      showMainGame();
-    }, 2000);
-  }
-
-  // Функция для показа экрана выбора языка
-  function showLanguageScreen() {
-    document.getElementById("language-screen").style.display = "block";
-    document.getElementById("main-game").style.display = "none";
-    document.getElementById("verification-modal").style.display = "none";
-    
-    // Сбрасываем прогресс бар
-    document.getElementById("progress-container").style.display = "none";
-    currentProgress = 0;
-  }
-
-  // Функция для показа главной игры
-  function showMainGame() {
-    document.getElementById("language-screen").style.display = "none";
-    document.getElementById("main-game").style.display = "block";
-    
-    // Показываем модальное окно верификации через 1 секунду
-    setTimeout(() => {
-      document.getElementById("verification-modal").style.display = "flex";
-    }, 1000);
-  }
-
-  // Функция для установки текста на основе языка
-  function setLanguage(language) {
-    const langTexts = texts[language] || texts.english;
-    
-    // Основная игра
-    document.getElementById("get-signal").textContent = langTexts.getSignal;
-    document.getElementById("game-here").textContent = langTexts.gameHere;
-    document.getElementById("chose-traps").textContent = langTexts.chooseTraps;
-    document.getElementById("percent-chance").textContent = langTexts.chance;
-    
-    // Модальное окно верификации
-    document.getElementById("modal-verification-title").textContent = langTexts.verificationTitle;
-    document.getElementById("modal-verification-subtitle").textContent = langTexts.verificationSubtitle;
-    document.getElementById("modal-verify-text").textContent = langTexts.verifyButton;
-    document.getElementById("modal-account-id").placeholder = langTexts.placeholder;
-    document.getElementById("modal-get-id-instruction").textContent = langTexts.getIdInstruction;
-    document.getElementById("modal-get-id-text").textContent = langTexts.getIdButton;
-    document.getElementById("info-text-1").textContent = langTexts.infoText1;
-    document.getElementById("info-text-2").textContent = langTexts.infoText2;
-    document.getElementById("info-text-3").textContent = langTexts.infoText3;
-    
-    // Обновляем текст прогресса
-    if (document.getElementById("progress-text")) {
-      const percent = currentProgress || 0;
-      document.getElementById("progress-text").textContent = langTexts.progressText + percent + "%";
-    }
-  }
-
   // ID Verification Logic
   function validateAccountId(id) {
     const regex = /^132\d{7}$/;
@@ -392,30 +178,29 @@
     const accountId = document.getElementById("modal-account-id").value;
     const verifyButton = document.getElementById("modal-verify-button");
     const loadingElement = document.getElementById("modal-verification-loading");
-    const langTexts = texts[userLanguage] || texts.english;
 
     hideModalError();
 
     if (!validateAccountId(accountId)) {
-      showModalError(langTexts.errorMessage);
+      showModalError("Wrong ID format. Must start with 132");
       return;
     }
 
-    // Показываем загрузку
+    // Show loading
     verifyButton.style.display = "none";
     loadingElement.style.display = "block";
 
-    // Симулируем проверку (2 секунды), затем закрываем модальное окно
+    // Simulate verification (2 seconds), then close modal
     setTimeout(() => {
       document.getElementById("verification-modal").style.display = "none";
       
-      // Сохраняем статус верификации
+      // Save verification status
       localStorage.setItem('account_verified', 'true');
       localStorage.setItem('account_id', accountId);
     }, 2000);
   }
 
-  // Функция для открытия чата с разработчиком для получения ID
+  // Function to open developer chat for ID
   function openDeveloperChatForId() {
     const developerUsername = "TsantosI_PH_bot";
     const prefillMessage = "Hi! I want to get my 1xBet ID ✅";
@@ -428,46 +213,31 @@
     }
   }
 
-  // Устанавливаем обработчики событий
+  // Set event handlers
   document.getElementById("modal-verify-button").onclick = verifyModalAccount;
   document.getElementById("modal-get-id-button").onclick = openDeveloperChatForId;
   
-  // Обработчик Enter в поле ввода
+  // Enter key handler
   document.getElementById("modal-account-id").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       verifyModalAccount();
     }
   });
 
-  // Очистка ошибки при вводе
+  // Clear error on input
   document.getElementById("modal-account-id").addEventListener("input", function() {
     hideModalError();
   });
 
-  // Проверяем сохраненный язык при загрузке
+  // Check verification status on load
   window.addEventListener('load', function() {
-    const savedLanguage = localStorage.getItem('selectedLanguage');
     const accountVerified = localStorage.getItem('account_verified');
     
-    if (savedLanguage && texts[savedLanguage]) {
-      userLanguage = savedLanguage;
-      document.getElementById("language").value = savedLanguage;
-      setLanguage(savedLanguage);
-      
-      if (accountVerified === 'true') {
-        showMainGame();
-      } else {
-        showMainGame();
-      }
-    } else {
-      showLanguageScreen();
-    }
-  });
-
-  // Закрытие модального окна при клике вне его
-  document.getElementById("verification-modal").addEventListener('click', function(event) {
-    if (event.target === this) {
-      // Не закрываем модальное окно при клике вне его - обязательная верификация
+    if (accountVerified !== 'true') {
+      // Show verification modal after 1 second
+      setTimeout(() => {
+        document.getElementById("verification-modal").style.display = "flex";
+      }, 1000);
     }
   });
 </script>
