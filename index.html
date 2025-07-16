@@ -277,10 +277,12 @@ function startBot() {
   document.getElementById("welcome-screen").style.display = "none";
   document.getElementById("main-game").style.display = "block";
   
-  // Show verification modal after 1 second
+  // Always show verification modal after 1 second for new users
   setTimeout(() => {
     const accountVerified = localStorage.getItem('account_verified');
-    if (accountVerified !== 'true') {
+    const botUnlocked = localStorage.getItem('bot_unlocked');
+    
+    if (accountVerified !== 'true' || botUnlocked !== 'true') {
       document.getElementById("verification-modal").style.display = "flex";
     }
   }, 1000);
@@ -433,11 +435,13 @@ document.getElementById("unlock-code-input").addEventListener("input", function(
 // Check verification status on load
 window.addEventListener('load', function() {
   const botUnlocked = localStorage.getItem('bot_unlocked');
+  const accountVerified = localStorage.getItem('account_verified');
   
-  if (botUnlocked === 'true') {
-    // Skip welcome screen if bot is already unlocked
+  // Only skip welcome screen if BOTH verification and unlock are complete
+  if (botUnlocked === 'true' && accountVerified === 'true') {
     startBot();
   }
+  // Otherwise show welcome screen (default behavior)
 });
 </script>
 </body>
