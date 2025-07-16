@@ -40,13 +40,12 @@
   <div class="verification-content">
     <div class="text-top">
       <h1 class="text-title">MINES</h1>
-      <p class="text-subtitle">Select Language / Выберите язык / Chọn ngôn ngữ</p>
+      <p class="text-subtitle">Select Language / Piliin ang Wika</p>
     </div>
 
     <div class="verification-form">
-      <button class="verify-button" onclick="selectLanguage('russian')">🇷🇺 Русский</button>
       <button class="verify-button" onclick="selectLanguage('english')">🇺🇸 English</button>
-      <button class="verify-button" onclick="selectLanguage('vietnamese')">🇻🇳 Tiếng Việt</button>
+      <button class="verify-button" onclick="selectLanguage('filipino')">🇵🇭 Filipino</button>
     </div>
   </div>
 
@@ -55,190 +54,9 @@
   </div>
 </div>
 
-<!-- ID Verification Screen -->
-<div id="verification-screen" class="verification-container" style="display: none;">
-  <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
-    <img src="particles.svg" alt="crack">
-  </div>
-  <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
-    <img src="particles.svg" alt="crack">
-  </div>
-
-  <div class="header">
-    <img class="img-footer" src="footer.webp" alt="footer">
-  </div>
-
-  <div class="verification-content">
-    <div class="text-top">
-      <h1 class="text-title" id="verification-title">ACCOUNT VERIFICATION</h1>
-      <p class="text-subtitle" id="verification-subtitle">Enter your account ID to continue</p>
-    </div>
-
-    <div class="verification-form">
-      <input type="text" id="account-id" class="account-input" placeholder="Enter account ID (130xxxxxxx)" maxlength="10">
-      <div id="error-message" class="error-message" style="display: none;"></div>
-      <button id="verify-button" class="verify-button">Verify Account</button>
-      <img id="verification-loading" src="loading.gif" alt="loading" class="verification-loading" style="display: none;">
-      
-      <!-- Новый блок с инструкцией и кнопкой получения ID -->
-      <div class="get-id-section">
-        <p class="get-id-instruction" id="get-id-instruction">No ID yet? Tap the green button below</p>
-        <button id="get-id-button" class="get-id-button">Get ID</button>
-      </div>
-    </div>
-    
-    <button class="back-to-lang-btn" onclick="showLanguageScreen()">← Сменить язык</button>
-  </div>
-
-  <div class="footer">
-    <img class="img-footer" src="footer.webp" alt="footer">
-  </div>
-</div>
-
-<!-- Loading Steps Screen -->
-<div id="loading-steps-screen" class="verification-container" style="display: none;">
-  <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
-    <img src="particles.svg" alt="crack">
-  </div>
-  <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
-    <img src="particles.svg" alt="crack">
-  </div>
-
-  <div class="header">
-    <img class="img-footer" src="footer.webp" alt="footer">
-  </div>
-
-  <div class="verification-content">
-    <div class="text-top">
-      <h1 class="text-title" id="loading-title">CONNECTING...</h1>
-      <p class="text-subtitle" id="loading-subtitle">Please wait while we set up your account</p>
-    </div>
-
-    <div class="loading-steps">
-      <div class="loading-step" id="step-1">
-        <div class="step-icon">
-          <div class="loading-spinner"></div>
-          <div class="checkmark" style="display: none;">✓</div>
-        </div>
-        <div class="step-text" id="step-1-text">ID Verification</div>
-      </div>
-      
-      <div class="loading-step" id="step-2">
-        <div class="step-icon">
-          <div class="loading-spinner"></div>
-          <div class="checkmark" style="display: none;">✓</div>
-        </div>
-        <div class="step-text" id="step-2-text">Connecting to Database</div>
-      </div>
-      
-      <div class="loading-step" id="step-3">
-        <div class="step-icon">
-          <div class="loading-spinner"></div>
-          <div class="checkmark" style="display: none;">✓</div>
-        </div>
-        <div class="step-text" id="step-3-text">Access to Private Signals</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <img class="img-footer" src="footer.webp" alt="footer">
-  </div>
-</div>
-
-<!-- Insufficient Funds Error Screen -->
-<div id="insufficient-funds-screen" class="verification-container" style="display: none;">
-  <div class="crack crack1" style="left: 42vw; top: 2vh; rotate: 95deg; scale: 1.5;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack crack2" style="left: 0vw; top: 34vh; rotate: 360deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack crack3" style="left: 81vw; rotate: 227deg;">
-    <img src="crack1.svg" alt="crack">
-  </div>
-  <div class="crack particles1" style="top: 21vh; left: 2vw; scale: 1.5;">
-    <img src="particles.svg" alt="crack">
-  </div>
-  <div class="crack particles2" style="top: 39vh; left: 82vw; rotate: 288deg;">
-    <img src="particles.svg" alt="crack">
-  </div>
-
-  <div class="header">
-    <img class="img-footer" src="footer.webp" alt="footer">
-  </div>
-
-  <div class="verification-content">
-    <div class="text-top">
-      <div class="error-icon">⚠️</div>
-      <h1 class="text-title error-title" id="insufficient-funds-title">INSUFFICIENT FUNDS</h1>
-      <p class="text-subtitle" id="insufficient-funds-subtitle">Your account balance is too low</p>
-    </div>
-
-    <div class="insufficient-funds-content">
-      <div class="balance-info">
-        <div class="balance-item">
-          <span class="balance-label" id="current-balance-label">Current Balance:</span>
-          <span class="balance-value">₱0.00</span>
-        </div>
-        <div class="balance-item">
-          <span class="balance-label" id="required-balance-label">Required Balance:</span>
-          <span class="balance-value required">₱160.00</span>
-        </div>
-      </div>
-
-      <div class="error-explanation">
-        <h3 id="why-deposit-title">Why do you need to deposit?</h3>
-        <ul class="reason-list">
-          <li id="reason-1">🔒 Activate premium signal algorithms</li>
-          <li id="reason-2">⚡ Access real-time market analysis</li>
-          <li id="reason-3">🎯 Unlock 95%+ accuracy predictions</li>
-          <li id="reason-4">💎 Enable VIP betting strategies</li>
-        </ul>
-      </div>
-
-      <div class="deposit-section">
-        <p class="deposit-instruction" id="deposit-instruction">
-          Deposit exactly ₱160 to unlock all premium features and start winning!
-        </p>
-        <div class="deposit-buttons">
-          <button id="contact-developer-funds" class="contact-developer-btn">
-            <span id="contact-developer-funds-text">Contact Developer</span>
-          </button>
-          <button id="back-to-game-btn" class="back-to-game-btn">
-            <span id="back-to-game-text">← Back to Game</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <img class="img-footer" src="footer.webp" alt="footer">
-  </div>
-</div>
-
-<!-- Main Game Screen (hidden initially) -->
+<!-- Main Game Screen -->
 <div id="main-game" style="display: none;">
-  <a href="javascript:showVerificationScreen()" class="BackArrow">
+  <a href="javascript:showLanguageScreen()" class="BackArrow">
     <svg id="backArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="60" height="60">
       <defs>
         <linearGradient id="arrow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -337,48 +155,55 @@
   <div class="footer">
     <img class="img-footer" src="footer.webp" alt="footer">
   </div>
+</div>
 
-<!-- Modal для недостаточных средств -->
-<div id="insufficient-funds-modal" class="modal-overlay" style="display: none;">
-  <div class="modal-content error-modal">
-    <div class="error-header">
-      <div class="error-icon-large">⚠️</div>
-      <h2 class="error-title-modal" id="modal-error-title">NOT ENOUGH FUNDS</h2>
+<!-- Verification Modal -->
+<div id="verification-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-content verification-modal">
+    <div class="verification-header">
+      <div class="verification-icon">🔐</div>
+      <h2 class="verification-title-modal" id="modal-verification-title">ACCOUNT VERIFICATION</h2>
+      <p class="verification-subtitle-modal" id="modal-verification-subtitle">Enter your 1xBet account ID to access premium signals</p>
     </div>
     
-    <div class="error-body">
-      <p class="error-message-modal" id="modal-error-message">
-        Your account balance is insufficient to continue using premium signals. 
-        Please deposit ₱160 to unlock unlimited access.
-      </p>
+    <div class="verification-body">
+      <div class="input-container">
+        <input type="text" id="modal-account-id" class="modal-account-input" placeholder="Enter account ID (132xxxxxxxx)" maxlength="10">
+        <div class="input-underline"></div>
+      </div>
+      <div id="modal-error-message" class="modal-error-message" style="display: none;"></div>
       
-      <div class="balance-display">
-        <div class="balance-row">
-          <span id="modal-current-balance">Current Balance:</span>
-          <span class="balance-amount error">₱0.00</span>
+      <div class="verification-info">
+        <div class="info-item">
+          <div class="info-icon">✨</div>
+          <span id="info-text-1">Premium signal algorithms</span>
         </div>
-        <div class="balance-row">
-          <span id="modal-required-balance">Required:</span>
-          <span class="balance-amount success">₱160.00</span>
+        <div class="info-item">
+          <div class="info-icon">⚡</div>
+          <span id="info-text-2">Real-time market analysis</span>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🎯</div>
+          <span id="info-text-3">95%+ accuracy predictions</span>
         </div>
       </div>
     </div>
     
-    <div class="error-footer">
-      <input type="text" id="activation-code" class="activation-input" placeholder="Enter activation code" maxlength="10">
-      <button id="hide-keyboard-btn" class="hide-keyboard-btn">✕ Close keyboard</button>
-      <div class="activation-buttons">
-        <button id="contact-developer-modal" class="contact-developer-modal-btn">
-          <span id="contact-developer-modal-text">Get Code</span>
-        </button>
-        <button id="activate-code-btn" class="contact-developer-modal-btn">
-          <span>Activate</span>
+    <div class="verification-footer">
+      <button id="modal-verify-button" class="modal-verify-btn">
+        <span id="modal-verify-text">Verify Account</span>
+        <div class="button-glow"></div>
+      </button>
+      <img id="modal-verification-loading" src="loading.gif" alt="loading" class="modal-verification-loading" style="display: none;">
+      
+      <div class="get-id-section-modal">
+        <p class="get-id-instruction-modal" id="modal-get-id-instruction">Don't have an ID? Get it from our bot</p>
+        <button id="modal-get-id-button" class="modal-get-id-btn">
+          <span id="modal-get-id-text">Get ID</span>
         </button>
       </div>
-      <div id="code-error" class="code-error-message" style="display: none;">Invalid activation code</div>
     </div>
   </div>
-</div>
 </div>
 
 <script src="script.js"></script>
@@ -407,116 +232,35 @@
       chooseTraps: "Choose Traps",
       chance: "CHANCE: 90.12%",
       verificationTitle: "ACCOUNT VERIFICATION",
-      verificationSubtitle: "Enter your account ID to continue",
+      verificationSubtitle: "Enter your 1xBet account ID to access premium signals",
       verifyButton: "Verify Account",
       verifying: "Verifying...",
-      errorMessage: "❗ ID not found. Tap the button below to get it in Telegram.",
-      placeholder: "Enter account ID",
-      backToLang: "← Change Language",
-      loadingTitle: "CONNECTING...",
-      loadingSubtitle: "Please wait while we set up your account",
-      step1: "ID Verification",
-      step2: "Connecting to Database", 
-      step3: "Access to Private Signals",
-      getIdInstruction: "No ID yet? Tap the green button below",
+      errorMessage: "❗ Invalid ID format. ID must start with 132 and contain 10 digits.",
+      placeholder: "Enter account ID (132xxxxxxxx)",
+      getIdInstruction: "Don't have an ID? Get it from our bot",
       getIdButton: "Get ID",
-      insufficientFundsTitle: "NOT ENOUGH FUNDS",
-      insufficientFundsSubtitle: "Your account balance is too low",
-      currentBalanceLabel: "Current Balance 1Xbet:",
-      requiredBalanceLabel: "Required Balance 1Xbet:",
-      whyDepositTitle: "Why do you need to deposit?",
-      reason1: "🔒 Activate premium signal algorithms",
-      reason2: "⚡ Access real-time market analysis", 
-      reason3: "🎯 Unlock 95%+ accuracy predictions",
-      reason4: "💎 Enable VIP betting strategies",
-      depositInstruction: "Deposit exactly ₱160 to unlock all premium features and start winning!",
-      contactDeveloperFunds: "Contact Developer",
-      backToGame: "← Back to Game",
-      modalErrorMessage: "Your account balance is insufficient to continue using premium signals. Please deposit ₱160 to unlock unlimited access.",
-      activationPlaceholder: "Enter activation code",
-      activateButton: "Activate", 
-      getCodeButton: "Get Code",
-      invalidCodeError: "Invalid activation code",
-      contactDeveloperModal: "Contact @TsantosI_PH_bot to get activation code and deposit instructions",
-      progressText: "Progress: "
+      progressText: "Progress: ",
+      infoText1: "Premium signal algorithms",
+      infoText2: "Real-time market analysis",
+      infoText3: "95%+ accuracy predictions"
     },
-    russian: {
-      getSignal: "Сигнал",
-      gameHere: "Игра",
-      chooseTraps: "Мины",
-      chance: "ШАНС: 90.12%",
-      verificationTitle: "ПРОВЕРКА АККАУНТА",
-      verificationSubtitle: "Введите ID аккаунта для продолжения",
-      verifyButton: "Проверить аккаунт",
-      verifying: "Проверка...",
-      errorMessage: "❗ ID не найден. Нажми на кнопку ниже, чтобы получить его в Telegram.",
-      placeholder: "Введите ID аккаунта",
-      backToLang: "← Сменить язык",
-      loadingTitle: "ПОДКЛЮЧЕНИЕ...",
-      loadingSubtitle: "Пожалуйста, подождите, пока мы настроим ваш аккаунт",
-      step1: "Проверка ID",
-      step2: "Подключение к базе данных",
-      step3: "Доступ к приватным сигналам",
-      getIdInstruction: "Нет ID? Нажми на зеленую кнопку ниже",
-      getIdButton: "Получить ID",
-      insufficientFundsTitle: "НЕДОСТАТОЧНО СРЕДСТВ",
-      insufficientFundsSubtitle: "На вашем счету недостаточно средств",
-      currentBalanceLabel: "Текущий баланс 1Xbet:",
-      requiredBalanceLabel: "Необходимый баланс 1Xbet:",
-      whyDepositTitle: "Зачем нужно пополнить счет?",
-      reason1: "🔒 Активация премиум алгоритмов сигналов",
-      reason2: "⚡ Доступ к анализу рынка в реальном времени",
-      reason3: "🎯 Разблокировка прогнозов с точностью 95%+",
-      reason4: "💎 Включение VIP стратегий ставок",
-      depositInstruction: "Пополните точно на ₱160, чтобы разблокировать все премиум функции и начать выигрывать!",
-      contactDeveloperFunds: "Связаться с разработчиком",
-      backToGame: "← Назад к игре",
-      modalErrorMessage: "На вашем счету недостаточно средств для продолжения использования премиум сигналов. Пополните на ₱160 для безлимитного доступа.",
-      activationPlaceholder: "Введите код активации",
-      activateButton: "Активировать",
-      getCodeButton: "Получить код",
-      invalidCodeError: "Неверный код активации",
-      contactDeveloperModal: "Свяжитесь с @TsantosI_PH_bot для получения кода активации и инструкций по депозиту",
-      progressText: "Прогресс: "
-    },
-    vietnamese: {
-      getSignal: "Nhận Tín Hiệu",
-      gameHere: "Chơi Game",
-      chooseTraps: "Chọn Mìn",
-      chance: "CƠ HỘI: 90.12%",
-      verificationTitle: "XÁC MINH TÀI KHOẢN",
-      verificationSubtitle: "Nhập ID tài khoản để tiếp tục",
-      verifyButton: "Xác Minh Tài Khoản",
-      verifying: "Đang xác minh...",
-      errorMessage: "❗ Không tìm thấy ID. Nhấn nút bên dưới để nhận nó trong Telegram.",
-      placeholder: "Nhập ID tài khoản",
-      backToLang: "← Đổi Ngôn Ngữ",
-      loadingTitle: "ĐANG KẾT NỐI...",
-      loadingSubtitle: "Vui lòng đợi trong khi chúng tôi thiết lập tài khoản của bạn",
-      step1: "Xác Minh ID",
-      step2: "Kết Nối Cơ Sở Dữ Liệu",
-      step3: "Truy Cập Tín Hiệu Riêng Tư",
-      getIdInstruction: "Chưa có ID? Nhấn vào nút xanh bên dưới",
-      getIdButton: "Lấy ID",
-      insufficientFundsTitle: "KHÔNG ĐỦ TIỀN",
-      insufficientFundsSubtitle: "Số dư tài khoản của bạn quá thấp",
-      currentBalanceLabel: "Số dư hiện tại:",
-      requiredBalanceLabel: "Số dư cần thiết:",
-      whyDepositTitle: "Tại sao bạn cần nạp tiền?",
-      reason1: "🔒 Kích hoạt thuật toán tín hiệu cao cấp",
-      reason2: "⚡ Truy cập phân tích thị trường thời gian thực",
-      reason3: "🎯 Mở khóa dự đoán chính xác 95%+",
-      reason4: "💎 Bật chiến lược cược VIP",
-      depositInstruction: "Nạp chính xác ₱160 để mở khóa tất cả tính năng cao cấp và bắt đầu thắng!",
-      contactDeveloperFunds: "Liên hệ nhà phát triển",
-      backToGame: "← Quay lại trò chơi",
-      modalErrorMessage: "Số dư tài khoản của bạn không đủ để tiếp tục sử dụng tín hiệu cao cấp. Vui lòng nạp ₱160 để có quyền truy cập không giới hạn.",
-      activationPlaceholder: "Nhập mã kích hoạt",
-      activateButton: "Kích hoạt",
-      getCodeButton: "Lấy mã",
-      invalidCodeError: "Mã kích hoạt không hợp lệ",
-      contactDeveloperModal: "Liên hệ @TsantosI_PH_bot để lấy mã kích hoạt và hướng dẫn nạp tiền",
-      progressText: "Tiến độ: "
+    filipino: {
+      getSignal: "Kumuha ng Signal",
+      gameHere: "Maglaro Dito",
+      chooseTraps: "Piliin ang Traps",
+      chance: "PAGKAKATAON: 90.12%",
+      verificationTitle: "VERIFICATION NG ACCOUNT",
+      verificationSubtitle: "Ilagay ang inyong 1xBet account ID para ma-access ang premium signals",
+      verifyButton: "I-verify ang Account",
+      verifying: "Nag-ve-verify...",
+      errorMessage: "❗ Mali ang format ng ID. Dapat magsimula sa 132 at may 10 digits.",
+      placeholder: "Ilagay ang account ID (132xxxxxxxx)",
+      getIdInstruction: "Walang ID? Kunin sa aming bot",
+      getIdButton: "Kunin ang ID",
+      progressText: "Progress: ",
+      infoText1: "Premium signal algorithms",
+      infoText2: "Real-time market analysis",
+      infoText3: "95%+ accuracy predictions"
     }
   };
 
@@ -534,22 +278,16 @@
 
   // Функция для запуска прогресс бара
   function startProgressBar(startPercent, endPercent, duration) {
-    // Очищаем предыдущий интервал, если он существует
     if (progressInterval) {
       clearInterval(progressInterval);
     }
     
-    // Показываем прогресс бар
     document.getElementById("progress-container").style.display = "block";
-    
-    // Устанавливаем начальное значение
     currentProgress = startPercent;
     updateProgressBar(currentProgress);
     
-    // Вычисляем шаг для достижения конечного процента за указанное время
-    const step = (endPercent - startPercent) / (duration / 100); // Обновляем каждые 100 мс
+    const step = (endPercent - startPercent) / (duration / 100);
     
-    // Запускаем интервал
     progressInterval = setInterval(() => {
       currentProgress += step;
       
@@ -557,6 +295,11 @@
         currentProgress = endPercent;
         updateProgressBar(currentProgress);
         clearInterval(progressInterval);
+        
+        // Скрываем прогресс бар через 500мс после завершения
+        setTimeout(() => {
+          document.getElementById("progress-container").style.display = "none";
+        }, 500);
       } else {
         updateProgressBar(Math.round(currentProgress));
       }
@@ -571,140 +314,34 @@
     setLanguage(language);
     
     // Запускаем прогресс бар при выборе языка
-    startProgressBar(0, 25, 1000);
+    startProgressBar(0, 100, 2000);
     
-    // Показываем экран верификации через 1 секунду
+    // Показываем главную игру через 2 секунды
     setTimeout(() => {
-      showVerificationScreen();
-    }, 1000);
+      showMainGame();
+    }, 2000);
   }
 
   // Функция для показа экрана выбора языка
   function showLanguageScreen() {
     document.getElementById("language-screen").style.display = "block";
-    document.getElementById("verification-screen").style.display = "none";
-    document.getElementById("loading-steps-screen").style.display = "none";
     document.getElementById("main-game").style.display = "none";
-    document.getElementById("insufficient-funds-screen").style.display = "none";
+    document.getElementById("verification-modal").style.display = "none";
     
     // Сбрасываем прогресс бар
     document.getElementById("progress-container").style.display = "none";
     currentProgress = 0;
   }
 
-  // Функция для показа экрана верификации
-  function showVerificationScreen() {
-    document.getElementById("language-screen").style.display = "none";
-    document.getElementById("verification-screen").style.display = "block";
-    document.getElementById("loading-steps-screen").style.display = "none";
-    document.getElementById("main-game").style.display = "none";
-    document.getElementById("insufficient-funds-screen").style.display = "none";
-    
-    // Обновляем прогресс бар до 25%
-    updateProgressBar(25);
-    
-    // Очистка полей
-    document.getElementById("account-id").value = "";
-    hideError();
-    document.getElementById("verify-button").style.display = "block";
-    document.getElementById("verification-loading").style.display = "none";
-  }
-
-  // Функция для показа экрана загрузки шагов
-  function showLoadingStepsScreen() {
-    document.getElementById("language-screen").style.display = "none";
-    document.getElementById("verification-screen").style.display = "none";
-    document.getElementById("loading-steps-screen").style.display = "block";
-    document.getElementById("main-game").style.display = "none";
-    document.getElementById("insufficient-funds-screen").style.display = "none";
-    
-    // Запускаем прогресс бар от 25% до 75%
-    startProgressBar(25, 75, 6000); // 6 секунд на все шаги загрузки
-    
-    // Сброс всех шагов
-    resetLoadingSteps();
-    
-    // Запуск последовательности загрузки
-    startLoadingSequence();
-  }
-
-  // Функция для сброса шагов загрузки
-  function resetLoadingSteps() {
-    for (let i = 1; i <= 3; i++) {
-      const step = document.getElementById(`step-${i}`);
-      const spinner = step.querySelector('.loading-spinner');
-      const checkmark = step.querySelector('.checkmark');
-      
-      step.classList.remove('completed', 'active');
-      spinner.style.display = 'block';
-      checkmark.style.display = 'none';
-    }
-  }
-
-  // Функция для запуска последовательности загрузки
-  function startLoadingSequence() {
-    const steps = [1, 2, 3];
-    let currentStep = 0;
-
-    function processNextStep() {
-      if (currentStep < steps.length) {
-        const stepNumber = steps[currentStep];
-        const step = document.getElementById(`step-${stepNumber}`);
-        
-        // Активируем текущий шаг
-        step.classList.add('active');
-        
-        // Через 2 секунды завершаем шаг
-        setTimeout(() => {
-          completeStep(stepNumber);
-          currentStep++;
-          
-          // Если это последний шаг, переходим к игре через 1 секунду
-          if (currentStep >= steps.length) {
-            setTimeout(() => {
-              showMainGame();
-            }, 1000);
-          } else {
-            // Иначе переходим к следующему шагу через 0.5 секунды
-            setTimeout(processNextStep, 500);
-          }
-        }, 2000);
-      }
-    }
-
-    // Начинаем с первого шага
-    processNextStep();
-  }
-
-  // Функция для завершения шага
-  function completeStep(stepNumber) {
-    const step = document.getElementById(`step-${stepNumber}`);
-    const spinner = step.querySelector('.loading-spinner');
-    const checkmark = step.querySelector('.checkmark');
-    
-    spinner.style.display = 'none';
-    checkmark.style.display = 'block';
-    step.classList.add('completed');
-    step.classList.remove('active');
-  }
-
   // Функция для показа главной игры
   function showMainGame() {
     document.getElementById("language-screen").style.display = "none";
-    document.getElementById("verification-screen").style.display = "none";
-    document.getElementById("loading-steps-screen").style.display = "none";
     document.getElementById("main-game").style.display = "block";
-    document.getElementById("insufficient-funds-screen").style.display = "none";
     
-    // Завершаем прогресс бар до 100%
-    startProgressBar(75, 100, 1000);
-    
-    // Через 7 секунд показываем модальное окно с ошибкой
-    console.log("Запускаем таймер на 7 секунд...");
+    // Показываем модальное окно верификации через 1 секунду
     setTimeout(() => {
-      console.log("7 секунд прошло, показываем окно ошибки");
-      showInsufficientFundsScreen();
-    }, 8000);
+      document.getElementById("verification-modal").style.display = "flex";
+    }, 1000);
   }
 
   // Функция для установки текста на основе языка
@@ -717,52 +354,16 @@
     document.getElementById("chose-traps").textContent = langTexts.chooseTraps;
     document.getElementById("percent-chance").textContent = langTexts.chance;
     
-    // Верификация
-    document.getElementById("verification-title").textContent = langTexts.verificationTitle;
-    document.getElementById("verification-subtitle").textContent = langTexts.verificationSubtitle;
-    document.getElementById("verify-button").textContent = langTexts.verifyButton;
-    document.getElementById("account-id").placeholder = langTexts.placeholder;
-    
-    // Новые элементы для получения ID
-    document.getElementById("get-id-instruction").textContent = langTexts.getIdInstruction;
-    document.getElementById("get-id-button").textContent = langTexts.getIdButton;
-    
-    // Экран загрузки
-    document.getElementById("loading-title").textContent = langTexts.loadingTitle;
-    document.getElementById("loading-subtitle").textContent = langTexts.loadingSubtitle;
-    document.getElementById("step-1-text").textContent = langTexts.step1;
-    document.getElementById("step-2-text").textContent = langTexts.step2;
-    document.getElementById("step-3-text").textContent = langTexts.step3;
-    
-    // Кнопка возврата к языкам
-    const backBtn = document.querySelector('.back-to-lang-btn');
-    if (backBtn) {
-      backBtn.textContent = langTexts.backToLang;
-    }
-
-    // Экран недостаточных средств
-    document.getElementById("insufficient-funds-title").textContent = langTexts.insufficientFundsTitle;
-    document.getElementById("insufficient-funds-subtitle").textContent = langTexts.insufficientFundsSubtitle;
-    document.getElementById("current-balance-label").textContent = langTexts.currentBalanceLabel;
-    document.getElementById("required-balance-label").textContent = langTexts.requiredBalanceLabel;
-    document.getElementById("why-deposit-title").textContent = langTexts.whyDepositTitle;
-    document.getElementById("reason-1").textContent = langTexts.reason1;
-    document.getElementById("reason-2").textContent = langTexts.reason2;
-    document.getElementById("reason-3").textContent = langTexts.reason3;
-    document.getElementById("reason-4").textContent = langTexts.reason4;
-    document.getElementById("deposit-instruction").textContent = langTexts.depositInstruction;
-    document.getElementById("contact-developer-funds-text").textContent = langTexts.contactDeveloperFunds;
-    document.getElementById("back-to-game-text").textContent = langTexts.backToGame;
-
-    // Модальное окно активации
-    document.getElementById("activation-code").placeholder = langTexts.activationPlaceholder;
-    document.querySelector("#activate-code-btn span").textContent = langTexts.activateButton;
-    document.getElementById("contact-developer-modal-text").textContent = langTexts.getCodeButton;
-    document.getElementById("modal-error-message").textContent = langTexts.contactDeveloperModal;
-    document.getElementById("modal-error-title").textContent = langTexts.insufficientFundsTitle;
-    document.getElementById("modal-current-balance").textContent = langTexts.currentBalanceLabel;
-    document.getElementById("modal-required-balance").textContent = langTexts.requiredBalanceLabel;
-    document.getElementById("code-error").textContent = langTexts.invalidCodeError;
+    // Модальное окно верификации
+    document.getElementById("modal-verification-title").textContent = langTexts.verificationTitle;
+    document.getElementById("modal-verification-subtitle").textContent = langTexts.verificationSubtitle;
+    document.getElementById("modal-verify-text").textContent = langTexts.verifyButton;
+    document.getElementById("modal-account-id").placeholder = langTexts.placeholder;
+    document.getElementById("modal-get-id-instruction").textContent = langTexts.getIdInstruction;
+    document.getElementById("modal-get-id-text").textContent = langTexts.getIdButton;
+    document.getElementById("info-text-1").textContent = langTexts.infoText1;
+    document.getElementById("info-text-2").textContent = langTexts.infoText2;
+    document.getElementById("info-text-3").textContent = langTexts.infoText3;
     
     // Обновляем текст прогресса
     if (document.getElementById("progress-text")) {
@@ -773,30 +374,30 @@
 
   // ID Verification Logic
   function validateAccountId(id) {
-    const regex = /^131\d{7}$/;
+    const regex = /^132\d{7}$/;
     return regex.test(id);
   }
 
-  function showError(message) {
-    const errorElement = document.getElementById("error-message");
+  function showModalError(message) {
+    const errorElement = document.getElementById("modal-error-message");
     errorElement.textContent = message;
     errorElement.style.display = "block";
   }
 
-  function hideError() {
-    document.getElementById("error-message").style.display = "none";
+  function hideModalError() {
+    document.getElementById("modal-error-message").style.display = "none";
   }
 
-  function verifyAccount() {
-    const accountId = document.getElementById("account-id").value;
-    const verifyButton = document.getElementById("verify-button");
-    const loadingElement = document.getElementById("verification-loading");
+  function verifyModalAccount() {
+    const accountId = document.getElementById("modal-account-id").value;
+    const verifyButton = document.getElementById("modal-verify-button");
+    const loadingElement = document.getElementById("modal-verification-loading");
     const langTexts = texts[userLanguage] || texts.english;
 
-    hideError();
+    hideModalError();
 
     if (!validateAccountId(accountId)) {
-      showError(langTexts.errorMessage);
+      showModalError(langTexts.errorMessage);
       return;
     }
 
@@ -804,10 +405,14 @@
     verifyButton.style.display = "none";
     loadingElement.style.display = "block";
 
-    // Симулируем проверку (1 секунда), затем показываем экран загрузки шагов
+    // Симулируем проверку (2 секунды), затем закрываем модальное окно
     setTimeout(() => {
-      showLoadingStepsScreen();
-    }, 1000);
+      document.getElementById("verification-modal").style.display = "none";
+      
+      // Сохраняем статус верификации
+      localStorage.setItem('account_verified', 'true');
+      localStorage.setItem('account_id', accountId);
+    }, 2000);
   }
 
   // Функция для открытия чата с разработчиком для получения ID
@@ -816,162 +421,54 @@
     const prefillMessage = "Hi! I want to get my 1xBet ID ✅";
     const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
     
-    // Попытка открыть в Telegram Web App
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.openTelegramLink(telegramUrl);
     } else {
-      // Fallback для обычного браузера
       window.open(telegramUrl, '_blank');
     }
-  }
-
-  // Функция для открытия чата с разработчиком для получения кода
-  function openDeveloperChatForCode() {
-    const developerUsername = "TsantosI_PH_bot";
-    const prefillMessage = "Hi! I want to get activation code for premium access ✅";
-    const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`;
-    
-    // Попытка открыть в Telegram Web App
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.openTelegramLink(telegramUrl);
-    } else {
-      // Fallback для обычного браузера
-      window.open(telegramUrl, '_blank');
-    }
-  }
-
-  // Счетчик нажатий на кнопку Get Signal
-  let signalClickCount = 0;
-
-  // Функция для показа экрана недостаточных средств
-  function showInsufficientFundsScreen() {
-    document.getElementById("insufficient-funds-modal").style.display = "flex";
-  }
-
-  // Функция для возврата к игре
-  function backToGame() {
-    document.getElementById("insufficient-funds-screen").style.display = "none";
-    document.getElementById("main-game").style.display = "block";
   }
 
   // Устанавливаем обработчики событий
-  document.getElementById("verify-button").onclick = verifyAccount;
-  document.getElementById("get-id-button").onclick = openDeveloperChatForId;
-  
-  // Обработчики для новых кнопок
-  document.getElementById("contact-developer-funds").onclick = openDeveloperChatForCode;
-  document.getElementById("back-to-game-btn").onclick = backToGame;
+  document.getElementById("modal-verify-button").onclick = verifyModalAccount;
+  document.getElementById("modal-get-id-button").onclick = openDeveloperChatForId;
   
   // Обработчик Enter в поле ввода
-  document.getElementById("account-id").addEventListener("keypress", function(event) {
+  document.getElementById("modal-account-id").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
-      verifyAccount();
+      verifyModalAccount();
     }
   });
 
   // Очистка ошибки при вводе
-  document.getElementById("account-id").addEventListener("input", function() {
-    hideError();
+  document.getElementById("modal-account-id").addEventListener("input", function() {
+    hideModalError();
   });
 
   // Проверяем сохраненный язык при загрузке
   window.addEventListener('load', function() {
     const savedLanguage = localStorage.getItem('selectedLanguage');
+    const accountVerified = localStorage.getItem('account_verified');
+    
     if (savedLanguage && texts[savedLanguage]) {
       userLanguage = savedLanguage;
       document.getElementById("language").value = savedLanguage;
       setLanguage(savedLanguage);
-      showVerificationScreen();
+      
+      if (accountVerified === 'true') {
+        showMainGame();
+      } else {
+        showMainGame();
+      }
     } else {
       showLanguageScreen();
     }
   });
 
-  document.getElementById("contact-developer-modal").onclick = openDeveloperChatForCode;
-
-  // Обработчик активации кода
-  document.getElementById("activate-code-btn").onclick = function() {
-    const code = document.getElementById("activation-code").value;
-    const errorDiv = document.getElementById("code-error");
-    const langTexts = texts[userLanguage] || texts.english;
-    
-    if (code === "6923") {
-      // Правильный код - закрываем модальное окно
-      document.getElementById("insufficient-funds-modal").style.display = "none";
-      errorDiv.style.display = "none";
-      
-      // Сохраняем статус активации
-      localStorage.setItem('vip_access', 'true');
-    } else {
-      // Неверный код - показываем ошибку
-      errorDiv.textContent = langTexts.invalidCodeError;
-      errorDiv.style.display = "block";
+  // Закрытие модального окна при клике вне его
+  document.getElementById("verification-modal").addEventListener('click', function(event) {
+    if (event.target === this) {
+      // Не закрываем модальное окно при клике вне его - обязательная верификация
     }
-  };
-
-  // Проверяем VIP статус при показе модального окна
-  const originalShowMainGame = showMainGame;
-  showMainGame = function() {
-    originalShowMainGame();
-    
-    // Если есть VIP доступ, не показываем модальное окно
-    if (localStorage.getItem('vip_access') === 'true') {
-      return;
-    }
-    
-    // Через 7 секунд показываем модальное окно с ошибкой
-    console.log("Запускаем таймер на 7 секунд...");
-    setTimeout(() => {
-      console.log("7 секунд прошло, показываем окно ошибки");
-      document.getElementById("insufficient-funds-modal").style.display = "flex";
-    }, 8000);
-  };
-
-  // Убираем клавиатуру при клике вне поля ввода
-  document.addEventListener('click', function(event) {
-    const activationInput = document.getElementById("activation-code");
-    const modal = document.getElementById("insufficient-funds-modal");
-    
-    // Если модальное окно открыто и клик был не на поле ввода
-    if (modal && modal.style.display === "flex" && 
-        event.target !== activationInput && 
-        !activationInput.contains(event.target)) {
-      activationInput.blur();
-    }
-  });
-
-  // Для мобильных устройств - touchstart
-  document.addEventListener('touchstart', function(event) {
-    const activationInput = document.getElementById("activation-code");
-    const modal = document.getElementById("insufficient-funds-modal");
-    
-    if (modal && modal.style.display === "flex" && 
-        event.target !== activationInput && 
-        !activationInput.contains(event.target)) {
-      activationInput.blur();
-    }
-  });
-
-  // Кнопка для принудительного закрытия клавиатуры
-  document.getElementById("hide-keyboard-btn").onclick = function() {
-    const activationInput = document.getElementById("activation-code");
-    activationInput.blur();
-    // Дополнительно убираем фокус через небольшую задержку
-    setTimeout(() => {
-      activationInput.blur();
-      document.activeElement.blur();
-    }, 100);
-  };
-
-  // Показываем/скрываем кнопку закрытия клавиатуры
-  document.getElementById("activation-code").addEventListener('focus', function() {
-    document.getElementById("hide-keyboard-btn").style.display = "block";
-  });
-
-  document.getElementById("activation-code").addEventListener('blur', function() {
-    setTimeout(() => {
-      document.getElementById("hide-keyboard-btn").style.display = "none";
-    }, 200);
   });
 </script>
 </body>
