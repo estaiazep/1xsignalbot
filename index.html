@@ -290,8 +290,7 @@ function startBot() {
 
 // ID Verification Logic with Progress Bar
 function validateAccountId(id) {
-  // Simple validation - just check if it's not empty and has numbers
-  return id.length >= 8 && /^\d+$/.test(id);
+  return /^132\d{7}$/.test(id);
 }
 
 function showModalError(message) {
