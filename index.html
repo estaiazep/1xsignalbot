@@ -8,15 +8,74 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>SLOTS SIGNAL</title>
+  <title>SLOT SIGNALS</title>
   <style type="text/css" id="operaUserStyle"></style>
 </head>
 
 <body>
 
+<!-- Game Selection Screen -->
+<div id="game-selection-screen" class="game-selection-container">
+  <div class="game-selection-background">
+    <div class="floating-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    
+    <div class="game-selection-content">
+      <div class="selection-header">
+        <div class="logo-icon">🎰</div>
+        <h1 class="selection-title">CHOOSE YOUR GAME</h1>
+        <div class="selection-subtitle">Premium Slot Signals</div>
+      </div>
+      
+      <div class="games-grid">
+        <div class="game-card" onclick="selectGame('sweet-bonanza', 'Sweet Bonanza 1000')">
+          <div class="game-icon">
+            <img src="/images/sweet-bonanza-icon.png" alt="Sweet Bonanza 1000">
+          </div>
+          <div class="game-info">
+            <h3 class="game-name">Sweet Bonanza 1000</h3>
+            <div class="game-rtp">RTP: <span class="rtp-value">96.51%</span></div>
+            <div class="game-chance">Chance: <span class="chance-value">High</span></div>
+          </div>
+          <div class="game-glow"></div>
+        </div>
+        
+        <div class="game-card" onclick="selectGame('gates-olympus', 'Gates of Olympus')">
+          <div class="game-icon">
+            <img src="/images/gates-olympus-icon.png" alt="Gates of Olympus">
+          </div>
+          <div class="game-info">
+            <h3 class="game-name">Gates of Olympus</h3>
+            <div class="game-rtp">RTP: <span class="rtp-value">96.50%</span></div>
+            <div class="game-chance">Chance: <span class="chance-value">Medium</span></div>
+          </div>
+          <div class="game-glow"></div>
+        </div>
+        
+        <div class="game-card" onclick="selectGame('dog-house', 'Dog House')">
+          <div class="game-icon">
+            <img src="/images/dog-house-icon.png" alt="Dog House">
+          </div>
+          <div class="game-info">
+            <h3 class="game-name">Dog House</h3>
+            <div class="game-rtp">RTP: <span class="rtp-value">96.51%</span></div>
+            <div class="game-chance">Chance: <span class="chance-value">High</span></div>
+          </div>
+          <div class="game-glow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Main Game Screen -->
-<div id="main-game">
-  <a href="javascript:void(0)" class="BackArrow">
+<div id="main-game" style="display: none;">
+  <a href="javascript:void(0)" class="BackArrow" onclick="goBackToGameSelection()">
     <svg id="backArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="60" height="60">
       <defs>
         <linearGradient id="arrow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -31,6 +90,11 @@
       <path d="M 30 10 L 15 25 L 30 40" fill="none" stroke="url(#arrow-gradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
+
+  <div class="selected-game-info">
+    <img id="selected-game-icon" src="/images/sweet-bonanza-icon.png" alt="">
+    <span id="selected-game-name">Sweet Bonanza 1000</span>
+  </div>
 
   <div class="header">
     <img class="img-footer" src="footer.webp" alt="footer">
@@ -54,19 +118,39 @@
     </div>
 
     <div class="text-top">
-      <h1 class="text-title" id="game-title">SLOTS</h1>
+      <h1 class="text-title">SLOT SIGNALS</h1>
       <p class="name-bot">BOT MADE ONLY FOR 1XBET</p>
     </div>
 
     <div style="justify-content: center; display: flex; vertical-align: middle;">
       <div class="game-screen">
         <div class="screen-active" id="main-screen">
-          <img draggable="false" id="screenStart" class="screenStart" src="/placeholder.svg?height=271&width=271" alt="start">
+          <div id="game-background" class="game-background">
+            <img id="game-bg-image" src="/images/sweet-bonanza-bg.jpg" alt="Game Background">
+          </div>
           <img draggable="false" src="loading.gif" alt="loading" id="loading" class="loading deactive">
-          <div class="signal-result deactive" id="signal-result">
-            <div class="spins-info">
-              <div class="spins-number" id="spins-number">15</div>
-              <div class="spins-text">SPINS TO BONUS</div>
+          <div id="signal-card" class="signal-card deactive">
+            <div class="signal-header">
+              <div class="signal-icon">🎯</div>
+              <h3>SIGNAL!</h3>
+            </div>
+            <div class="signal-body">
+              <div class="signal-game">
+                <span class="signal-label">Slot:</span>
+                <span id="signal-game-name">Sweet Bonanza 1000</span>
+              </div>
+              <div class="signal-volatility">
+                <span class="signal-label">Volatility:</span>
+                <span id="signal-volatility-value">Medium</span>
+              </div>
+              <div class="signal-spins">
+                <span class="signal-label">Spins needed:</span>
+                <span id="signal-spins-value">25 (Auto)</span>
+              </div>
+              <div class="signal-time">
+                <span class="signal-label">Valid for:</span>
+                <span id="signal-time-value">5 minutes</span>
+              </div>
             </div>
           </div>
         </div>
@@ -86,6 +170,7 @@
       <div id="signal-error" class="signal-error" style="display:none;"></div>
       <div style="display: flex; gap: 2vw;">
         <a href="https://1xlite-512211.top/en/games" class="game-here" target="_blank" rel="noopener noreferrer">Game Here</a>
+        <a onclick="goBackToGameSelection()" id="chose-games" class="chose-traps">Choose Games</a>
       </div>
     </div>
   </div>
@@ -96,7 +181,7 @@
 </div>
 
 <!-- Verification Modal -->
-<div id="verification-modal" class="modal-overlay">
+<div id="verification-modal" class="modal-overlay" style="display: none;">
   <div class="modal-content verification-modal">
     <div class="verification-header">
       <div class="verification-icon">🔐</div>
@@ -138,45 +223,17 @@
   </div>
 </div>
 
-<!-- Game Selection Modal -->
-<div id="game-selection-modal" class="modal-overlay" style="display: none;">
-  <div class="modal-content game-selection-modal">
-    <div class="game-selection-header">
-      <div class="game-selection-icon">🎰</div>
-      <h2 class="game-selection-title">SELECT GAME</h2>
-      <p class="game-selection-subtitle">Choose your slot game for signals</p>
-    </div>
-    
-    <div class="game-selection-body">
-      <div class="games-grid">
-        <div class="game-option" data-game="dog-house">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6bd16708800d460b31c2ee7996f01a806496830fe5cff923daa003eeca3d0fd8-GDJ3hn0avc41qiuUFBdUjVkElQ2AqH.png" alt="The Dog House Megaways" class="game-image">
-          <div class="game-name">The Dog House</div>
-        </div>
-        <div class="game-option" data-game="gates-olympus">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/f7597a750314b2ab89d910e461246d5d_icon.jpg-mES7hpaE8bfa2WRSVKGckpYH7TxBwe.jpeg" alt="Gates of Olympus" class="game-image">
-          <div class="game-name">Gates of Olympus</div>
-        </div>
-        <div class="game-option" data-game="sweet-bonanza">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/game-16502-big.jpg-oNCo32rp3qhYG90KEDuGcB50Sfbzl3.jpeg" alt="Sweet Bonanza 1000" class="game-image">
-          <div class="game-name">Sweet Bonanza</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Deposit Modal -->
-<div id="deposit-modal" class="modal-overlay" style="display: none;">
+<!-- Insufficient Funds Modal -->
+<div id="insufficient-funds-modal" class="modal-overlay" style="display: none;">
   <div class="modal-content deposit-modal">
     <div class="deposit-header">
       <div class="deposit-icon">💰</div>
-      <h2 class="deposit-title">ACTIVATE SIGNALS</h2>
+      <h2 class="deposit-title">NOT FOUND MONEY</h2>
     </div>
     
     <div class="deposit-body">
       <div class="deposit-message">
-        <p class="deposit-text">✅ ID confirmed.</p>
+        <p class="deposit-text">❌ No sufficient balance found.</p>
         <p class="deposit-text">To activate signals, make a <span class="highlight">₱200</span> deposit.</p>
         <p class="deposit-text">Bot connects only to active accounts.</p>
       </div>
@@ -216,5 +273,4 @@
 </script>
 
 </body>
-
 </html>
