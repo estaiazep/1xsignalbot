@@ -1,70 +1,109 @@
-const buttonGetSignal = document.getElementById("get-signal")
-const loadingSignal = document.getElementById("loading")
-const screenStart = document.getElementById("screenStart")
-const signalResult = document.getElementById("signal-result")
-const spinsNumber = document.getElementById("spins-number")
-const percentChance = document.getElementById("percent-chance")
-const gameTitle = document.getElementById("game-title")
+// Global variables
+let selectedGame = {
+  id: "sweet-bonanza",
+  name: "Sweet Bonanza 1000",
+  volatility: "Medium",
+  bgImage: "/images/sweet-bonanza-bg.jpg",
+  icon: "/images/sweet-bonanza-icon.png",
+}
 
-let selectedGame = null
-
-// Game data
-const games = {
-  "dog-house": {
-    name: "THE DOG HOUSE",
-    minSpins: 8,
-    maxSpins: 25,
+const gameData = {
+  "sweet-bonanza": {
+    name: "Sweet Bonanza 1000",
+    volatility: "Medium",
+    bgImage: "/images/sweet-bonanza-bg.jpg",
+    icon: "/images/sweet-bonanza-icon.png",
+    spins: [15, 20, 25, 30, 35],
   },
   "gates-olympus": {
-    name: "GATES OF OLYMPUS",
-    minSpins: 12,
-    maxSpins: 30,
+    name: "Gates of Olympus",
+    volatility: "High",
+    bgImage: "/images/gates-olympus-bg.jpg",
+    icon: "/images/gates-olympus-icon.png",
+    spins: [18, 22, 28, 32, 38],
   },
-  "sweet-bonanza": {
-    name: "SWEET BONANZA",
-    minSpins: 10,
-    maxSpins: 28,
+  "dog-house": {
+    name: "Dog House",
+    volatility: "Medium",
+    bgImage: "/images/dog-house-bg.jpg",
+    icon: "/images/dog-house-icon.png",
+    spins: [12, 18, 24, 28, 35],
   },
 }
 
-if (buttonGetSignal) {
-  buttonGetSignal.onclick = getSignal
+// Game selection functions
+function selectGame(gameId, gameName) {
+  selectedGame = gameData[gameId]
+  selectedGame.id = gameId
+
+  // Update UI elements
+  document.getElementById("selected-game-name").textContent = selectedGame.name
+  document.getElementById("selected-game-icon").src = selectedGame.icon
+  document.getElementById("game-bg-image").src = selectedGame.bgImage
+
+  // Hide game selection and show verification modal
+  document.getElementById("game-selection-screen").style.display = "none"
+  document.getElementById("verification-modal").style.display = "flex"
 }
 
+function goBackToGameSelection() {
+  document.getElementById("main-game").style.display = "none"
+  document.getElementById("game-selection-screen").style.display = "block"
+}
+
+// Signal generation
 function getSignal() {
-  if (!signalResult || !screenStart || !loadingSignal || !buttonGetSignal || !percentChance || !spinsNumber) {
-    return
-  }
+  const signal = document.getElementById("signal-card")
+  const loading = document.getElementById("loading")
+  const buttonGetSignal = document.getElementById("get-signal")
+  const percentChance = document.getElementById("percent-chance")
 
-  signalResult.classList.add("deactive")
-  screenStart.classList.add("deactive")
-  loadingSignal.classList.remove("deactive")
+  if (!signal || !loading || !buttonGetSignal) return
+
+  // Hide signal card and show loading
+  signal.classList.add("deactive")
+  loading.classList.remove("deactive")
   buttonGetSignal.disabled = true
 
-  percentChance.textContent = "ANALYZING: " + getRandomNumber() + "%"
+  // Update chance percentage
+  percentChance.textContent = "CHANCE: " + getRandomNumber() + "%"
   percentChance.style.display = ""
 
   setTimeout(() => {
-    if (!loadingSignal || !signalResult || !buttonGetSignal || !spinsNumber) return
-
-    loadingSignal.classList.add("deactive")
-    signalResult.classList.remove("deactive")
+    loading.classList.add("deactive")
+    signal.classList.remove("deactive")
     buttonGetSignal.disabled = false
 
-    // Generate random spins count based on selected game
-    const gameData = games[selectedGame] || games["sweet-bonanza"]
-    const spinsCount = Math.floor(Math.random() * (gameData.maxSpins - gameData.minSpins + 1)) + gameData.minSpins
-    spinsNumber.textContent = spinsCount
-
-    percentChance.style.display = "none"
+    // Generate signal data
+    generateSignalData()
   }, 3000)
+}
+
+function generateSignalData() {
+  const spinsArray = gameData[selectedGame.id].spins
+  const randomSpins = spinsArray[Math.floor(Math.random() * spinsArray.length)]
+
+  // Update signal card
+  document.getElementById("signal-game-name").textContent = selectedGame.name
+  document.getElementById("signal-volatility-value").textContent = selectedGame.volatility
+  document.getElementById("signal-spins-value").textContent = `${randomSpins} (Auto)`
+  document.getElementById("signal-time-value").textContent = "5 minutes"
 }
 
 function getRandomNumber() {
   return (Math.random() * (95 - 80) + 80).toFixed(2)
 }
 
-// ID Verification Logic with Progress Bar
+// Modal functions
+function showInsufficientFundsScreen() {
+  document.getElementById("insufficient-funds-modal").style.display = "flex"
+}
+
+function hideInsufficientFundsModal() {
+  document.getElementById("insufficient-funds-modal").style.display = "none"
+}
+
+// ID Verification Logic
 function validateAccountId(id) {
   return /^13\d{8}$/.test(id)
 }
@@ -103,10 +142,15 @@ function showSuccess() {
   document.getElementById("verification-progress").style.display = "none"
   document.getElementById("success-message").style.display = "block"
 
-  // Show game selection modal after 2 seconds
+  // Show main game screen after 2 seconds
   setTimeout(() => {
     document.getElementById("verification-modal").style.display = "none"
-    document.getElementById("game-selection-modal").style.display = "flex"
+    document.getElementById("main-game").style.display = "block"
+
+    // Show insufficient funds modal after 3 seconds
+    setTimeout(() => {
+      showInsufficientFundsScreen()
+    }, 3000)
   }, 2000)
 }
 
@@ -120,30 +164,9 @@ function verifyModalAccount() {
     return
   }
 
-  // Start progress bar
   showProgress()
-
-  // Save verification status
   localStorage.setItem("account_verified", "true")
   localStorage.setItem("account_id", accountId)
-}
-
-// Game Selection Logic
-function selectGame(gameKey) {
-  selectedGame = gameKey
-  const gameData = games[gameKey]
-
-  // Update game title
-  if (gameTitle) {
-    gameTitle.textContent = gameData.name
-  }
-
-  // Save selected game
-  localStorage.setItem("selected_game", gameKey)
-
-  // Hide game selection modal and show deposit modal
-  document.getElementById("game-selection-modal").style.display = "none"
-  document.getElementById("deposit-modal").style.display = "flex"
 }
 
 // Unlock Bot Logic
@@ -152,7 +175,6 @@ function unlockBot() {
   const errorElement = document.getElementById("unlock-error")
   const successElement = document.getElementById("unlock-success")
 
-  // Hide previous messages
   errorElement.style.display = "none"
   successElement.style.display = "none"
 
@@ -160,16 +182,15 @@ function unlockBot() {
     successElement.style.display = "block"
     localStorage.setItem("bot_unlocked", "true")
 
-    // Close modal after 2 seconds
     setTimeout(() => {
-      document.getElementById("deposit-modal").style.display = "none"
+      document.getElementById("insufficient-funds-modal").style.display = "none"
     }, 2000)
   } else {
     errorElement.style.display = "block"
   }
 }
 
-// Function to open developer chat for activation
+// Developer chat functions
 function openDeveloperChatForActivation() {
   const developerUsername = "TsantosI_PH_bot"
   const prefillMessage = "Hi! I want to activate my account for signals 💰"
@@ -182,7 +203,6 @@ function openDeveloperChatForActivation() {
   }
 }
 
-// Function to open developer chat for ID
 function openDeveloperChatForId() {
   const developerUsername = "TsantosI_PH_bot"
   const prefillMessage = "Hi! I want to get my 1xBet ID ✅"
@@ -195,22 +215,12 @@ function openDeveloperChatForId() {
   }
 }
 
-// Set event handlers
+// Event listeners
+document.getElementById("get-signal").onclick = getSignal
 document.getElementById("modal-verify-button").onclick = verifyModalAccount
 document.getElementById("modal-get-id-button").onclick = openDeveloperChatForId
 document.getElementById("unlock-bot-button").onclick = unlockBot
 document.getElementById("activate-now-button").onclick = openDeveloperChatForActivation
-
-// Game selection event handlers
-document.addEventListener("DOMContentLoaded", () => {
-  const gameOptions = document.querySelectorAll(".game-option")
-  gameOptions.forEach((option) => {
-    option.addEventListener("click", function () {
-      const gameKey = this.getAttribute("data-game")
-      selectGame(gameKey)
-    })
-  })
-})
 
 // Enter key handlers
 document.getElementById("modal-account-id").addEventListener("keypress", (event) => {
@@ -239,18 +249,9 @@ document.getElementById("unlock-code-input").addEventListener("input", () => {
 window.addEventListener("load", () => {
   const botUnlocked = localStorage.getItem("bot_unlocked")
   const accountVerified = localStorage.getItem("account_verified")
-  const savedGame = localStorage.getItem("selected_game")
 
-  // Load saved game if exists
-  if (savedGame && games[savedGame]) {
-    selectedGame = savedGame
-    gameTitle.textContent = games[savedGame].name
-  }
-
-  // Show verification modal immediately if not verified
-  if (accountVerified !== "true" || botUnlocked !== "true") {
-    setTimeout(() => {
-      document.getElementById("verification-modal").style.display = "flex"
-    }, 500)
+  if (botUnlocked === "true" && accountVerified === "true") {
+    document.getElementById("game-selection-screen").style.display = "none"
+    document.getElementById("main-game").style.display = "block"
   }
 })
