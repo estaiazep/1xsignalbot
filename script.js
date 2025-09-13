@@ -1,257 +1,202 @@
-// Global variables
-let selectedGame = {
-  id: "sweet-bonanza",
-  name: "Sweet Bonanza 1000",
-  volatility: "Medium",
-  bgImage: "/images/sweet-bonanza-bg.jpg",
-  icon: "/images/sweet-bonanza-icon.png",
-}
 
-const gameData = {
-  "sweet-bonanza": {
-    name: "Sweet Bonanza 1000",
-    volatility: "Medium",
-    bgImage: "/images/sweet-bonanza-bg.jpg",
-    icon: "/images/sweet-bonanza-icon.png",
-    spins: [15, 20, 25, 30, 35],
-  },
-  "gates-olympus": {
-    name: "Gates of Olympus",
-    volatility: "High",
-    bgImage: "/images/gates-olympus-bg.jpg",
-    icon: "/images/gates-olympus-icon.png",
-    spins: [18, 22, 28, 32, 38],
-  },
-  "dog-house": {
-    name: "Dog House",
-    volatility: "Medium",
-    bgImage: "/images/dog-house-bg.jpg",
-    icon: "/images/dog-house-icon.png",
-    spins: [12, 18, 24, 28, 35],
-  },
-}
+/************* НАСТРОЙКИ *************/
+const ALLOWED = [
+  { login: "admin", pass: "Polkopejkin05!" },
+  { login: "vip",   pass: "7777" },
+  { login: "guest101", pass: "x4P9tL" },
+  { login: "guest102", pass: "s8K2rM" },
+  { login: "guest103", pass: "q3B7fV" },
+  { login: "guest104", pass: "a6M9zQ" },
+  { login: "guest105", pass: "h2T5pW" },
+  { login: "guest106", pass: "j7U4mE" },
+  { login: "guest107", pass: "v9X1sA" },
+  { login: "guest108", pass: "p4N8cY" },
+  { login: "guest109", pass: "t3L6kH" },
+  { login: "guest110", pass: "m8Z5gR" },
+  { login: "guest111", pass: "y1D7qL" },
+  { login: "guest112", pass: "n2H9wB" },
+  { login: "guest113", pass: "u6S4vJ" },
+  { login: "guest114", pass: "k5P8xF" },
+  { login: "guest116", pass: "e4Q9tM" },
+  { login: "guest116", pass: "r7B3yZ" },
+  { login: "guest117", pass: "o9C2gV" },
+  { login: "guest118", pass: "z6M8pT" },
+  { login: "guest119", pass: "l1K7jC" },
+  { login: "guest120", pass: "f3W5nH" }
+];
+const BLOCKED       = ["baduser"];     
+const AUTH_VERSION  = "1";             
+const AUTH_TTL_MS   = 10 * 60 * 1000;  
+const SESSION_KEY   = "cr2_auth";
+/*************************************/
 
-// Game selection functions
-function selectGame(gameId, gameName) {
-  selectedGame = gameData[gameId]
-  selectedGame.id = gameId
-
-  // Update UI elements
-  document.getElementById("selected-game-name").textContent = selectedGame.name
-  document.getElementById("selected-game-icon").src = selectedGame.icon
-  document.getElementById("game-bg-image").src = selectedGame.bgImage
-
-  // Hide game selection and show verification modal
-  document.getElementById("game-selection-screen").style.display = "none"
-  document.getElementById("verification-modal").style.display = "flex"
-}
-
-function goBackToGameSelection() {
-  document.getElementById("main-game").style.display = "none"
-  document.getElementById("game-selection-screen").style.display = "block"
-}
-
-// Signal generation
-function getSignal() {
-  const signal = document.getElementById("signal-card")
-  const loading = document.getElementById("loading")
-  const buttonGetSignal = document.getElementById("get-signal")
-  const percentChance = document.getElementById("percent-chance")
-
-  if (!signal || !loading || !buttonGetSignal) return
-
-  // Hide signal card and show loading
-  signal.classList.add("deactive")
-  loading.classList.remove("deactive")
-  buttonGetSignal.disabled = true
-
-  // Update chance percentage
-  percentChance.textContent = "CHANCE: " + getRandomNumber() + "%"
-  percentChance.style.display = ""
-
-  setTimeout(() => {
-    loading.classList.add("deactive")
-    signal.classList.remove("deactive")
-    buttonGetSignal.disabled = false
-
-    // Generate signal data
-    generateSignalData()
-  }, 3000)
-}
-
-function generateSignalData() {
-  const spinsArray = gameData[selectedGame.id].spins
-  const randomSpins = spinsArray[Math.floor(Math.random() * spinsArray.length)]
-
-  // Update signal card
-  document.getElementById("signal-game-name").textContent = selectedGame.name
-  document.getElementById("signal-volatility-value").textContent = selectedGame.volatility
-  document.getElementById("signal-spins-value").textContent = `${randomSpins} (Auto)`
-  document.getElementById("signal-time-value").textContent = "5 minutes"
-}
-
-function getRandomNumber() {
-  return (Math.random() * (95 - 80) + 80).toFixed(2)
-}
-
-// Modal functions
-function showInsufficientFundsScreen() {
-  document.getElementById("insufficient-funds-modal").style.display = "flex"
-}
-
-function hideInsufficientFundsModal() {
-  document.getElementById("insufficient-funds-modal").style.display = "none"
-}
-
-// ID Verification Logic
-function validateAccountId(id) {
-  return /^13\d{8}$/.test(id)
-}
-
-function showModalError(message) {
-  const errorElement = document.getElementById("modal-error-message")
-  errorElement.textContent = message
-  errorElement.style.display = "block"
-}
-
-function hideModalError() {
-  document.getElementById("modal-error-message").style.display = "none"
-}
-
-function showProgress() {
-  document.getElementById("verification-progress").style.display = "block"
-  document.getElementById("modal-verify-button").style.display = "none"
-
-  let progress = 0
-  const progressBar = document.getElementById("progress-bar-fill")
-  const progressText = document.getElementById("progress-text")
-
-  const interval = setInterval(() => {
-    progress += 2
-    progressBar.style.width = progress + "%"
-    progressText.textContent = `Checking... ${progress}%`
-
-    if (progress >= 100) {
-      clearInterval(interval)
-      showSuccess()
+function setAuthed(v, user){
+  try {
+    if (v) {
+      localStorage.setItem(SESSION_KEY, JSON.stringify({
+        u: user, t: Date.now(), v: AUTH_VERSION
+      }));
+    } else {
+      localStorage.removeItem(SESSION_KEY);
     }
-  }, 60)
+  } catch(e){}
+}
+function readSession(){
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch(e){ return null; }
+}
+function isAuthedFresh(){
+  const s = readSession();
+  if (!s) return false;
+  if (BLOCKED.includes(s.u)) return false;
+  if (s.v !== AUTH_VERSION) return false;
+  if (Date.now() - s.t > AUTH_TTL_MS) return false;
+  return true;
 }
 
-function showSuccess() {
-  document.getElementById("verification-progress").style.display = "none"
-  document.getElementById("success-message").style.display = "block"
 
-  // Show main game screen after 2 seconds
+function showGate() {
+  document.getElementById("gate").classList.add("active");
+  document.getElementById("app").classList.remove("active");
+}
+
+function showApp() {
+  document.getElementById("app").classList.add("active");
+  document.getElementById("gate").classList.remove("active");
+}
+
+
+window.addEventListener("DOMContentLoaded", () => {
+ 
+  if (isAuthedFresh()) showApp(); else showGate()}
+);
+
+  // ====== GATE (EN) ======
+  const form       = document.getElementById("gate-form"); 
+  const loginInput = document.getElementById("login");
+  const passInput  = document.getElementById("password");
+  const errBox     = document.getElementById("gate-error");
+  const getDataBtn = document.getElementById("get-data");
+  
+   
+
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const login = (loginInput.value || "").trim();
+      const pass  = (passInput.value  || "");
+      const ok = ALLOWED.some(u => u.login === login && u.pass === pass);
+
+      if (!ok) {
+        errBox.hidden = false;
+        setTimeout(() => errBox.hidden = true, 2000);
+        return;
+      }
+      if (BLOCKED.includes(login)) {
+        errBox.textContent = "Access denied";
+        errBox.hidden = false;
+        setTimeout(() => { errBox.hidden = true; errBox.textContent = "Invalid login or password"; }, 2000);
+        return;
+      }
+      
+      setAuthed(true, login);
+      showApp();
+    });
+  }
+
+  
+  if (getDataBtn) {
+    getDataBtn.addEventListener("click", (e) => {
+      
+    });
+  }
+
+  // ====== ИГРА ======
+  const modes = {
+    easy: [
+     "280.png",
+     "163.png",
+     "245.png",
+     "222.png",
+     "306.png"
+    ],
+    medium: [
+     "280.png",
+     "163.png",
+     "245.png",
+     "222.png",
+     "306.png"
+    ],
+  hard: [
+     "280.png",
+     "163.png",
+     "245.png",
+     "222.png",
+     "306.png"
+    ],
+  hardcore: [
+     "280.png",
+     "163.png",
+     "245.png",
+     "222.png",
+     "306.png"
+  ]
+  };
+
+  let currentMode = 'easy';
+  document.querySelectorAll('.mode').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('.mode').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      currentMode = b.dataset.mode;
+    });
+  });
+
+  const chicken = document.getElementById('chicken');
+  const btnJump = document.getElementById('btn-jump');
+  const modal   = document.getElementById('modal');
+  const xVal    = document.getElementById('xval');
+  const btnNext = document.getElementById('btn-next');
+
+  btnJump?.addEventListener('click', () => {
+  
+  chicken.style.transform = 'translate(-50%,-44px) scale(0.5)';
+
   setTimeout(() => {
-    document.getElementById("verification-modal").style.display = "none"
-    document.getElementById("main-game").style.display = "block"
+    
+    chicken.style.transform = 'translate(-50%,0) scale(0.5)';
 
-    // Show insufficient funds modal after 3 seconds
-    setTimeout(() => {
-      showInsufficientFundsScreen()
-    }, 3000)
-  }, 2000)
-}
+    
+    const arr = modes[currentMode] || modes.easy;
+    const x = arr[Math.floor(Math.random() * arr.length)];
+    xVal.innerHTML = `<img src="${x}" alt="result" class="result-img">`;
 
-function verifyModalAccount() {
-  const accountId = document.getElementById("modal-account-id").value
+    
+    modal.classList.remove('hidden');
+  }, 600);
+});
 
-  hideModalError()
+btnNext?.addEventListener('click', () => {
+  modal.classList.add('hidden');
+});
+  
 
-  if (!validateAccountId(accountId)) {
-    showModalError("Invalid account ID format")
-    return
-  }
+const btnPlay = document.getElementById("btn-play");
+const modesMenu = document.getElementById("modes-menu");
 
-  showProgress()
-  localStorage.setItem("account_verified", "true")
-  localStorage.setItem("account_id", accountId)
-}
+btnPlay.addEventListener("click", () => {
+  modesMenu.classList.toggle("hidden"); 
+});
 
-// Unlock Bot Logic
-function unlockBot() {
-  const unlockCode = document.getElementById("unlock-code-input").value
-  const errorElement = document.getElementById("unlock-error")
-  const successElement = document.getElementById("unlock-success")
 
-  errorElement.style.display = "none"
-  successElement.style.display = "none"
 
-  if (unlockCode === "6923") {
-    successElement.style.display = "block"
-    localStorage.setItem("bot_unlocked", "true")
 
-    setTimeout(() => {
-      document.getElementById("insufficient-funds-modal").style.display = "none"
-    }, 2000)
-  } else {
-    errorElement.style.display = "block"
-  }
-}
 
-// Developer chat functions
-function openDeveloperChatForActivation() {
-  const developerUsername = "TsantosI_PH_bot"
-  const prefillMessage = "Hi! I want to activate my account for signals 💰"
-  const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`
 
-  if (window.Telegram && window.Telegram.WebApp) {
-    window.Telegram.WebApp.openTelegramLink(telegramUrl)
-  } else {
-    window.open(telegramUrl, "_blank")
-  }
-}
 
-function openDeveloperChatForId() {
-  const developerUsername = "TsantosI_PH_bot"
-  const prefillMessage = "Hi! I want to get my 1xBet ID ✅"
-  const telegramUrl = `https://t.me/${developerUsername}?text=${encodeURIComponent(prefillMessage)}`
 
-  if (window.Telegram && window.Telegram.WebApp) {
-    window.Telegram.WebApp.openTelegramLink(telegramUrl)
-  } else {
-    window.open(telegramUrl, "_blank")
-  }
-}
-
-// Event listeners
-document.getElementById("get-signal").onclick = getSignal
-document.getElementById("modal-verify-button").onclick = verifyModalAccount
-document.getElementById("modal-get-id-button").onclick = openDeveloperChatForId
-document.getElementById("unlock-bot-button").onclick = unlockBot
-document.getElementById("activate-now-button").onclick = openDeveloperChatForActivation
-
-// Enter key handlers
-document.getElementById("modal-account-id").addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    verifyModalAccount()
-  }
-})
-
-document.getElementById("unlock-code-input").addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    unlockBot()
-  }
-})
-
-// Clear error on input
-document.getElementById("modal-account-id").addEventListener("input", () => {
-  hideModalError()
-})
-
-document.getElementById("unlock-code-input").addEventListener("input", () => {
-  document.getElementById("unlock-error").style.display = "none"
-  document.getElementById("unlock-success").style.display = "none"
-})
-
-// Check verification status on load
-window.addEventListener("load", () => {
-  const botUnlocked = localStorage.getItem("bot_unlocked")
-  const accountVerified = localStorage.getItem("account_verified")
-
-  if (botUnlocked === "true" && accountVerified === "true") {
-    document.getElementById("game-selection-screen").style.display = "none"
-    document.getElementById("main-game").style.display = "block"
-  }
-})
+  
